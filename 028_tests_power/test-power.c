@@ -5,7 +5,6 @@ unsigned power(unsigned x, unsigned y);
 
 void check_power(unsigned x, unsigned y, unsigned expected_value) {
   if (power(x, y) != expected_value) {
-    printf("when x=%u, y=%u, the answer is wrong", x, y);
     exit(EXIT_FAILURE);
   }
 }
