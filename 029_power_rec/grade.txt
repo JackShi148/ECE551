@@ -1,6 +1,6 @@
-Grading at 09/15/2022:02:25:52.139094
-For commit ID c72521ca15b32cbe999acb8c6ae6ff447d971623
-Grading at Wed Sep 14 10:25:51 PM EDT 2022
+Grading at 09/15/2022:02:30:53.392449
+For commit ID 4b44228a2cc769a9238d5a2395b79c99438bc2b0
+Grading at Wed Sep 14 10:30:52 PM EDT 2022
 Attempting to compile power.c
 Attempting to compile power.o with our main
 Checking for unsigned power (unsigned x, unsigned y)
