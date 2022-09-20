@@ -1,6 +1,6 @@
-Grading at 09/20/2022:22:28:02.071144
-For commit ID 5104566b58d7c892da0b4fece8f7fc2b975cf311
-Grading at Tue Sep 20 06:28:01 PM EDT 2022
+Grading at 09/20/2022:23:34:14.510532
+For commit ID 0157417a9aa15764203c04bc677ff38abf88b7bf
+Grading at Tue Sep 20 07:34:14 PM EDT 2022
 Attempting to compile arrayMax.c 
 #################################################
 testcase1:
