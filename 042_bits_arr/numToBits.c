@@ -14,16 +14,11 @@ void numToBits(uint32_t * nums, int nNums, int * bits, int nBits) {
   if (nNums * 32 > nBits) {
     printf("Invalid call to numToBits! nBits is %d, nNums is %d]\n", nBits, nNums);
   }
+  int * p = bits;
   for (int i = 0; i < nNums; i++) {
-    int n = nums[i];
-    for (int j = 31 + i * 32; j >= i * 32; j--) {
-      if (n > 0) {
-        bits[j] = n % 2;
-        n /= 2;
-      }
-      else {
-        bits[j] = 0;
-      }
+    for (int j = 0; j < 32; j++) {
+      *p = getNthBit(nums[i], 31 - j);
+      p++;
     }
   }
 }
