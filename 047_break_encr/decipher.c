@@ -15,17 +15,17 @@ void decipher(FILE * f) {
     for (int i = 0; i < 26; i++) {
       if (maxfreq < charFreq[i]) {
         maxfreq = charFreq[i];
-        suspect = i + 'a';
+        suspect = i;
       }
     }
     if (maxfreq == 0) {
       fprintf(stderr, "Not letter in the file\n");
       exit(EXIT_FAILURE);
     }
-    else if ('e' <= suspect && suspect <= 'z') {
-      fprintf(stdout, "%d\b", suspect - 'e');
+    else if (4 <= suspect && suspect <= 25) {
+      fprintf(stdout, "%d\n", suspect - 4);
     }
-    else if ('a' <= suspect && suspect <= 'd') {
+    else if (0 <= suspect && suspect <= 3) {
       fprintf(stdout, "%d\n", suspect + 22);
     }
   }
