@@ -26,7 +26,7 @@ void breaker(FILE * f) {
       fprintf(stderr, "Not letter in the file\n");
       exit(EXIT_FAILURE);
     }
-    else if (4 <= suspect) {
+    else if (suspect >= 4) {
       fprintf(stdout, "%d\n", suspect - 4);
     }
     else {
@@ -37,7 +37,7 @@ void breaker(FILE * f) {
 
 int main(int argc, char ** argv) {
   if (argc != 2) {
-    fprintf(stderr, "the number of arguments is wrong");
+    fprintf(stderr, "Usage: encrypt inputFileName\n");
     return EXIT_FAILURE;
   }
   FILE * f = fopen(argv[1], "r");
