@@ -26,10 +26,10 @@ void breaker(FILE * f) {
       fprintf(stderr, "Not letter in the file\n");
       exit(EXIT_FAILURE);
     }
-    else if (4 <= suspect && suspect <= 25) {
+    else if (4 <= suspect) {
       fprintf(stdout, "%d\n", suspect - 4);
     }
-    else if (0 <= suspect && suspect <= 3) {
+    else {
       fprintf(stdout, "%d\n", suspect + 22);
     }
   }
