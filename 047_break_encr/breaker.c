@@ -14,24 +14,24 @@ void breaker(FILE * f) {
       c = c - 'a';
       charFreq[c]++;
     }
-    int suspect = 0;
-    int maxfreq = 0;
-    for (int i = 0; i < 26; i++) {
-      if (maxfreq < charFreq[i]) {
-        maxfreq = charFreq[i];
-        suspect = i;
-      }
+  }
+  int suspect = 0;
+  int maxfreq = 0;
+  for (int i = 0; i < 26; i++) {
+    if (maxfreq < charFreq[i]) {
+      maxfreq = charFreq[i];
+      suspect = i;
     }
-    if (maxfreq == 0) {
-      fprintf(stderr, "Not letter in the file\n");
-      exit(EXIT_FAILURE);
-    }
-    else if (suspect >= 4) {
-      fprintf(stdout, "%d\n", suspect - 4);
-    }
-    else {
-      fprintf(stdout, "%d\n", suspect + 22);
-    }
+  }
+  if (maxfreq == 0) {
+    fprintf(stderr, "Not letter in the file\n");
+    exit(EXIT_FAILURE);
+  }
+  else if (suspect >= 4) {
+    fprintf(stdout, "%d\n", suspect - 4);
+  }
+  else {
+    fprintf(stdout, "%d\n", suspect + 22);
   }
 }
 
