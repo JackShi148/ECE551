@@ -27,10 +27,10 @@ void breaker(FILE * f) {
     exit(EXIT_FAILURE);
   }
   else if (suspect >= 'e') {
-    fprintf(stdout, "%d\n", suspect - 4);
+    fprintf(stdout, "%d\n", suspect - 'e');
   }
   else {
-    fprintf(stdout, "%d\n", suspect + 22);
+    fprintf(stdout, "%d\n", suspect - 'a' + 22);
   }
 }
 
