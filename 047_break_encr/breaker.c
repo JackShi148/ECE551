@@ -11,8 +11,7 @@ void breaker(FILE * f) {
   while ((c = fgetc(f)) != EOF) {
     if (isalpha(c)) {
       c = tolower(c);
-      c = c - 'a';
-      charFreq[c]++;
+      charFreq[c - 'a']++;
     }
   }
   int suspect = 0;
@@ -20,14 +19,14 @@ void breaker(FILE * f) {
   for (int i = 0; i < 26; i++) {
     if (maxfreq < charFreq[i]) {
       maxfreq = charFreq[i];
-      suspect = i;
+      suspect = i + 'a';
     }
   }
   if (maxfreq == 0) {
     fprintf(stderr, "Not letter in the file\n");
     exit(EXIT_FAILURE);
   }
-  else if (suspect >= 4) {
+  else if (suspect >= 'e') {
     fprintf(stdout, "%d\n", suspect - 4);
   }
   else {
