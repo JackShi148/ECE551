@@ -53,10 +53,6 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   for (size_t i = 0; i < n_days - 6; i++) {
     double sum = 0.0;
     for (size_t j = i; j < i + 7; j++) {
-      if (data[j] < 0) {  //check data
-        printf("error: invalid data, daily case must not be negative\n");
-        exit(EXIT_FAILURE);
-      }
       sum = sum + data[j];
     }
     avg[i] = sum / 7;
@@ -66,16 +62,12 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //WRITE ME
   //check input
-  if (data == NULL || n_days <= 0 || pop <= 0) {
+  if (data == NULL || n_days <= 0) {
     printf("invalid parameter: parameter doesn't meet requirements\n");
     exit(EXIT_FAILURE);
   }
   double caseNum = 0.0;
   for (size_t i = 0; i < n_days; i++) {
-    if (data[i] < 0) {  //check data
-      printf("error: invalid data, the number of cases must not be negative\n");
-      exit(EXIT_FAILURE);
-    }
     caseNum = caseNum + data[i];
     cum[i] = (caseNum / pop) * 100000;
   }
@@ -86,4 +78,19 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   //WRITE ME
+  if (countries == NULL || data == NULL || n_countries < 0 || n_days < 0) {
+    printf("invalid input: parameter doesn't meet requirments\n");
+    exit(EXIT_FAILURE);
+  }
+  for (size_t j = 0; j < n_days; j++) {
+    unsigned maxCaseNum = data[0][j];
+    char * country_name = countries[0].name;
+    for (size_t i = 1; i < n_countries; i++) {
+      if (maxCaseNum < data[i][j]) {
+        maxCaseNum = data[i][j];
+        country_name = countries[i].name;
+      }
+    }
+    printf("%s has the most daily cases with %u\n", country_name, maxCaseNum);
+  }
 }
