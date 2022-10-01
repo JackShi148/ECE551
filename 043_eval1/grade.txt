@@ -1,0 +1,19 @@
+Grading at 10/01/2022:20:31:47.262663
+For commit ID 91f79c110d2d839c6e34e4936517fc3cb3c1d6a7
+Grading at Sat Oct  1 04:31:46 PM EDT 2022
+
+Compiling 
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o printCumulative
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
+Running your test cases
++-----------------------------------------------------------------------+
+Test case printCountries errorCase1.csv
+invalid input: no comma
+Your program did not indicate a failure case
+Program must be one of printCountries printRunningAvg printCumulative printDailyMax
+But found "printRunningavg"
+
+Overall Grade: NO GRADE YET
