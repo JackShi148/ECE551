@@ -1,0 +1,11 @@
+#error
+printCountries errorCase1.csv
+printRunningavg population.csv
+printCumulative population.csv
+printDailyMax population.csv
+
+#success
+printCountries popualtion.csv
+printRunningavg population.csv daily_cases.csv
+printCumulative population.csv daily_cases.csv
+printDailyMax population.csv daily_cases.csv
