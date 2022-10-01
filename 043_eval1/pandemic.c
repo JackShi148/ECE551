@@ -7,7 +7,7 @@ country_t parseLine(char * line) {
   char * commaPos = strchr(line, ',');
   //find comma
   if (commaPos == NULL) {
-    printf("invalid input: no comma\n");
+    fprintf(stderr, "invalid input: no comma\n");
     exit(EXIT_FAILURE);
   }
   country_t ans;
@@ -18,7 +18,7 @@ country_t parseLine(char * line) {
   while (line[i] != ',' && i < 64) {
     //check country name
     if (line[i] - '0' >= 0 && line[i] - '0' <= 9) {
-      printf("invalid input: country name doesn't contain numbers\n");
+      fprintf(stderr, "invalid input: country name doesn't contain numbers\n");
       exit(EXIT_FAILURE);
     }
     ans.name[i] = line[i];
@@ -26,7 +26,7 @@ country_t parseLine(char * line) {
   }
   //check space for '\0'
   if (i == 64) {
-    printf("invalid input: the name is too long\n");
+    fprintf(stderr, "invalid input: the name is too long\n");
     exit(EXIT_FAILURE);
   }
   else {
@@ -35,7 +35,7 @@ country_t parseLine(char * line) {
   }
   //no population is an error
   if (line[i] == '\0' || line[i] == '\n') {
-    printf("invalid input: population needed\n");
+    fprintf(stderr, "invalid input: population needed\n");
     exit(EXIT_FAILURE);
   }
   char * population = &line[i];
@@ -51,7 +51,7 @@ country_t parseLine(char * line) {
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //check parameters
   if (data == NULL || n_days < 7) {
-    printf("invalid parameter: parameter doesn't meet requirements\n");
+    fprintf(stderr, "invalid parameter: parameter doesn't meet requirements\n");
     exit(EXIT_FAILURE);
   }
   for (size_t i = 0; i < n_days - 6; i++) {
@@ -60,7 +60,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
     for (size_t j = 0; j < 7; j++) {
       //check whether the number of data matches with n_days
       if (pos == NULL) {
-        printf("error: the number of data doesn't match with n_days\n");
+        fprintf(stderr, "error: the number of data doesn't match with n_days\n");
         exit(EXIT_FAILURE);
       }
       sum = sum + *pos;
@@ -73,7 +73,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //check parameters
   if (data == NULL || n_days < 0) {
-    printf("invalid parameter: parameter doesn't meet requirements\n");
+    fprintf(stderr, "invalid parameter: parameter doesn't meet requirements\n");
     exit(EXIT_FAILURE);
   }
   double caseNum = 0.0;
@@ -81,7 +81,7 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   for (size_t i = 0; i < n_days; i++) {
     //check whether the number of data matches with n_days
     if (pos == NULL) {
-      printf("error: the number of data doesn't match with n_days\n");
+      fprintf(stderr, "error: the number of data doesn't match with n_days\n");
       exit(EXIT_FAILURE);
     }
     caseNum = caseNum + *pos;
@@ -96,14 +96,14 @@ void printCountryWithMax(country_t * countries,
                          size_t n_days) {
   //check parameters
   if (countries == NULL || data == NULL || n_countries < 0 || n_days < 0) {
-    printf("invalid input: parameter doesn't meet requirments\n");
+    fprintf(stderr, "invalid input: parameter doesn't meet requirments\n");
     exit(EXIT_FAILURE);
   }
   unsigned maxCaseNum = data[0][0];
   char * country_name = countries[0].name;
   for (size_t j = 0; j < n_days; j++) {
     for (size_t i = 0; i < n_countries; i++) {
-      if (maxCaseNum < data[i][j]) {
+      if (maxCaseNum <= data[i][j]) {
         maxCaseNum = data[i][j];
         country_name = countries[i].name;
       }
