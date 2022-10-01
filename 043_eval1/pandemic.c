@@ -16,11 +16,6 @@ country_t parseLine(char * line) {
   //get name
   int i = 0;
   while (line[i] != ',' && i < 64) {
-    //check country name
-    if (line[i] - '0' >= 0 && line[i] - '0' <= 9) {
-      fprintf(stderr, "invalid input: country name doesn't contain numbers\n");
-      exit(EXIT_FAILURE);
-    }
     ans.name[i] = line[i];
     i++;
   }
@@ -38,13 +33,19 @@ country_t parseLine(char * line) {
     fprintf(stderr, "invalid input: population needed\n");
     exit(EXIT_FAILURE);
   }
+  if (line[i] - '0' < 0 || line[i] - '0' > 9) {
+    fprintf(stderr, "invalid input: population needed\n");
+    exit(EXIT_FAILURE);
+  }
   char * population = &line[i];
   char * end;
   ans.population = strtol(population, &end, 10);
-  /*if (*end != '\0' && strcmp(population, "Population") != 0) {
-    printf("invalid input: invalid population\n");
-    exit(EXIT_FAILURE);
-    }*/
+  if (*end != '\0') {
+    if (*end != '\n') {
+      fprintf(stderr, "invalid input: invalid population\n");
+      exit(EXIT_FAILURE);
+    }
+  }
   return ans;
 }
 
