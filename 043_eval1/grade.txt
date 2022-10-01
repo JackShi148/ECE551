@@ -1,6 +1,6 @@
-Grading at 10/01/2022:21:32:14.327327
-For commit ID a9bf42ffb926319b17c0e532d2ccf8a27d29775e
-Grading at Sat Oct  1 05:32:05 PM EDT 2022
+Grading at 10/01/2022:21:45:42.579903
+For commit ID b31eac3f285399daddf2f8d1fe26c49fda334db3
+Grading at Sat Oct  1 05:45:33 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -11,20 +11,16 @@ gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o prin
 Running your test cases
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase1.csv
-invalid input: no comma
-Your program did not indicate a failure case
+Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase2.csv
-invalid input: population needed
-Your program did not indicate a failure case
+Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase3.csv
-invalid input: country name doesn't contain numbers
-Your program did not indicate a failure case
+Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase4.csv
-invalid input: population needed
-Your program did not indicate a failure case
+Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase5.csv
 Your program did not indicate a failure case
