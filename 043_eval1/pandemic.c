@@ -33,16 +33,13 @@ country_t parseLine(char * line) {
     fprintf(stderr, "invalid input: population needed\n");
     exit(EXIT_FAILURE);
   }
-  if (line[i] - '0' < 0 || line[i] - '0' > 9) {
-    fprintf(stderr, "invalid input: population needed\n");
-    exit(EXIT_FAILURE);
-  }
   char * population = &line[i];
   char * end;
   ans.population = strtol(population, &end, 10);
+  //check if population contains non-numberic characters
   if (*end != '\0') {
     if (*end != '\n') {
-      fprintf(stderr, "invalid input: invalid population\n");
+      fprintf(stderr, "invalid input: population is invalid\n");
       exit(EXIT_FAILURE);
     }
   }
@@ -97,7 +94,7 @@ void printCountryWithMax(country_t * countries,
                          size_t n_days) {
   //check parameters
   if (countries == NULL || data == NULL || n_countries < 0 || n_days < 0) {
-    fprintf(stderr, "invalid input: parameter doesn't meet requirments\n");
+    fprintf(stderr, "invalid parameter: parameter doesn't meet requirments\n");
     exit(EXIT_FAILURE);
   }
   unsigned maxCaseNum = data[0][0];
