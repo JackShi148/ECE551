@@ -1,8 +1,13 @@
 #error
 printCountries errorCase1.csv
-printRunningavg population.csv
-printCumulative population.csv
-printDailyMax population.csv
+printCountries errorCase2.csv
+printCountries errorCase3.csv
+printCountries errorCase4.csv
+printCountries errorCase5.csv
+printCountries
+printRunningavg population.csv errorCase1.csv
+printCumulative population.csv errorCase1.csv
+printDailyMax population.csv errorCase1.csv
 
 #success
 printCountries popualtion.csv
