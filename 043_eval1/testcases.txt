@@ -3,7 +3,6 @@ printCountries errorCase1.csv
 printCountries errorCase2.csv
 printCountries errorCase3.csv
 printCountries errorCase4.csv
-printCountries errorCase5.csv
 printCountries
 printRunningAvg population.csv errorCase1.csv
 printCumulative population.csv errorCase1.csv
