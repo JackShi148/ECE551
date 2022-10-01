@@ -1,6 +1,6 @@
-Grading at 10/01/2022:20:54:28.727742
-For commit ID 3e3f7826f8e50dcd1bb9db8bf9dc0779770d7657
-Grading at Sat Oct  1 04:54:27 PM EDT 2022
+Grading at 10/01/2022:21:01:09.273782
+For commit ID 9c15d710e88319daeed59cfd5bfb91dec467a3e5
+Grading at Sat Oct  1 05:01:04 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -13,6 +13,24 @@ Running your test cases
 Test case printCountries errorCase1.csv
 invalid input: no comma
 Your program did not indicate a failure case
++-----------------------------------------------------------------------+
+Test case printCountries errorCase2.csv
+invalid input: population needed
+Your program did not indicate a failure case
++-----------------------------------------------------------------------+
+Test case printCountries errorCase3.csv
+invalid input: country name doesn't contain numbers
+Your program did not indicate a failure case
++-----------------------------------------------------------------------+
+Test case printCountries errorCase4.csv
+invalid input: population needed
+Your program did not indicate a failure case
++-----------------------------------------------------------------------+
+Test case printCountries errorCase5.csv
+Your program did not indicate a failure case
++-----------------------------------------------------------------------+
+Test case printCountries 
+Your program successfully indicated a failure case
 Program must be one of printCountries printRunningAvg printCumulative printDailyMax
 But found "printRunningavg"
 
