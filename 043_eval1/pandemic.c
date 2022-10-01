@@ -99,10 +99,10 @@ void printCountryWithMax(country_t * countries,
     printf("invalid input: parameter doesn't meet requirments\n");
     exit(EXIT_FAILURE);
   }
+  unsigned maxCaseNum = data[0][0];
+  char * country_name = countries[0].name;
   for (size_t j = 0; j < n_days; j++) {
-    unsigned maxCaseNum = data[0][j];
-    char * country_name = countries[0].name;
-    for (size_t i = 1; i < n_countries; i++) {
+    for (size_t i = 0; i < n_countries; i++) {
       if (maxCaseNum < data[i][j]) {
         maxCaseNum = data[i][j];
         country_name = countries[i].name;
