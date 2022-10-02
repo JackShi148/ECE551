@@ -1,19 +1,23 @@
-Grading at 10/02/2022:17:15:48.938787
-For commit ID c4b7ddaa8c0e8414a645436c2fd02bbdef5f45ed
-Grading at Sun Oct  2 01:15:48 PM EDT 2022
+Grading at 10/02/2022:17:22:59.612618
+For commit ID 8ebd0a8dd85fb2860753e838a0066c99a9fad21e
+Grading at Sun Oct  2 01:22:55 PM EDT 2022
 Attempting to compile rotateMatrix.c
-rotateMatrix.c: In function ‘rotate’:
-rotateMatrix.c:9:10: error: ‘fgets’ writing 12 bytes into a region of size 11 overflows the destination [-Werror=stringop-overflow=]
-    9 |   while (fgets(line, 12, f) != NULL) {  // size == 12 for the space for '\0'
-      |          ^~~~~~~~~~~~~~~~~~
-rotateMatrix.c:7:8: note: destination object ‘line’ of size 11
-    7 |   char line[11];
-      |        ^~~~
-In file included from rotateMatrix.c:1:
-/usr/include/stdio.h:592:14: note: in a call to function ‘fgets’ declared with attribute ‘access (write_only, 1, 2)’
-  592 | extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
-      |              ^~~~~
-cc1: all warnings being treated as errors
-The code did not compile!
+testcase1 passed
+#################################################
+testcase2:
+testcase2 passed
+#################################################
+testcase3:
+testcase3 passed
+#################################################
+testcase4:
+testcase4 passed
+#################################################
+testcase5:
+testcase5 passed
+#################################################
+testcase6:
+Your file matched the expected output
+testcase6 passed
 
-Overall Grade: F
+Overall Grade: A
