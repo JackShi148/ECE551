@@ -1,6 +1,6 @@
-Grading at 10/02/2022:21:18:36.228629
-For commit ID 63a7e1db885427d7f616e5d9f6b3e386620ad159
-Grading at Sun Oct  2 05:18:22 PM EDT 2022
+Grading at 10/02/2022:21:23:24.335761
+For commit ID 2ae80fceb2cacee7399265179497c19dcc2062b2
+Grading at Sun Oct  2 05:23:03 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -46,16 +46,52 @@ Your program successfully indicated a failure case
 Test case printRunningAvg population.csv errorCase2.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
+Test case printRunningAvg population.csv errorCase3.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printRunningAvg population.csv errorCase4.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printRunningAvg population.csv errorCase5.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printRunningAvg population.csv errorCase6.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
 Test case printCumulative population.csv errorCase1.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCumulative population.csv errorCase2.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
+Test case printCumulative population.csv errorCase3.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCumulative population.csv errorCase4.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCumulative population.csv errorCase5.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCumulative population.csv errorCase6.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
 Test case printDailyMax population.csv errorCase1.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv errorCase2.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv errorCase3.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv errorCase4.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv errorCase5.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv errorCase6.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries population.csv
