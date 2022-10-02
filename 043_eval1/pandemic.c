@@ -37,13 +37,8 @@ country_t parseLine(char * line) {
   }
   char * population = &line[i];
   char * end;
-  //check the length of population
-  if (strlen(population) > 20) {
-    fprintf(stderr, "the length of population is too long\n");
-    exit(EXIT_FAILURE);
-  }
+  //check if population overflows
   ans.population = strtoull(population, &end, 10);
-  //check overflow at the lowest digit
   if (errno == ERANGE) {
     perror("invalid population");
     exit(EXIT_FAILURE);
