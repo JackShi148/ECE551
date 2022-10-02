@@ -11,10 +11,22 @@ printCumulative
 printDailyMax
 printRunningAvg population.csv errorCase1.csv
 printRunningAvg population.csv errorCase2.csv
+printRunningAvg population.csv errorCase3.csv
+printRunningAvg population.csv errorCase4.csv
+printRunningAvg population.csv errorCase5.csv
+printRunningAvg population.csv errorCase6.csv
 printCumulative population.csv errorCase1.csv
 printCumulative population.csv errorCase2.csv
+printCumulative population.csv errorCase3.csv
+printCumulative population.csv errorCase4.csv
+printCumulative population.csv errorCase5.csv
+printCumulative population.csv errorCase6.csv
 printDailyMax population.csv errorCase1.csv
 printDailyMax population.csv errorCase2.csv
+printDailyMax population.csv errorCase3.csv
+printDailyMax population.csv errorCase4.csv
+printDailyMax population.csv errorCase5.csv
+printDailyMax population.csv errorCase6.csv
 
 #success
 printCountries population.csv
