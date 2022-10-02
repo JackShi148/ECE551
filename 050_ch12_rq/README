@@ -151,7 +151,7 @@ C.  It will not make any assumptions,
     how many bytes are available.
 D.  None of the above.
 
-11. Suppose that Y is NULL and X is 0. 
+* 11. Suppose that Y is NULL and X is 0. 
     The first line from stdin is "Hello\n"
     After getline returns, which of the following 
     is true?
