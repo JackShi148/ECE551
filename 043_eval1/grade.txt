@@ -1,6 +1,6 @@
-Grading at 10/02/2022:21:16:46.100669
-For commit ID 4fde2ce45877fc9d87ad17faa0e87f886469708b
-Grading at Sun Oct  2 05:16:41 PM EDT 2022
+Grading at 10/02/2022:21:17:42.590676
+For commit ID 72a17cb3ecda14e4df602dfb995a3d834210d8d8
+Grading at Sun Oct  2 05:17:36 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -30,7 +30,13 @@ Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries 
 Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printRunningAvg 
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCumulative 
+Your program successfully indicated a failure case
 Program must be one of printCountries printRunningAvg printCumulative printDailyMax
-But found "printRunningavg"
+But found "printDailymax"
 
 Overall Grade: NO GRADE YET
