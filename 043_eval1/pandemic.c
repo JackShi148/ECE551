@@ -1,5 +1,7 @@
 #include "pandemic.h"
 
+#include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -35,7 +37,17 @@ country_t parseLine(char * line) {
   }
   char * population = &line[i];
   char * end;
-  ans.population = strtol(population, &end, 10);
+  //check the length of population
+  if (strlen(population) > 20) {
+    fprintf(stderr, "the length of population is too long\n");
+    exit(EXIT_FAILURE);
+  }
+  ans.population = strtoull(population, &end, 10);
+  //check overflow at the lowest digit
+  if (errno == ERANGE) {
+    perror("invalid population");
+    exit(EXIT_FAILURE);
+  }
   //check if population contains non-numberic characters
   if (*end != '\0') {
     if (*end != '\n') {
