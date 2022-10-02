@@ -6,9 +6,15 @@ printCountries errorCase4.csv
 printCountries errorCase5.csv
 printCountries errorCase6.csv
 printCountries
+printRunningavg
+printCumulative
+printDailymax
 printRunningAvg population.csv errorCase1.csv
+printRunningavg population.csv errorCase2.csv
 printCumulative population.csv errorCase1.csv
+printCumulative population.csv errorCase2.csv
 printDailyMax population.csv errorCase1.csv
+printDailymax population.csv errorCase2.csv
 
 #success
 printCountries population.csv
