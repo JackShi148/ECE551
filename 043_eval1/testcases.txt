@@ -8,13 +8,13 @@ printCountries errorCase6.csv
 printCountries
 printRunningAvg
 printCumulative
-printDailymax
+printDailyMax
 printRunningAvg population.csv errorCase1.csv
 printRunningAvg population.csv errorCase2.csv
 printCumulative population.csv errorCase1.csv
 printCumulative population.csv errorCase2.csv
 printDailyMax population.csv errorCase1.csv
-printDailymax population.csv errorCase2.csv
+printDailyMax population.csv errorCase2.csv
 
 #success
 printCountries population.csv
