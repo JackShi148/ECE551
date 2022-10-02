@@ -4,9 +4,9 @@
 
 void rotate(FILE * f) {
   char rotated[10][10];
-  char line[11];
+  char line[12];  //10 character + 1 '\n' + 1 '\0'
   int lineNum = 0;
-  while (fgets(line, 12, f) != NULL) {  // size == 12 for the space for '\0'
+  while (fgets(line, 12, f) != NULL) {
     lineNum++;
     if (lineNum > 10) {
       fprintf(stderr, "the number of row is more than 10\n");
