@@ -8,6 +8,7 @@ printCountries errorCase7.csv
 printCountries name_too_long.csv
 printCumulative population.csv errorCase5.csv
 printCumulative population.csv errorCase8.csv
+printCumulative population.csv population_is_0.csv
 printRunningAvg population.csv errorCase5.csv
 printRunningAvg population.csv errorCase8.csv
 printRunningAvg population.csv days_less_than_7.csv
