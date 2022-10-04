@@ -5,26 +5,8 @@ printCountries errorCase3.csv
 printCountries errorCase4.csv
 printCountries errorCase5.csv
 printCountries errorCase7.csv
-printRunningAvg population.csv errorCase1.csv
-printRunningAvg population.csv errorCase2.csv
-printRunningAvg population.csv errorCase3.csv
-printRunningAvg population.csv errorCase4.csv
-printRunningAvg population.csv errorCase5.csv
-printRunningAvg population.csv errorCase7.csv
-printRunningAvg population.csv errorCase8.csv
-printCumulative population.csv errorCase1.csv
-printCumulative population.csv errorCase2.csv
-printCumulative population.csv errorCase3.csv
-printCumulative population.csv errorCase4.csv
-printCumulative population.csv errorCase5.csv
-printCumulative population.csv errorCase7.csv
 printCumulative population.csv errorCase8.csv
-printDailyMax population.csv errorCase1.csv
-printDailyMax population.csv errorCase2.csv
-printDailyMax population.csv errorCase3.csv
-printDailyMax population.csv errorCase4.csv
-printDailyMax population.csv errorCase5.csv
-printDailyMax population.csv errorCase7.csv
+printRunningAvg population.csv errorCase8.csv
 printDailyMax population.csv errorCase8.csv
 
 #success
