@@ -126,6 +126,10 @@ void printCountryWithMax(country_t * countries,
     fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
   }
+  if (n_countries == 0 || n_days == 0) {
+    printf("no data because of the lack of countries or days\n");
+    exit(EXIT_SUCCESS);
+  }
   unsigned maxCaseNum = data[0][0];
   char * country_name = countries[0].name;
   for (size_t j = 0; j < n_days; j++) {
