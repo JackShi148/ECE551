@@ -55,8 +55,12 @@ country_t parseLine(char * line) {
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   //check parameters
-  if (data == NULL || n_days < 7) {
-    fprintf(stderr, "invalid parameter: parameter doesn't meet requirements\n");
+  if (data == NULL) {
+    fprintf(stderr, "invalid parameter: there is not any data\n");
+    exit(EXIT_FAILURE);
+  }
+  if (n_days < 7) {
+    fprintf(stderr, "invalid parameter: the number of day must not less than 7\n");
     exit(EXIT_FAILURE);
   }
   for (size_t i = 0; i < n_days - 6; i++) {
@@ -83,7 +87,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //check parameters
   if (data == NULL) {
-    fprintf(stderr, "invalid parameter: parameter doesn't meet requirements\n");
+    fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
   }
   double caseNum = 0.0;
@@ -110,8 +114,12 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   //check parameters
-  if (countries == NULL || data == NULL) {
-    fprintf(stderr, "invalid parameter: parameter doesn't meet requirments\n");
+  if (countries == NULL) {
+    fprintf(stderr, "invalid parameter: there is not any country\n");
+    exit(EXIT_FAILURE);
+  }
+  if (data == NULL) {
+    fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
   }
   unsigned maxCaseNum = data[0][0];

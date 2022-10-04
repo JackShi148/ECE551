@@ -9,6 +9,7 @@ printCumulative population.csv errorCase5.csv
 printCumulative population.csv errorCase8.csv
 printRunningAvg population.csv errorCase5.csv
 printRunningAvg population.csv errorCase8.csv
+printRunningAvg population.csv days_less_7.csv
 printDailyMax population.csv errorCase5.csv
 printDailyMax population.csv errorCase8.csv
 
