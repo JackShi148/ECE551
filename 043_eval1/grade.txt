@@ -1,6 +1,6 @@
-Grading at 10/04/2022:19:11:44.385722
-For commit ID 8e3e93270b8f0b208a2e39a0fe0bf5cc6b475eaa
-Grading at Tue Oct  4 03:11:32 PM EDT 2022
+Grading at 10/04/2022:19:40:46.177623
+For commit ID a437abf0f72c95f5bfe5051ff4f88ee4dbe24b80
+Grading at Tue Oct  4 03:40:33 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -43,9 +43,6 @@ Your program successfully indicated a failure case
 Test case printRunningAvg population.csv errorCase8.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv days_less_7.csv
-Our printRunningAvg does not consider this an error case
-+-----------------------------------------------------------------------+
 Test case printDailyMax population.csv errorCase5.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
@@ -54,6 +51,10 @@ Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries population.csv
 Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case printRunningAvg population.csv days_less_than_7.csv
+Line_1_did_not_match
+Your file did not match the expected ouput
 +-----------------------------------------------------------------------+
 Test case printRunningAvg population.csv daily_cases.csv
 Your file matched the expected output
