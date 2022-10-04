@@ -110,7 +110,7 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   //check parameters
-  if (countries == NULL || data == NULL || n_countries < 0 || n_days < 0) {
+  if (countries == NULL || data == NULL) {
     fprintf(stderr, "invalid parameter: parameter doesn't meet requirments\n");
     exit(EXIT_FAILURE);
   }
