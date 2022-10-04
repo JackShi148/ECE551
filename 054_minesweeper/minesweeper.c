@@ -49,6 +49,11 @@ board_t * makeBoard(int w, int h, int numMines) {
   myBoard_t->width = w;
   myBoard_t->height = h;
   myBoard_t->totalMines = numMines;
+  myBoard_t->board = malloc(h * sizeof(*myBoard_t->board));
+  if (myBoard_t->board == NULL) {
+    perror("there is not any available space\n");
+    exit(EXIT_FAILURE);
+  }
   assert(numMines >= 0);  //check the num of mines
   for (int i = 0; i < h; i++) {
     myBoard_t->board[i] = malloc(w * sizeof(**myBoard_t->board));
@@ -165,7 +170,7 @@ void freeBoard(board_t * b) {
   for (int i = 0; i < b->height; i++) {
     free(b->board[i]);
   }
-  //free(b->board);
+  free(b->board);
   free(b);
 }
 
