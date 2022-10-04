@@ -1,2 +1,0 @@
-Country,Population
-Bra'\0'zil,3424
