@@ -1,6 +1,7 @@
 #include "pandemic.h"
 
 #include <errno.h>
+#include <float.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -67,6 +68,11 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
         fprintf(stderr, "error: the number of data doesn't match with n_days\n");
         exit(EXIT_FAILURE);
       }
+      //check if sum overflows
+      if (sum == DBL_MAX) {
+        fprintf(stderr, "there are too many cases\n");
+        exit(EXIT_FAILURE);
+      }
       sum = sum + *pos;
       pos = pos + 1;
     }
@@ -76,7 +82,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   //check parameters
-  if (data == NULL || n_days < 0) {
+  if (data == NULL) {
     fprintf(stderr, "invalid parameter: parameter doesn't meet requirements\n");
     exit(EXIT_FAILURE);
   }
@@ -86,6 +92,11 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
     //check whether the number of data matches with n_days
     if (pos == NULL) {
       fprintf(stderr, "error: the number of data doesn't match with n_days\n");
+      exit(EXIT_FAILURE);
+    }
+    //check if caseNum overflows
+    if (caseNum == DBL_MAX) {
+      fprintf(stderr, "there are too many cases\n");
       exit(EXIT_FAILURE);
     }
     caseNum = caseNum + *pos;
