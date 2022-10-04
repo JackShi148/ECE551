@@ -1,6 +1,6 @@
-Grading at 10/04/2022:00:45:00.302705
-For commit ID 3e925df9db165ba94fcc150bde80dc27ed5f531a
-Grading at Mon Oct  3 08:44:39 PM EDT 2022
+Grading at 10/04/2022:00:49:06.445159
+For commit ID 6bbc759da47b0d37c574b469417b2494f90869e0
+Grading at Mon Oct  3 08:48:44 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -24,9 +24,6 @@ Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase5.csv
 Our printCountries does not consider this an error case
-+-----------------------------------------------------------------------+
-Test case printCountries errorCase6.csv
-Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries errorCase7.csv
 Your program successfully indicated a failure case
@@ -58,7 +55,7 @@ Your program successfully indicated a failure case
 Test case printRunningAvg population.csv errorCase5.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv errorCase6.csv
+Test case printRunningAvg population.csv errorCase7.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCumulative population.csv errorCase1.csv
@@ -76,7 +73,7 @@ Your program successfully indicated a failure case
 Test case printCumulative population.csv errorCase5.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printCumulative population.csv errorCase6.csv
+Test case printCumulative population.csv errorCase7.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv errorCase1.csv
@@ -94,7 +91,7 @@ Your program successfully indicated a failure case
 Test case printDailyMax population.csv errorCase5.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printDailyMax population.csv errorCase6.csv
+Test case printDailyMax population.csv errorCase7.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries population.csv
@@ -105,9 +102,9 @@ Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCumulative population.csv daily_cases.csv
 Your file matched the expected output
-
-Grading has taken more than 20 seconds
-Skipping remaining test cases
++-----------------------------------------------------------------------+
+Test case printDailyMax population.csv daily_cases.csv
+Your file matched the expected output
 
 You have FAILED one or more of your test cases
 Keep debugging
