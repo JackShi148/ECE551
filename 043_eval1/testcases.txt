@@ -18,12 +18,14 @@ printCumulative population.csv errorCase3.csv
 printCumulative population.csv errorCase4.csv
 printCumulative population.csv errorCase5.csv
 printCumulative population.csv errorCase7.csv
+printCumulative population.csv errorCase8.csv
 printDailyMax population.csv errorCase1.csv
 printDailyMax population.csv errorCase2.csv
 printDailyMax population.csv errorCase3.csv
 printDailyMax population.csv errorCase4.csv
 printDailyMax population.csv errorCase5.csv
 printDailyMax population.csv errorCase7.csv
+printDailyMax population.csv errorCase8.csv
 
 #success
 printCountries population.csv
