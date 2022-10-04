@@ -54,13 +54,15 @@ board_t * makeBoard(int w, int h, int numMines) {
     perror("there is not any available space\n");
     exit(EXIT_FAILURE);
   }
-  assert(numMines >= 0);  //check the num of mines
+  assert(numMines > 0);  //check the num of mines
   for (int i = 0; i < h; i++) {
     myBoard_t->board[i] = malloc(w * sizeof(**myBoard_t->board));
     if (myBoard_t->board[i] == NULL) {
       perror("there is not any available space\n");
       exit(EXIT_FAILURE);
     }
+  }
+  for (int i = 0; i < h; i++) {
     for (int j = 0; j < w; j++) {
       myBoard_t->board[i][j] = UNKNOWN;
     }
@@ -122,13 +124,127 @@ void printBoard(board_t * b) {
 }
 int countMines(board_t * b, int x, int y) {
   //WRITE ME!
-  int directions[] = {-1, -1, 0, 1, -1, 1, 0, -1, 1, 1};
+  /*int directions[] = {-1, -1, 0, 1, -1, 1, 0, -1, 1, 1};
   int minesNum = 0;
   for (int i = 0; i < 9; i++) {
     int u = y + directions[i];
     int v = x + directions[i + 1];
     if (u >= 0 && u < b->height && v >= 0 && v < b->width) {
       if (IS_MINE(b->board[u][v])) {
+        minesNum++;
+      }
+    }
+  }*/
+  int minesNum = 0;
+  if (x == 0) {
+    if (y == 0) {
+      if (IS_MINE(b->board[y + 1][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y + 1][x])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y][x + 1])) {
+        minesNum++;
+      }
+    }
+    else if (y == b->height - 1) {
+      if (IS_MINE(b->board[y - 1][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y][x + 1])) {
+        minesNum++;
+      }
+    }
+    else {
+      if (IS_MINE(b->board[y + 1][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y + 1][x])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x])) {
+        minesNum++;
+      }
+    }
+  }
+  else if (x == b->width - 1) {
+    if (y == 0) {
+      if (IS_MINE(b->board[y + 1][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y + 1][x])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y][x - 1])) {
+        minesNum++;
+      }
+    }
+    else if (y == b->height - 1) {
+      if (IS_MINE(b->board[y - 1][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y][x - 1])) {
+        minesNum++;
+      }
+    }
+    else {
+      if (IS_MINE(b->board[y + 1][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y + 1][x])) {
+        minesNum++;
+        ;
+      }
+      if (IS_MINE(b->board[y][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x])) {
+        minesNum++;
+      }
+    }
+  }
+  else {
+    if (IS_MINE(b->board[y][x - 1])) {
+      minesNum++;
+    }
+    if (IS_MINE(b->board[y][x + 1])) {
+      minesNum++;
+    }
+    if (y != b->height - 1) {
+      if (IS_MINE(b->board[y + 1][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y + 1][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y + 1][x])) {
+        minesNum++;
+      }
+    }
+    if (y != 0) {
+      if (IS_MINE(b->board[y - 1][x - 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x + 1])) {
+        minesNum++;
+      }
+      if (IS_MINE(b->board[y - 1][x])) {
         minesNum++;
       }
     }
