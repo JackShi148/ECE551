@@ -5,6 +5,7 @@ printCountries errorCase3.csv
 printCountries errorCase4.csv
 printCountries errorCase5.csv
 printCountries errorCase6.csv
+printCountries errorCase7.csv
 printCountries
 printRunningAvg
 printCumulative
