@@ -1,6 +1,6 @@
-Grading at 10/04/2022:01:55:20.673613
-For commit ID 8ed50227d4bad6b92937967a3f8bc6229d46069e
-Grading at Mon Oct  3 09:55:00 PM EDT 2022
+Grading at 10/04/2022:01:57:43.126686
+For commit ID 2cc261b4469cc26b88e524cb0ea2bced75b038d7
+Grading at Mon Oct  3 09:57:21 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -67,6 +67,9 @@ Your program successfully indicated a failure case
 Test case printCumulative population.csv errorCase7.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
+Test case printCumulative population.csv errorCase8.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
 Test case printDailyMax population.csv errorCase1.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
@@ -85,6 +88,9 @@ Your program successfully indicated a failure case
 Test case printDailyMax population.csv errorCase7.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
+Test case printDailyMax population.csv errorCase8.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
 Test case printCountries population.csv
 Your file matched the expected output
 +-----------------------------------------------------------------------+
@@ -93,9 +99,9 @@ Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCumulative population.csv daily_cases.csv
 Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv daily_cases.csv
-Your file matched the expected output
+
+Grading has taken more than 20 seconds
+Skipping remaining test cases
 
 You have FAILED one or more of your test cases
 Keep debugging
