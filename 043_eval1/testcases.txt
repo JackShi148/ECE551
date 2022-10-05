@@ -7,10 +7,10 @@ printCumulative population.csv errorCase8.csv
 printCumulative population.csv days_not_match_data.csv
 printRunningAvg population.csv days_not_match_data.csv
 printDailyMax population.csv days_not_match_data.csv
-printRunningAvg population.csv days_less_than_7.csv
 
 #success
 printCountries population.csv
 printRunningAvg population.csv daily_cases.csv
 printCumulative population.csv daily_cases.csv
 printDailyMax population.csv daily_cases.csv
+printRunningAvg population.csv days_less_than_7.csv
