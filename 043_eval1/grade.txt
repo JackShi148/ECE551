@@ -1,6 +1,6 @@
-Grading at 10/05/2022:00:15:48.606136
-For commit ID eb4075c33760b3e44cccc363a819c63790ab69f6
-Grading at Tue Oct  4 08:15:36 PM EDT 2022
+Grading at 10/05/2022:00:17:33.022457
+For commit ID cb48f9b2053ace8cf5bec0bfab4e4cb3d094e3af
+Grading at Tue Oct  4 08:17:20 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -18,6 +18,9 @@ Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries name_too_long.csv
 Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCountries population_is_0.csv
+Our printCountries does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printCumulative population.csv errorCase5.csv
 Your program successfully indicated a failure case
@@ -64,7 +67,7 @@ Your file matched the expected output
 Test case printDailyMax population.csv daily_cases.csv
 Your file matched the expected output
 
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
