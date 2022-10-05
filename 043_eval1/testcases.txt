@@ -1,17 +1,12 @@
 #error
-printCountries errorCase5.csv
 printCountries escape_char.csv
 printCountries name_too_long.csv
-printCumulative population.csv errorCase5.csv
-printCumulative population.csv errorCase8.csv
+printCountries errorCase6.csv
 printCumulative population_is_0.csv daily_samll.csv
+printCumulative population.csv errorCase8.csv
 printCumulative population.csv days_not_match_data.csv
-printRunningAvg population.csv errorCase5.csv
-printRunningAvg population.csv errorCase8.csv
 printRunningAvg population.csv days_not_match_data.csv
 printRunningAvg population.csv days_less_than_7.csv
-printDailyMax population.csv errorCase5.csv
-printDailyMax population.csv errorCase8.csv
 printDailyMax population.csv days_not_match_data.csv
 
 #success
@@ -19,4 +14,3 @@ printCountries population.csv
 printRunningAvg population.csv daily_cases.csv
 printCumulative population.csv daily_cases.csv
 printDailyMax population.csv daily_cases.csv
-printRunningAvg population.csv days_less_than_7.csv
