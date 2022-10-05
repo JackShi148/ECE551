@@ -91,7 +91,7 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
     exit(EXIT_FAILURE);
   }
   if (pop == 0) {
-    // *cum = 0.0;
+    *cum = 0.0;
     exit(EXIT_SUCCESS);
   }
   double caseNum = 0.0;
