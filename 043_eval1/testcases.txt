@@ -2,7 +2,6 @@
 printCountries errorCase5.csv
 printCountries escape_char.csv
 printCountries name_too_long.csv
-printCountries population_is_0.csv
 printCumulative population.csv errorCase5.csv
 printCumulative population.csv errorCase8.csv
 printCumulative population_is_0.csv daily_samll.csv
@@ -20,3 +19,4 @@ printCountries population.csv
 printRunningAvg population.csv daily_cases.csv
 printCumulative population.csv daily_cases.csv
 printDailyMax population.csv daily_cases.csv
+printDailyMax population_is_0.csv daily_cases.csv
