@@ -59,6 +59,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
     fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
   }
+  //do nothing, directly return
   if (n_days < 7) {
     return;
   }
