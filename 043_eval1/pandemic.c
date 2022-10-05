@@ -59,6 +59,11 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
     fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
   }
+  //check if avg is NULL
+  if (avg == NULL) {
+    fprintf(stderr, "avg cannot be NULL for containing data\n");
+    exit(EXIT_FAILURE);
+  }
   //do nothing, directly return
   if (n_days < 7) {
     return;
@@ -85,9 +90,14 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
 }
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
-  //check parameters
+  //check if data is NULL
   if (data == NULL) {
     fprintf(stderr, "invalid parameter: there is not any data\n");
+    exit(EXIT_FAILURE);
+  }
+  //check if cum is NULL
+  if (cum == NULL) {
+    fprintf(stderr, "cum cannot be NULL for containing data\n");
     exit(EXIT_FAILURE);
   }
   //check population which cannot be 0
@@ -95,7 +105,7 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
     fprintf(stderr, "the population cannot be 0\n");
     exit(EXIT_FAILURE);
   }
-  //check n_days
+  //check n_days, if n_days is 0, do nothing
   if (n_days == 0) {
     return;
   }
@@ -132,7 +142,7 @@ void printCountryWithMax(country_t * countries,
     exit(EXIT_FAILURE);
   }
   if (n_countries == 0 || n_days == 0) {
-    printf("no data because of the lack of countries or days\n");
+    fprintf(stderr, "no data because of the lack of countries or days\n");
     exit(EXIT_FAILURE);
   }
   unsigned maxCaseNum = data[0][0];
