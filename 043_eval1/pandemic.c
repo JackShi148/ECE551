@@ -89,9 +89,10 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
     fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
   }
+  //check population which cannot be 0
   if (pop == 0) {
-    *cum = 0.0;
-    exit(EXIT_SUCCESS);
+    fprintf(stderr, "the population cannot be 0\n");
+    exit(EXIT_FAILURE);
   }
   double caseNum = 0.0;
   unsigned * pos = &data[0];
