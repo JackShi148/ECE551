@@ -54,7 +54,7 @@ country_t parseLine(char * line) {
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
-  //check parameters
+  //check if data is NULL
   if (data == NULL) {
     fprintf(stderr, "invalid parameter: there is not any data\n");
     exit(EXIT_FAILURE);
