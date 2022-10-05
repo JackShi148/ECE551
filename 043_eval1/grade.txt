@@ -1,6 +1,6 @@
-Grading at 10/05/2022:00:32:19.514572
-For commit ID 3e54d2c5c6c255a7ea20e995982dd4451d491362
-Grading at Tue Oct  4 08:32:06 PM EDT 2022
+Grading at 10/05/2022:00:38:08.267128
+For commit ID 22fb86396b7bb8a78a50406459be9cd2de8d570e
+Grading at Tue Oct  4 08:37:58 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -10,43 +10,28 @@ gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCumulative.o -o pr
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printDailyMax.o -o printDailyMax
 Running your test cases
 +-----------------------------------------------------------------------+
-Test case printCountries errorCase5.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
 Test case printCountries escape_char.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries name_too_long.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printCumulative population.csv errorCase5.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printCumulative population.csv errorCase8.csv
+Test case printCountries errorCase6.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCumulative population_is_0.csv daily_samll.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
+Test case printCumulative population.csv errorCase8.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
 Test case printCumulative population.csv days_not_match_data.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv errorCase5.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv errorCase8.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printRunningAvg population.csv days_not_match_data.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printRunningAvg population.csv days_less_than_7.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv errorCase5.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv errorCase8.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv days_not_match_data.csv
@@ -63,12 +48,8 @@ Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv daily_cases.csv
 Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv days_less_than_7.csv
-Line_1_did_not_match
-Your file did not match the expected ouput
 
-You have FAILED one or more of your test cases
-Keep debugging
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
