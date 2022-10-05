@@ -1,6 +1,6 @@
-Grading at 10/05/2022:04:01:41.983435
-For commit ID e73a6b1febc01858a22c98e22346129e0436d286
-Grading at Wed Oct  5 12:01:32 AM EDT 2022
+Grading at 10/05/2022:04:19:19.227873
+For commit ID 108eb37f81987472da75b6ee9dde3678833736fd
+Grading at Wed Oct  5 12:19:10 AM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -28,20 +28,11 @@ Your program successfully indicated a failure case
 Test case printCumulative population.csv days_not_match_data.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printCumulative population.csv no_case.csv
-Our printCumulative does not consider this an error case
-+-----------------------------------------------------------------------+
 Test case printRunningAvg population.csv days_not_match_data.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printRunningAvg population.csv days_less_than_7.csv
 Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printRunningAvg population.csv no_case.csv
-Our printRunningAvg does not consider this an error case
-+-----------------------------------------------------------------------+
-Test case printDailyMax population.csv no_case.csv
-Our printDailyMax does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv days_not_match_data.csv
 Your program successfully indicated a failure case
@@ -58,7 +49,7 @@ Your file matched the expected output
 Test case printDailyMax population.csv daily_cases.csv
 Your file matched the expected output
 
-You have FAILED one or more of your test cases
-Keep debugging
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
