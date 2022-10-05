@@ -5,11 +5,8 @@ printCountries errorCase6.csv
 printCumulative population_is_0.csv daily_samll.csv
 printCumulative population.csv errorCase8.csv
 printCumulative population.csv days_not_match_data.csv
-printCumulative population.csv no_case.csv
 printRunningAvg population.csv days_not_match_data.csv
 printRunningAvg population.csv days_less_than_7.csv
-printRunningAvg population.csv no_case.csv
-printDailyMax population.csv no_case.csv
 printDailyMax population.csv days_not_match_data.csv
 
 #success
