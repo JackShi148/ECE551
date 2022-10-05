@@ -1,6 +1,6 @@
-Grading at 10/05/2022:00:29:30.877088
-For commit ID 8184a9d9dbfef71e5758171fb3012493c5f2c6c9
-Grading at Tue Oct  4 08:29:17 PM EDT 2022
+Grading at 10/05/2022:00:32:19.514572
+For commit ID 3e54d2c5c6c255a7ea20e995982dd4451d491362
+Grading at Tue Oct  4 08:32:06 PM EDT 2022
 
 Compiling 
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -63,9 +63,6 @@ Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printDailyMax population.csv daily_cases.csv
 Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case printCumulative population_is_0.csv daily_cases.csv
-Your file did not match the expected ouput
 +-----------------------------------------------------------------------+
 Test case printRunningAvg population.csv days_less_than_7.csv
 Line_1_did_not_match
