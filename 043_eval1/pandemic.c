@@ -60,7 +60,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
     exit(EXIT_FAILURE);
   }
   if (n_days < 7) {
-    exit(EXIT_SUCCESS);
+    return;
   }
   for (size_t i = 0; i < n_days - 6; i++) {
     double sum = 0.0;
