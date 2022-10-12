@@ -36,7 +36,7 @@ void printCounts(counts_t * c, FILE * outFile) {
     fprintf(outFile, "%s : %d\n", c->counts[i].name, c->counts[i].freq);
   }
   if (c->num_unknown != 0) {
-    fprintf(outFile, "<unknown> : %d", c->num_unknown);
+    fprintf(outFile, "<unknown> : %d\n", c->num_unknown);
   }
 }
 
