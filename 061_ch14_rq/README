@@ -30,8 +30,8 @@ class Xyz {
   }
 };
 
-3. How many parameters does the "someMethod" method in class Xyz shown
-   above take?
+* 3. How many parameters does the "someMethod" method in class Xyz shown
+   above take?  // this + int x
 
 A. 0
 B. 1
