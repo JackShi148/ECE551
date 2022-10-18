@@ -90,7 +90,7 @@ B. Whenever a box for an object of that type is about to be destroyed.
 C. At the completion of the class's copy constructor.
 D. When the "this" pointer goes out of scope.
 
-9. Suppose that class Abc has a copy constructor, a copying assignment
+* 9. Suppose that class Abc has a copy constructor, a copying assignment
    operator, and a default constructor.  Assume that 
    abc1 has type Abc, and has been declared and intiailized previously.
    Consider the following line of code:
