@@ -35,7 +35,7 @@ storyContent * getContent(char * fileName) {
   storyContent * content = malloc(sizeof(*content));
   content->lines = NULL;
   content->num = 0;
-  while (getline(&line, &sz, f)) {
+  while (getline(&line, &sz, f) >= 0) {
     content->num++;
     content->lines = realloc(content->lines, content->num * sizeof(*content->lines));
     content->lines[content->num - 1] = line;
@@ -65,7 +65,7 @@ storyContent * parseTemp(storyContent * content) {
 
 void printContent(storyContent * content) {
   for (size_t i = 0; i < content->num; i++) {
-    printf("%s\n", content->lines[i]);
+    printf("%s", content->lines[i]);
   }
 }
 
