@@ -51,16 +51,22 @@ storyContent * getContent(char * fileName) {
   return content;
 }
 //parse the template into a story and return the content of this story
-storyContent * parseTemp(storyContent * content) {
+storyContent * parseTemp(storyContent * content, catarray_t * cats) {
   storyContent * newContent = malloc(sizeof(*newContent));
   newContent->lines = NULL;
   newContent->num = 0;
+  category_t * usedWords = malloc(sizeof(*usedWords));
+  usedWords->n_words = 0;
+  usedWords->name = "Used";
+  usedWords->words = NULL;
   for (size_t i = 0; i < content->num; i++) {
     newContent->num++;
     newContent->lines =
         realloc(newContent->lines, newContent->num * sizeof(*newContent->lines));
-    newContent->lines[newContent->num - 1] = doReplace(content->lines[i]);
+    newContent->lines[newContent->num - 1] =
+        doReplace(content->lines[i], cats, usedWords);
   }
+  freeCategory(usedWords);
   return newContent;
 }
 //print the content of a story
@@ -69,8 +75,8 @@ void printContent(storyContent * content) {
     printf("%s", content->lines[i]);
   }
 }
-//replace the blank parts in each line of a template with cat
-char * doReplace(char * line) {
+//replace the blank parts in each line of a template with cats
+char * doReplace(char * line, catarray_t * cats, category_t * usedWords) {
   int num_udscr = checkUnderScore(line);
   if (num_udscr == -1) {
     fprintf(stderr, "underscores don't match each other\n");
@@ -96,7 +102,23 @@ char * doReplace(char * line) {
     else {
       len = ptrs[i] - ptrs[i - 1] - 1;
       char * catgry = strndup(ptrs[i - 1] + 1, len);
-      const char * str = chooseWord(catgry, NULL);
+      const char * str;
+      if (cats == NULL) {
+        str = chooseWord(catgry, cats);
+      }
+      else {
+        char * end = NULL;
+        int refer = strtol(ptrs[i - 1] + 1, &end, 10);
+        if (*end == '_') {
+          //word is already in used list, do the refernce operation
+          str = maintainUsedWords(usedWords, refer);
+        }
+        else {
+          //do the category operation, and maintain the order of used list
+          str = chooseWord(catgry, cats);
+          addUsedWords(usedWords, str);
+        }
+      }
       free(catgry);
       //plus 1 for '\0'
       newLine = realloc(newLine, (strlen(newLine) + strlen(str) + 1) * sizeof(*newLine));
@@ -121,7 +143,7 @@ void freeContent(storyContent * content) {
   free(content->lines);
   free(content);
 }
-
+//store categories and words from a file into a catarray pointers
 catarray_t * getCatArray(char * fileName) {
   FILE * f = fopen(fileName, "r");
   if (f == NULL) {
@@ -142,7 +164,10 @@ catarray_t * getCatArray(char * fileName) {
   }
   return cats;
 }
-
+//compare names based on the string before the colon
+//if does not find corresponding name
+//append a new category_t at the end with apporpriate name and word
+//into the pointer cats
 void compareName(catarray_t * cats, char * line) {
   char * colon = strchr(line, ':');
   if (colon == NULL) {
@@ -161,6 +186,7 @@ void compareName(catarray_t * cats, char * line) {
       if (newline != NULL) {
         *newline = '\0';
       }
+      newline = NULL;
       found = 1;
       break;
     }
@@ -176,6 +202,7 @@ void compareName(catarray_t * cats, char * line) {
     if (newline != NULL) {
       *newline = '\0';
     }
+    newline = NULL;
   }
   free(name);
 }
@@ -190,4 +217,59 @@ void freeCats(catarray_t * cats) {
   }
   free(cats->arr);
   free(cats);
+}
+//maintain used words based on the reference
+const char * maintainUsedWords(category_t * cat, size_t n) {
+  if (cat->n_words == 0) {
+    fprintf(stderr, "no used words yet\n");
+    exit(EXIT_FAILURE);
+  }
+  if (n > cat->n_words) {
+    fprintf(stderr, "the referenc is out of bound\n");
+    exit(EXIT_FAILURE);
+  }
+  const char * word = cat->words[n - 1];
+  char * prev = cat->words[0];
+  cat->words[0] = cat->words[n - 1];
+  for (size_t i = 1; i < n; i++) {
+    if (i == n - 1) {
+      cat->words[i] = prev;
+    }
+    else {
+      char * cur = cat->words[i];
+      cat->words[i] = prev;
+      prev = cur;
+    }
+  }
+  return word;
+}
+
+void addUsedWords(category_t * cat, const char * newWord) {
+  int found = 0;
+  for (size_t i = 0; i < cat->n_words; i++) {
+    if (strcmp(cat->words[i], newWord) == 0) {
+      found = 1;
+      maintainUsedWords(cat, i + 1);
+      break;
+    }
+  }
+  if (!found) {
+    cat->n_words++;
+    cat->words = realloc(cat->words, cat->n_words * sizeof(*cat->words));
+    char * prev = cat->words[0];
+    cat->words[0] = strdup(newWord);
+    for (size_t i = 1; i < cat->n_words; i++) {
+      char * cur = cat->words[i];
+      cat->words[i] = prev;
+      prev = cur;
+    }
+  }
+}
+
+void freeCategory(category_t * usedWords) {
+  for (size_t i = 0; i < usedWords->n_words; i++) {
+    free(usedWords->words[i]);
+  }
+  free(usedWords->words);
+  free(usedWords);
 }
