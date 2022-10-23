@@ -12,7 +12,7 @@ int main(int argc, char ** argv) {
   }
   catarray_t * cats = getCatArray(argv[1]);
   storyContent * content = getContent(argv[2]);
-  storyContent * newContent = parseTemp(content, cats);
+  storyContent * newContent = parseTemp(content, cats, argv[1]);
   printContent(newContent);
   freeContent(content);
   freeContent(newContent);

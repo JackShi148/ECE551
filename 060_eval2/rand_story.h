@@ -9,6 +9,8 @@ struct storyContent_tag {
 };
 typedef struct storyContent_tag storyContent;
 
+//delete used words from the catarray
+void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWords);
 //maintain the order of used words in the category which contains used words
 //n is the reference used in the blank
 //return the corrresponding word based on reference
@@ -28,11 +30,11 @@ void freeCats(catarray_t * cats);
 //check if underscores match each other and return the number of them
 int checkUnderScore(char * line);
 //parse the content of story and return replaced content
-storyContent * parseTemp(storyContent * content, catarray_t * cats);
+storyContent * parseTemp(storyContent * content, catarray_t * cats, char * option);
 //get the content of a story
 storyContent * getContent(char * fileName);
 //replace the blank parts with the catarray_t
-char * doReplace(char * line, catarray_t * cats, category_t * usedWords);
+char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * option);
 //print the content of a story
 void printContent(storyContent * content);
 //free all used content

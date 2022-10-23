@@ -11,7 +11,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   storyContent * content = getContent(argv[1]);
-  storyContent * newContent = parseTemp(content, NULL);
+  storyContent * newContent = parseTemp(content, NULL, argv[1]);
   printContent(newContent);
   freeContent(content);
   freeContent(newContent);

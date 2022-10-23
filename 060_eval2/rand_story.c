@@ -51,7 +51,7 @@ storyContent * getContent(char * fileName) {
   return content;
 }
 //parse the template into a story and return the content of this story
-storyContent * parseTemp(storyContent * content, catarray_t * cats) {
+storyContent * parseTemp(storyContent * content, catarray_t * cats, char * option) {
   storyContent * newContent = malloc(sizeof(*newContent));
   newContent->lines = NULL;
   newContent->num = 0;
@@ -64,7 +64,7 @@ storyContent * parseTemp(storyContent * content, catarray_t * cats) {
     newContent->lines =
         realloc(newContent->lines, newContent->num * sizeof(*newContent->lines));
     newContent->lines[newContent->num - 1] =
-        doReplace(content->lines[i], cats, usedWords);
+        doReplace(content->lines[i], cats, usedWords, option);
   }
   freeCategory(usedWords);
   return newContent;
@@ -76,7 +76,7 @@ void printContent(storyContent * content) {
   }
 }
 //replace the blank parts in each line of a template with cats
-char * doReplace(char * line, catarray_t * cats, category_t * usedWords) {
+char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * option) {
   int num_udscr = checkUnderScore(line);
   if (num_udscr == -1) {
     fprintf(stderr, "underscores don't match each other\n");
@@ -117,6 +117,14 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords) {
           //do the category operation, and maintain the order of used list
           str = chooseWord(catgry, cats);
           addUsedWords(usedWords, str);
+          if (strcmp(option, "-n") == 0) {
+            for (size_t i = 0; i < cats->n; i++) {
+              if (strcmp(cats->arr[i].name, catgry) == 0) {
+                deleteUsedWords(cats, i, str);
+                break;
+              }
+            }
+          }
         }
       }
       free(catgry);
@@ -208,15 +216,19 @@ void compareName(catarray_t * cats, char * line) {
 }
 
 void freeCats(catarray_t * cats) {
-  for (size_t i = 0; i < cats->n; i++) {
-    free(cats->arr[i].name);
-    for (size_t j = 0; j < cats->arr[i].n_words; j++) {
-      free(cats->arr[i].words[j]);
+  if (cats != NULL) {
+    for (size_t i = 0; i < cats->n; i++) {
+      free(cats->arr[i].name);
+      for (size_t j = 0; j < cats->arr[i].n_words; j++) {
+        free(cats->arr[i].words[j]);
+      }
+      free(cats->arr[i].words);
     }
-    free(cats->arr[i].words);
+    if (cats->arr != NULL) {
+      free(cats->arr);
+    }
+    free(cats);
   }
-  free(cats->arr);
-  free(cats);
 }
 //maintain used words based on the reference
 const char * maintainUsedWords(category_t * cat, size_t n) {
@@ -272,4 +284,57 @@ void freeCategory(category_t * usedWords) {
   }
   free(usedWords->words);
   free(usedWords);
+}
+
+void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWords) {
+  cats->arr[pos].n_words--;
+  if (cats->arr[pos].n_words == 0) {
+    cats->n--;
+    if (cats->n == 0) {
+      free(cats->arr[0].name);
+      free(cats->arr[0].words[0]);
+      free(cats->arr[0].words);
+    }
+    else {
+      category_t * newArr = malloc(cats->n * sizeof(*newArr));
+      size_t index = 0;
+      for (size_t i = 0; i < cats->n; i++) {
+        if (i != pos) {
+          newArr[index].n_words = cats->arr[i].n_words;
+          newArr[index].name = strdup(cats->arr[i].name);
+          newArr[index].words =
+              malloc(newArr[index].n_words * sizeof(*newArr[index].words));
+          for (size_t j = 0; j < cats->arr[i].n_words; j++) {
+            newArr[index].words[i] = strdup(cats->arr[i].words[i]);
+          }
+        }
+      }
+      for (size_t i = 0; i < cats->n + 1; i++) {
+        free(cats->arr[i].name);
+        size_t n = cats->arr[i].n_words;
+        if (i == pos) {
+          n = n + 1;
+        }
+        for (size_t j = 0; j < n; j++) {
+          free(cats->arr[i].words[j]);
+        }
+        free(cats->arr[i].words);
+      }
+      free(cats->arr);
+      cats->arr = newArr;
+    }
+  }
+  else {
+    char ** newWords = malloc(cats->arr[pos].n_words * sizeof(*newWords));
+    size_t index = 0;
+    for (size_t i = 0; i < cats->arr[pos].n_words + 1; i++) {
+      if (strcmp(cats->arr[pos].words[i], usedWords) != 0) {
+        newWords[index] = strdup(cats->arr[pos].words[i]);
+        index++;
+      }
+      free(cats->arr[pos].words[i]);
+    }
+    free(cats->arr[pos].words);
+    cats->arr[pos].words = newWords;
+  }
 }
