@@ -10,10 +10,8 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "the number of arguments should be 2\n");
     return EXIT_FAILURE;
   }
-  storyContent * content = getContent(argv[1]);
-  storyContent * newContent = parseTemp(content);
-  printContent(newContent);
-  freeContent(content);
-  freeContent(newContent);
+  catarray_t * cats = getCatArray(argv[1]);
+  printWords(cats);
+  freeCats(cats);
   return EXIT_SUCCESS;
 }
