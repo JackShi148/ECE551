@@ -138,7 +138,6 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
         if (temp > 0) {
           refer = temp;
         }
-        printf("%zu\n", refer);
         //check if the number represented by catgry is out of range
         if (errno == ERANGE) {
           perror("fail to recognize as a reference");
