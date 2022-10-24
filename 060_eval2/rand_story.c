@@ -86,6 +86,7 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
   if (num_udscr == 0) {
     return line;
   }
+  //malloc memory for every pointer pointing to underscores
   char ** ptrs = malloc(num_udscr * sizeof(*ptrs));
   ptrs[0] = strchr(line, '_');
   for (int i = 1; i < num_udscr; i++) {
@@ -94,12 +95,16 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
   int len = ptrs[0] - line;
   char * newLine = strndup(line, len);
   for (int i = 1; i < num_udscr; i++) {
+    //the open _ of the blank
     if (i % 2 == 0) {
       len = ptrs[i] - ptrs[i - 1] - 1;
+      //strcat the part between blanks to the newLine
       //plus 1 for '\0'
       newLine = realloc(newLine, (strlen(newLine) + len + 1) * sizeof(*newLine));
       newLine = strncat(newLine, ptrs[i - 1] + 1, len);
     }
+    //the close _ of the blank
+    //the string between this two underscores is category
     else {
       len = ptrs[i] - ptrs[i - 1] - 1;
       char * catgry = NULL;
@@ -128,7 +133,12 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
           k--;
         }
         word = word + k;
-        refer = strtol(word, &end, 10);
+        //size_t cannot be negative
+        long temp = strtol(word, &end, 10);
+        if (temp > 0) {
+          refer = temp;
+        }
+        printf("%zu\n", refer);
         //check if the number represented by catgry is out of range
         if (errno == ERANGE) {
           perror("fail to recognize as a reference");
@@ -276,7 +286,8 @@ const char * maintainUsedWords(category_t * cat, size_t n) {
   }
   return word;
 }
-
+//add recent used word in the usedWords list
+//if the word is in the usedWords list, make the order of this list right
 void addUsedWords(category_t * cat, const char * newWord) {
   int found = 0;
   for (size_t i = 0; i < cat->n_words; i++) {
@@ -298,11 +309,12 @@ void addUsedWords(category_t * cat, const char * newWord) {
     }
   }
 }
-
+//free the memory used by the usedWords list
 void freeCategory(category_t * usedWords) {
   for (size_t i = 0; i < usedWords->n_words; i++) {
     free(usedWords->words[i]);
   }
+  //no need to free name because it is not in heap
   free(usedWords->words);
   free(usedWords);
 }
