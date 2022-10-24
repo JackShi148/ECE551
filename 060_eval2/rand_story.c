@@ -102,7 +102,13 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
     }
     else {
       len = ptrs[i] - ptrs[i - 1] - 1;
-      char * catgry = strndup(ptrs[i - 1] + 1, len);
+      char * catgry = NULL;
+      if (len > 0) {
+        catgry = strndup(ptrs[i - 1] + 1, len);
+      }
+      else {
+        catgry = "";
+      }
       const char * str;
       if (cats == NULL) {
         str = chooseWord(catgry, cats);
@@ -149,7 +155,9 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
           }
         }
       }
-      free(catgry);
+      if (len > 0) {
+        free(catgry);
+      }
     }
   }
   if (*ptrs[num_udscr - 1] + 1 != '\0') {
