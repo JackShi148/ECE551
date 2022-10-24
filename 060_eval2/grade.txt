@@ -1,6 +1,6 @@
-Grading at 10/24/2022:21:04:47.677566
-For commit ID cd936b50d18141c2d062ebf0fecba637978ff5a9
-Grading at Mon Oct 24 05:04:33 PM EDT 2022
+Grading at 10/24/2022:21:08:54.936055
+For commit ID b30a843a44fc82a30eccf3c6baa4ee1c8e19ee6f
+Grading at Mon Oct 24 05:08:40 PM EDT 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -164,6 +164,12 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 4.7: Current test is story-step4 -n testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.8: Current test is story-step4 -s words.txt story2.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
