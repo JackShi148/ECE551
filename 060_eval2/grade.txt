@@ -1,6 +1,6 @@
-Grading at 10/24/2022:21:19:04.143684
-For commit ID e9563d47007e8ecf7d67e40e0e9a0a5c088555d4
-Grading at Mon Oct 24 05:18:47 PM EDT 2022
+Grading at 10/24/2022:21:22:45.666929
+For commit ID df554a181689b8401317a444dedd73b2768e7ea1
+Grading at Mon Oct 24 05:22:27 PM EDT 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -38,6 +38,12 @@ Valgrind was clean
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+1.5: Current test is story-step1 testStory7_underscoreNotMatch.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
 Valgrind was clean
 
 Step 2
@@ -193,7 +199,7 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-4.9: Current test is story-step4 -n testWords6.txt story2.txt
+4.9: Current test is story-step4 -n testWords6_notColon.txt story2.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
