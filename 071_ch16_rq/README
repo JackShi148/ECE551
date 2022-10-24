@@ -34,7 +34,7 @@ C. Whatever a class declares as its friend can set special rules for
    when that class's destructors are invoked.
 D. None of the above.
 
-5. How many std::strings are destroyed during one invocation of this
+* 5. How many std::strings are destroyed during one invocation of this
    function:
 
    void f(std::string s1, std::string s2) {
