@@ -21,6 +21,10 @@ int main(int argc, char ** argv) {
   }
   else {
     char * option = argv[1];
+    if (strcmp(option, "-n") != 0) {
+      fprintf(stderr, "the option can only be -n\n");
+      return EXIT_FAILURE;
+    }
     catarray_t * cats = getCatArray(argv[2]);
     storyContent * content = getContent(argv[3]);
     storyContent * newContent = parseTemp(content, cats, option);

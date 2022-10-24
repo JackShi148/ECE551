@@ -18,3 +18,4 @@ story-step4 -n testWords1.txt testStory1.txt
 story-step4 -n words.txt testStory2_spaceBeforeInt.txt
 story-step4 -n words.txt testStory3_tooLargeRef.txt
 story-step4 -n testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt
+story-step4 -s words.txt story2.txt
