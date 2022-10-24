@@ -258,7 +258,7 @@ void freeCats(catarray_t * cats) {
 const char * maintainUsedWords(category_t * cat, size_t n) {
   //check if n is larger than the number of used words
   if (n > cat->n_words) {
-    fprintf(stderr, "the referenc is out of bound\n");
+    fprintf(stderr, "the reference is out of bound\n");
     exit(EXIT_FAILURE);
   }
   const char * word = cat->words[n - 1];
