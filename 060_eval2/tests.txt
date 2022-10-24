@@ -1,5 +1,18 @@
 story-step1 story.txt
+story-step1 testStory2_spaceBeforeInt.txt
+story-step1 testStory3_tooLargeRef.txt
+story-step1 testStory4_spaceAfterInt.txt
 story-step2 words.txt
+story-step2 testWords1.txt
+story-step2 testWords2_spaceAfterInt.txt
 story-step3 words.txt story2.txt
+story-step3 testWords1.txt testStory1.txt
+story-step3 words.txt testStory2_spaceBeforeInt.txt
+story-step3 words.txt testStory3_tooLargeRef.txt
+story-step3 testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt
 story-step4 words.txt story2.txt
 story-step4 -n words.txt story2.txt
+story-step4 -n testWords1.txt testStory1.txt
+story-step4 -n words.txt testStory2_spaceBeforeInt.txt
+story-step4 -n words.txt testStory3_tooLargeRef.txt
+story-step4 -n testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt

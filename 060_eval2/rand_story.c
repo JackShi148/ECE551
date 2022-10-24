@@ -1,5 +1,6 @@
 #include "rand_story.h"
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -108,8 +109,26 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
       }
       else {
         char * end = NULL;
-        int refer = strtol(ptrs[i - 1] + 1, &end, 10);
-        if (*end == '_') {
+        char * word = ptrs[i - 1] + 1;
+        size_t refer = 0;
+        int k = 0;
+        //to if there are space or tab before reference
+        //_  1_ and _    1_ is equal to _1_
+        //but not equal to _1   _, which is a category
+        while ((*(word + k) == ' ' || *(word + k) == '\t') && k < len) {
+          k++;
+        }
+        if (k == len) {
+          k--;
+        }
+        word = word + k;
+        refer = strtol(word, &end, 10);
+        //check if the number represented by catgry is out of range
+        if (errno == ERANGE) {
+          perror("fail to recognize as a reference");
+          exit(EXIT_FAILURE);
+        }
+        if (*end == '_' && refer > 0) {
           //word is already in used list, do the refernce operation
           str = maintainUsedWords(usedWords, refer);
         }
@@ -117,14 +136,6 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
           //do the category operation, and maintain the order of used list
           str = chooseWord(catgry, cats);
           addUsedWords(usedWords, str);
-          /*if (strcmp(option, "-n") == 0) {
-            for (size_t i = 0; i < cats->n; i++) {
-              if (strcmp(cats->arr[i].name, catgry) == 0) {
-                deleteUsedWords(cats, i, str);
-                break;
-              }
-            }
-          }*/
         }
       }
       //plus 1 for '\0'
@@ -220,11 +231,6 @@ void compareName(catarray_t * cats, char * line) {
     else {
       cats->arr[cats->n - 1].words[0] = strdup(colon + 1);
     }
-    // char * newline = strchr(cats->arr[cats->n - 1].words[0], '\n');
-    /* if (newline != NULL) {
-      *newline = '\0';
-    }
-    newline = NULL;*/
   }
   free(name);
 }
@@ -242,10 +248,7 @@ void freeCats(catarray_t * cats) {
 }
 //maintain used words based on the reference
 const char * maintainUsedWords(category_t * cat, size_t n) {
-  if (cat->n_words == 0) {
-    fprintf(stderr, "no used words yet\n");
-    exit(EXIT_FAILURE);
-  }
+  //check if n is larger than the number of used words
   if (n > cat->n_words) {
     fprintf(stderr, "the referenc is out of bound\n");
     exit(EXIT_FAILURE);
@@ -295,25 +298,32 @@ void freeCategory(category_t * usedWords) {
   free(usedWords->words);
   free(usedWords);
 }
-
-void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWords) {
-  cats->arr[pos].n_words--;
-  if (cats->arr[pos].n_words == 0) {
+//delete used word from the original category
+void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
+  //check after deleting the word from this category, if there is no word in it
+  if (cats->arr[pos].n_words - 1 == 0) {
+    //if it is, reduce the number of categories in the catarray
     cats->n--;
+    //if after deleting the category from the catarray
+    //there is no category in this catarray
+    //free the items in the arr[0] but not arr because it will be freed in freeCats
     if (cats->n == 0) {
       free(cats->arr[0].name);
       free(cats->arr[0].words[0]);
       free(cats->arr[0].words);
     }
+    //if there are other categories in the catarray
+    //build a new arr to store every category but not the category the used word is in
+    //let the catarray's arr point to this new arr
     else {
       category_t * newArr = malloc(cats->n * sizeof(*newArr));
-      size_t index = 0;
-      for (size_t i = 0; i < cats->n + 1; i++) {
+      for (size_t i = 0, index = 0; i < cats->n + 1; i++) {
         if (i != pos) {
           newArr[index].n_words = cats->arr[i].n_words;
           newArr[index].name = strdup(cats->arr[i].name);
           newArr[index].words =
               malloc(newArr[index].n_words * sizeof(*newArr[index].words));
+          //let newArr's words point to the old arr's words
           for (size_t j = 0; j < cats->arr[i].n_words; j++) {
             newArr[index].words[j] = cats->arr[i].words[j];
           }
@@ -325,9 +335,10 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWords) {
         cats->arr[i].name = NULL;
         size_t n = cats->arr[i].n_words;
         if (i == pos) {
-          n = n + 1;
+          //free the used word because it will not be used
           free(cats->arr[i].words[0]);
         }
+        //let the old arr's words point to NULL so they will not effect the original words
         for (size_t j = 0; j < n; j++) {
           cats->arr[i].words[j] = NULL;
         }
@@ -337,16 +348,21 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWords) {
       cats->arr = newArr;
     }
   }
+  //if there are other words in the category
+  //build a new words to store every word in the category but not the used word
   else {
+    //first reduce the number of words in this category
+    cats->arr[pos].n_words--;
     char ** newWords = malloc(cats->arr[pos].n_words * sizeof(*newWords));
-    size_t index = 0;
-    char * str = strdup(usedWords);
-    for (size_t i = 0; i < cats->arr[pos].n_words + 1; i++) {
+    //make a copy of this used word in case that it is freed in the future
+    char * str = strdup(usedWord);
+    for (size_t i = 0, index = 0; i < cats->arr[pos].n_words + 1; i++) {
       if (strcmp(cats->arr[pos].words[i], str) != 0) {
         newWords[index] = cats->arr[pos].words[i];
         index++;
       }
       else {
+        //free this used word or it will leak
         free(cats->arr[pos].words[i]);
       }
       cats->arr[pos].words[i] = NULL;

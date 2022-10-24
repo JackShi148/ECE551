@@ -10,7 +10,7 @@ struct storyContent_tag {
 typedef struct storyContent_tag storyContent;
 
 //delete used words from the catarray
-void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWords);
+void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord);
 //maintain the order of used words in the category which contains used words
 //n is the reference used in the blank
 //return the corrresponding word based on reference
