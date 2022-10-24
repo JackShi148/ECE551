@@ -1,6 +1,6 @@
-Grading at 10/24/2022:21:08:54.936055
-For commit ID b30a843a44fc82a30eccf3c6baa4ee1c8e19ee6f
-Grading at Mon Oct 24 05:08:40 PM EDT 2022
+Grading at 10/24/2022:21:19:04.143684
+For commit ID e9563d47007e8ecf7d67e40e0e9a0a5c088555d4
+Grading at Mon Oct 24 05:18:47 PM EDT 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -57,13 +57,19 @@ Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean
 
-2.2: Current test is story-step2 testWords1.txt
+2.2: Current test is story-step2 testWords6_notColon.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+2.3: Current test is story-step2 testWords1.txt
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean
 
-2.3: Current test is story-step2 testWords2_spaceAfterInt.txt
+2.4: Current test is story-step2 testWords2_spaceAfterInt.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -114,6 +120,18 @@ Valgrind was clean
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+3.7: Current test is story-step3 words.txt testStory7_underscoreNotMatch.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+3.8: Current test is story-step3 testWords6_notColon.txt story2.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
 Valgrind was clean
 
 Step 4
@@ -170,6 +188,12 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 4.8: Current test is story-step4 -s words.txt story2.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.9: Current test is story-step4 -n testWords6.txt story2.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
