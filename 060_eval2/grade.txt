@@ -1,6 +1,6 @@
-Grading at 10/24/2022:21:22:45.666929
-For commit ID df554a181689b8401317a444dedd73b2768e7ea1
-Grading at Mon Oct 24 05:22:27 PM EDT 2022
+Grading at 10/24/2022:21:30:10.820513
+For commit ID b41b3129575192ab9879cefcdc9b01c4ecf8ff54
+Grading at Mon Oct 24 05:29:51 PM EDT 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -140,6 +140,12 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
+3.9: Current test is story-step3 words.txt testStory8_refOutofBound.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 4
 Checking that story-step4 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -200,6 +206,12 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 4.9: Current test is story-step4 -n testWords6_notColon.txt story2.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.10: Current test is story-step4 -n words.txt testStory8_refOutofBound.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
