@@ -206,7 +206,7 @@ catarray_t * getCatArray(char * fileName) {
 void compareName(catarray_t * cats, char * line) {
   char * colon = strchr(line, ':');
   if (colon == NULL) {
-    fprintf(stderr, "colon is needed in line: %s\n", line);
+    fprintf(stderr, "colon is needed in line: %s", line);
     exit(EXIT_FAILURE);
   }
   char * name = strndup(line, colon - line);

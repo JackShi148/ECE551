@@ -1,0 +1,6 @@
+animaldragon
+animal:walrus
+placecave
+adjective:peculiar
+adjective:scary
+adjective:peaceful

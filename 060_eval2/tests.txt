@@ -3,6 +3,7 @@ story-step1 testStory2_spaceBeforeInt.txt
 story-step1 testStory3_tooLargeRef.txt
 story-step1 testStory4_spaceAfterInt.txt
 story-step2 words.txt
+story-step2 testWords6_notColon.txt
 story-step2 testWords1.txt
 story-step2 testWords2_spaceAfterInt.txt
 story-step3 words.txt story2.txt
@@ -11,6 +12,8 @@ story-step3 words.txt testStory2_spaceBeforeInt.txt
 story-step3 words.txt testStory3_tooLargeRef.txt
 story-step3 testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt
 story-step3 testWords3_emptyString.txt testStory5_emptyString.txt
+story-step3 words.txt testStory7_underscoreNotMatch.txt
+story-step3 testWords6_notColon.txt story2.txt
 story-step4 words.txt story2.txt
 story-step4 -n words.txt story2.txt
 story-step4 -n testWords3_emptyString.txt testStory5_emptyString.txt
@@ -19,3 +22,4 @@ story-step4 -n words.txt testStory2_spaceBeforeInt.txt
 story-step4 -n words.txt testStory3_tooLargeRef.txt
 story-step4 -n testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt
 story-step4 -s words.txt story2.txt
+story-step4 -n testWords6.txt story2.txt
