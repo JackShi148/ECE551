@@ -179,7 +179,7 @@ char * doReplace(char * line, catarray_t * cats, category_t * usedWords, char * 
   free(ptrs);
   return newLine;
 }
-
+//free memory used by storyContent
 void freeContent(storyContent * content) {
   for (size_t i = 0; i < content->num; i++) {
     free(content->lines[i]);
@@ -211,7 +211,7 @@ catarray_t * getCatArray(char * fileName) {
 //compare names based on the string before the colon
 //if does not find corresponding name
 //append a new category_t at the end with apporpriate name and word
-//into the pointer cats
+//into the catarray cats
 void compareName(catarray_t * cats, char * line) {
   char * colon = strchr(line, ':');
   if (colon == NULL) {
@@ -251,7 +251,7 @@ void compareName(catarray_t * cats, char * line) {
   }
   free(name);
 }
-
+//free memory used by catarray
 void freeCats(catarray_t * cats) {
   for (size_t i = 0; i < cats->n; i++) {
     free(cats->arr[i].name);
@@ -363,6 +363,7 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
         }
         free(cats->arr[i].words);
       }
+      //free the old arr
       free(cats->arr);
       cats->arr = newArr;
     }
@@ -381,12 +382,13 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
         index++;
       }
       else {
-        //free this used word or it will leak
+        //free this used word, otherwise it will leak
         free(cats->arr[pos].words[i]);
       }
       cats->arr[pos].words[i] = NULL;
     }
     free(str);
+    //free the old words
     free(cats->arr[pos].words);
     cats->arr[pos].words = newWords;
   }
