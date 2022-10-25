@@ -9,9 +9,8 @@ IntArray::IntArray() : data(NULL), numElements(0) {
 IntArray::IntArray(int n) : data(new int[n]), numElements(n) {
 }
 
-IntArray::IntArray(const IntArray & rhs) {
-  numElements = rhs.numElements;
-  data = new int[numElements];
+IntArray::IntArray(const IntArray & rhs) :
+    data(new int[rhs.numElements]), numElements(rhs.numElements) {
   for (int i = 0; i < numElements; i++) {
     data[i] = rhs.data[i];
   }
@@ -34,10 +33,12 @@ IntArray & IntArray::operator=(const IntArray & rhs) {
 }
 const int & IntArray::operator[](int index) const {
   assert(index < numElements);
+  assert(index >= 0);
   return data[index];
 }
 int & IntArray::operator[](int index) {
   assert(index < numElements);
+  assert(index >= 0);
   return data[index];
 }
 
