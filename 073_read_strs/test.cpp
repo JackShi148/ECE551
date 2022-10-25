@@ -1,10 +1,9 @@
-#include <string>
-#include <iostream>
 #include <cstdlib>
-
+#include <iostream>
+#include <string>
 
 std::string f(std::string x) {
-  if (x=="") {
+  if (x == "") {
     return "";
   }
   char first = x[0];
