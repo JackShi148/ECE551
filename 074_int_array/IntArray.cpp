@@ -21,13 +21,12 @@ IntArray::~IntArray() {
 
 IntArray & IntArray::operator=(const IntArray & rhs) {
   if (this != &rhs) {
-    int * temp = new int[rhs.numElements];
-    for (int i = 0; i < rhs.numElements; i++) {
-      temp[i] = rhs.data[i];
-    }
     delete[] data;
+    data = new int[rhs.numElements];
+    for (int i = 0; i < rhs.numElements; i++) {
+      data[i] = rhs.data[i];
+    }
     numElements = rhs.numElements;
-    data = temp;
   }
   return *this;
 }
@@ -71,7 +70,7 @@ bool IntArray::operator!=(const IntArray & rhs) const {
 }
 
 std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
-  s << "{";
+  /*s << "{";
   for (int i = 0; i < rhs.size(); i++) {
     s << rhs[i];
     if (i != rhs.size() - 1) {
@@ -80,6 +79,17 @@ std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
     else {
       s << "}";
     }
+  }
+  return s;*/
+  s << "{";
+  for (int i = 0; i < rhs.size() - 1; i++) {
+    s << rhs[i] << ", ";
+  }
+  if (rhs.size() != 0) {
+    s << rhs[rhs.size() - 1] << "}";
+  }
+  else {
+    s << "}";
   }
   return s;
 }
