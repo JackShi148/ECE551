@@ -7,6 +7,7 @@ story-step2 words.txt
 story-step2 testWords6_notColon.txt
 story-step2 testWords1.txt
 story-step2 testWords2_spaceAfterInt.txt
+story-step2 testWords3_emptyString.txt
 story-step3 words.txt story2.txt
 story-step3 testWords1.txt testStory1.txt
 story-step3 words.txt testStory2_spaceBeforeInt.txt

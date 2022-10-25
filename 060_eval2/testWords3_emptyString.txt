@@ -4,4 +4,4 @@ place:cave
 adjective:peculiar
 adjective:scary
 adjective:peaceful
-:dragon
+:
