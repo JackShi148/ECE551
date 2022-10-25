@@ -79,15 +79,4 @@ std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
   }
   s << "}";
   return s;
-  /* s << "{";
-  for (int i = 0; i < rhs.size() - 1; i++) {
-    s << rhs[i] << ", ";
-  }
-  if (rhs.size() != 0) {
-    s << rhs[rhs.size() - 1] << "}";
-  }
-  else {
-    s << "}";
-  }
-  return s;*/
 }
