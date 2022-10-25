@@ -225,7 +225,6 @@ void compareName(catarray_t * cats, char * line) {
       cats->arr[i].n_words++;
       cats->arr[i].words =
           realloc(cats->arr[i].words, cats->arr[i].n_words * sizeof(*cats->arr[i].words));
-      // cats->arr[i].words[cats->arr[i].n_words - 1] = strdup(colon + 1);
       char * newline = strchr(colon + 1, '\n');
       if (newline != NULL) {
         cats->arr[i].words[cats->arr[i].n_words - 1] =
