@@ -17,6 +17,7 @@ story-step3 testWords3_emptyString.txt testStory5_emptyString.txt
 story-step3 words.txt testStory7_underscoreNotMatch.txt
 story-step3 testWords6_notColon.txt story2.txt
 story-step3 words.txt testStory8_refOutofBound.txt
+story-step3 words.txt testStory9_noWord.txt
 story-step4 words.txt story2.txt
 story-step4 -n words.txt story2.txt
 story-step4 -n testWords3_emptyString.txt testStory5_emptyString.txt
@@ -27,3 +28,4 @@ story-step4 -n testWords2_spaceAfterInt.txt testStory4_spaceAfterInt.txt
 story-step4 -s words.txt story2.txt
 story-step4 -n testWords6_notColon.txt story2.txt
 story-step4 -n words.txt testStory8_refOutofBound.txt
+story-step4 -n words.txt testStory9_noWord.txt
