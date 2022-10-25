@@ -319,8 +319,33 @@ void freeCategory(category_t * usedWords) {
 }
 //delete used word from the original category
 void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
-  //check after deleting the word from this category, if there is no word in it
-  if (cats->arr[pos].n_words - 1 == 0) {
+  //check after deleting the word from this category, if there is no word int it
+  //if there are other words in the category
+  //build a new words to store every word in the category but not the used word
+  if (cats->arr[pos].n_words - 1 != 0) {
+    //first reduce the number of words in this category
+    cats->arr[pos].n_words--;
+    char ** newWords = malloc(cats->arr[pos].n_words * sizeof(*newWords));
+    //make a copy of this used word in case that it is freed in the future
+    char * str = strdup(usedWord);
+    for (size_t i = 0, index = 0; i < cats->arr[pos].n_words + 1; i++) {
+      if (strcmp(cats->arr[pos].words[i], str) != 0) {
+        newWords[index] = cats->arr[pos].words[i];
+        index++;
+      }
+      else {
+        //free this used word, otherwise it will leak
+        free(cats->arr[pos].words[i]);
+      }
+      cats->arr[pos].words[i] = NULL;
+    }
+    free(str);
+    //free the old words
+    free(cats->arr[pos].words);
+    cats->arr[pos].words = newWords;
+  }
+  //else if there is no word in this category, delete it from the catarray
+  else {
     //if it is, reduce the number of categories in the catarray
     cats->n--;
     //if after deleting the category from the catarray
@@ -367,29 +392,5 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
       free(cats->arr);
       cats->arr = newArr;
     }
-  }
-  //if there are other words in the category
-  //build a new words to store every word in the category but not the used word
-  else {
-    //first reduce the number of words in this category
-    cats->arr[pos].n_words--;
-    char ** newWords = malloc(cats->arr[pos].n_words * sizeof(*newWords));
-    //make a copy of this used word in case that it is freed in the future
-    char * str = strdup(usedWord);
-    for (size_t i = 0, index = 0; i < cats->arr[pos].n_words + 1; i++) {
-      if (strcmp(cats->arr[pos].words[i], str) != 0) {
-        newWords[index] = cats->arr[pos].words[i];
-        index++;
-      }
-      else {
-        //free this used word, otherwise it will leak
-        free(cats->arr[pos].words[i]);
-      }
-      cats->arr[pos].words[i] = NULL;
-    }
-    free(str);
-    //free the old words
-    free(cats->arr[pos].words);
-    cats->arr[pos].words = newWords;
   }
 }
