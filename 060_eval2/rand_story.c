@@ -268,15 +268,18 @@ void freeCats(catarray_t * cats) {
 //maintain used words based on the reference
 const char * maintainUsedWords(category_t * cat, size_t n) {
   //check if n is larger than the number of used words
-  if (n > cat->n_words) {
+  if (n > cat->n_words + 1) {
     fprintf(stderr, "the reference is out of bound\n");
     exit(EXIT_FAILURE);
   }
   const char * word = cat->words[n - 1];
+  cat->n_words++;
+  cat->words = realloc(cat->words, cat->n_words * sizeof(*cat->words));
+  cat->words[cat->n_words - 1] = strdup(word);
   char * prev = cat->words[0];
-  cat->words[0] = cat->words[n - 1];
-  for (size_t i = 1; i < n; i++) {
-    if (i == n - 1) {
+  cat->words[0] = cat->words[cat->n_words - 1];
+  for (size_t i = 1; i < cat->n_words; i++) {
+    if (i == cat->n_words - 1) {
       cat->words[i] = prev;
     }
     else {
