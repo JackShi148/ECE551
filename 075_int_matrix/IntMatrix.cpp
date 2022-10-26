@@ -2,7 +2,7 @@
 
 #include "IntArray.h"
 
-IntMatrix::IntMatrix() : numRows(0), numColumns(0) {
+IntMatrix::IntMatrix() : numRows(0), numColumns(0), rows(NULL) {
 }
 IntMatrix::IntMatrix(int r, int c) : numRows(r), numColumns(c) {
   rows = new IntArray *[numRows];
@@ -28,7 +28,7 @@ IntMatrix & IntMatrix::operator=(const IntMatrix & rhs) {
     for (int i = 0; i < numRows; i++) {
       delete rows[i];
     }
-    // delete[] rows;
+    delete[] rows;
     numRows = rhs.numRows;
     numColumns = rhs.numColumns;
     rows = new IntArray *[rhs.numRows];
