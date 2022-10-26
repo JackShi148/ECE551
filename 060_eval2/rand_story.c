@@ -353,6 +353,7 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
     //if after deleting the category from the catarray
     //there is no category in this catarray
     //free the items in the arr[0] but not arr because it will be freed in freeCats
+    //if not free the items, they will leak
     if (cats->n == 0) {
       free(cats->arr[0].name);
       free(cats->arr[0].words[0]);
@@ -388,6 +389,7 @@ void deleteUsedWords(catarray_t * cats, size_t pos, const char * usedWord) {
         for (size_t j = 0; j < n; j++) {
           cats->arr[i].words[j] = NULL;
         }
+        //free the words otherwise it will leak
         free(cats->arr[i].words);
       }
       //free the old arr
