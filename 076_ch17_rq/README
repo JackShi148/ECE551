@@ -55,7 +55,7 @@ in "answers.txt".
     L.  v2, v3, and v4
     M.  All four variables (v1, v2, v3, and v4)
 
-6.  When is the body of a templated function or class type checked?
+* 6.  When is the body of a templated function or class type checked?
     A.  When the compiler encounters the declaration of the template
     B.  When the compiler has type checked all other code in the
         compilation unit
@@ -72,7 +72,7 @@ in "answers.txt".
         specialization. 
     D.  Multiple close brackets must be separated by whitespace.
 
-8.  Iterators are a great examples of which of the following?
+* 8.  Iterators are a great examples of which of the following?
     A.  The Rule of Three
     B.  Dependent name resolution
     C.  Implicit conversions
@@ -95,7 +95,7 @@ in "answers.txt".
         element, while the const_iteartor returns elements by value.
     D.  None of the above
 
-11. How do you know if some operation invalidates a particular iterator on 
+* 11. How do you know if some operation invalidates a particular iterator on 
     some data structure?
     A.  Operations that delete from a data structure invalidate all of
         its iterators (and only deletion operations invalidate
