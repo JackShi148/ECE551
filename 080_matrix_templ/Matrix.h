@@ -90,19 +90,16 @@ std::ostream & operator<<(std::ostream & s, const Matrix<T> & rhs) {
 }
 template<typename T>
 std::ostream & operator<<(std::ostream & s, const std::vector<T> & row) {
-  if (row.size() == 0) {
-    s << "[ ]";
-    return s;
-  }
+  s << "{";
   for (size_t i = 0; i < row.size(); ++i) {
     if (i == row.size() - 1) {
       s << row[i];
     }
     else {
-      s << row[i] << ",\n";
+      s << row[i] << ", ";
     }
   }
-  s << "[";
+  s << "}";
   return s;
 }
 
