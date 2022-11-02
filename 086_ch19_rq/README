@@ -37,7 +37,7 @@ C. If an exception is thrown, the object remains in a valid state
    and no memory is leaked.
 D. If an exception is thrown, no memory is leaked.
 
-5. You should catch exceptions by
+* 5. You should catch exceptions by
 
 A. Value
 B. Reference
