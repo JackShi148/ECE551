@@ -96,7 +96,7 @@ E. A std::bad_exception is handled from f's call site.
    Then the original exception is handled from the same place.
 
 
-9. What happens if an exception propogates out of a constructor
+* 9. What happens if an exception propogates out of a constructor
    during object creation?
 
 A. unexpected() is called, which (by default) throws std::bad_exception
@@ -108,7 +108,7 @@ C. The object's memory is released, the constructors's exception is
 D. None of the above.
 
 
-10. What happens if an exception propogates out of the destructor
+* 10. What happens if an exception propogates out of the destructor
     for an object which is being destroyed as part of handling another exception?
 
 A. unexpected() is called, which (by default) throws std::bad_exception
