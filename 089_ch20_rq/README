@@ -197,20 +197,20 @@ C. Set
 D. Map
 
 
-13. Useful if you want to add elements, then check 
+* 13. Useful if you want to add elements, then check 
     if it has a particular element
 A. Queue
 B. Stack
 C. Set
 D. Map
 
-14. Would be useful for parsing, e.g., matching HTML tags
+* 14. Would be useful for parsing, e.g., matching HTML tags
 A. Queue
 B. Stack
 C. Set
 D. Map
 
-15. Would be used to hold incoming network data
+* 15. Would be used to hold incoming network data
     until it could be processed
 A. Queue
 B. Stack
