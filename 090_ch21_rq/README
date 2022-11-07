@@ -87,7 +87,7 @@ C. .iterator()
 D. .start()
 E. None of the above
 
-10. What method in std::list would you use to add 
+* 10. What method in std::list would you use to add 
     an element to the end of the list?
 
 A. .add_back()
@@ -108,7 +108,7 @@ C. lst.delete(it);
 D. lst.erase(it);
 E. None of the above
 
-12. After doing correct action for question 11, which
+* 12. After doing correct action for question 11, which
     iterators are invalidated?
 
 A. All iterators on all std::lists
