@@ -26,8 +26,8 @@ class LinkedList {
     T data;
     Node * next;
     Node * prev;
-    Node(const T & d) : data(d), next(NULL), prev(NULL) {}
-    Node(const T & d, Node * n, Node * p) : data(d), next(n), prev(p){};
+    explicit Node(const T & d) : data(d), next(NULL), prev(NULL) {}
+    explicit Node(const T & d, Node * n, Node * p) : data(d), next(n), prev(p){};
   };
   int size;
   Node * head;
