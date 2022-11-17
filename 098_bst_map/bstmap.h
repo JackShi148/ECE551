@@ -67,60 +67,61 @@ class BstMap : public Map<K, V> {
   }
 
   virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
-    Node * current = root;
-    while (current != NULL) {
-      if (key == current->key) {
+    Node * cur = root;
+    while (cur != NULL) {
+      if (key == cur->key) {
         break;
       }
-      else if (key < current->key) {
-        current = current->left;
+      else if (key < cur->key) {
+        cur = cur->left;
       }
       else {
-        current = current->right;
+        cur = cur->right;
       }
     }
 
-    if (current == NULL) {
+    if (cur == NULL) {
       throw std::invalid_argument("key not find\n");
     }
-    return current->value;
+    return cur->value;
   }
   virtual void remove(const K & key) {
-    Node ** cur = &root;
-    while (*cur != NULL) {
-      if ((*cur)->key == key) {
+    Node ** current = &root;
+    while (*current != NULL) {
+      if (key == (*current)->key) {
         break;
       }
-      else if (key < (*cur)->key) {
-        cur = &(*cur)->left;
+      else if (key < (*current)->key) {
+        current = &(*current)->left;
       }
       else {
-        cur = &(*cur)->right;
+        current = &(*current)->right;
       }
     }
-    if (*cur == NULL) {
-      throw std::invalid_argument("not find corresponding key");
+    if (*current == NULL) {
+      throw std::invalid_argument("key not find\n");
     }
-    if ((*cur)->left == NULL) {
-      Node * temp = (*cur)->right;
-      delete *cur;
-      *cur = temp;
+    if ((*current)->left == NULL) {
+      Node * temp = (*current)->right;
+      delete (*current);
+      *current = temp;
     }
-    else if ((*cur)->right == NULL) {
-      Node * temp = (*cur)->left;
-      delete *cur;
-      *cur = temp;
+    else if ((*current)->right == NULL) {
+      Node * temp = (*current)->left;
+      delete (*current);
+      *current = temp;
     }
     else {
-      Node * closestLargestNode = (*cur)->right;
-      while (closestLargestNode->left != NULL) {
-        closestLargestNode = closestLargestNode->left;
+      Node * findnode = (*current)->left;
+      while (findnode->right != NULL) {
+        findnode = findnode->right;
       }
-      K Ktemp = closestLargestNode->key;
-      V Vtemp = closestLargestNode->value;
-      remove(closestLargestNode->key);
-      (*cur)->key = Ktemp;
-      (*cur)->value = Vtemp;
+
+      K tempkey = findnode->key;
+      V tempvalue = findnode->value;
+      remove(findnode->key);
+      (*current)->key = tempkey;
+      (*current)->value = tempvalue;
     }
   }
   void destroy(Node * cur) {
