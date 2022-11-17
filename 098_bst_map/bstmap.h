@@ -46,8 +46,8 @@ typename BstMap<K, V>::Node * BstMap<K, V>::copyHelper(Node * current) {
     return NULL;
   }
   Node * mynode = new Node(current->key, current->value);
-  mynode->left = copy(current->left);
-  mynode->right = copy(current->right);
+  mynode->left = copyHelper(current->left);
+  mynode->right = copyHelper(current->right);
   return mynode;
 }
 template<typename K, typename V>
