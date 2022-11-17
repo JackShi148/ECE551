@@ -48,7 +48,6 @@ class BstMap : public Map<K, V> {
     }
   }
   virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
-    assert(root != NULL);
     Node * ans = findNode(root, key);
     if (ans == NULL) {
       throw std::invalid_argument("not find corresponding key");
