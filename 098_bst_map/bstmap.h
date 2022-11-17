@@ -57,10 +57,10 @@ class BstMap : public Map<K, V> {
         return current;
       }
       else if (key < current->key) {
-        current->left = addnode(current->left, key, value);
+        current->left = addHelper(current->left, key, value);
       }
       else {
-        current->right = addnode(current->right, key, value);
+        current->right = addHelper(current->right, key, value);
       }
       return current;
     }
