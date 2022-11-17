@@ -133,7 +133,7 @@ class BstMap : public Map<K, V> {
     delete cur;
   }
 
-  virtual ~BstMap() { destroy(this->root); }
+  virtual ~BstMap() { destroy(root); }
 };
 
 #endif
