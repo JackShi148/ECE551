@@ -15,120 +15,6 @@ class BstMap : public Map<K, V> {
     V value;
     Node * left;
     Node * right;
-    Node(K key, V value) : key(key), value(value), left(NULL), right(NULL) {}
-  };
-  Node * root;
-
- public:
-  BstMap() : root(NULL) {}
-  virtual void add(const K & key, const V & value) {
-    if (root == NULL) {
-      root = new Node(key, value);
-    }
-    else {
-      Node * travesal = root;
-      while (true) {
-        if (key > travesal->key) {
-          if (travesal->right == NULL) {
-            travesal->right = new Node(key, value);
-            break;
-          }
-          else {
-            travesal = travesal->right;
-          }
-        }
-        else {
-          if (travesal->left == NULL) {
-            travesal->left = new Node(key, value);
-            break;
-          }
-          else {
-            travesal = travesal->left;
-          }
-        }
-      }
-    }
-  }
-  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
-    Node * target = findNode(this->root, key);
-    if (target == NULL) {
-      throw std::invalid_argument("key not found");
-    }
-    else {
-      return target->value;
-    }
-  }
-  virtual void remove(const K & key) { root = removeHelper(root, key); }
-  Node * removeHelper(Node * curr, const K & key) {
-    if (curr == NULL) {
-      return curr;
-    }
-    if (curr->key == key) {
-      if (curr->left == NULL) {
-        Node * temp = curr->right;
-        delete curr;
-        return temp;
-      }
-      else if (curr->right == NULL) {
-        Node * temp = curr->left;
-        delete curr;
-        return temp;
-      }
-      else {
-        K kTarget = minKey(curr->right);
-        V vTarget = lookup(kTarget);
-        curr->right = removeHelper(curr->right, kTarget);
-        curr->key = kTarget;
-        curr->value = vTarget;
-        return curr;
-      }
-    }
-    else if (key < curr->key) {
-      curr->left = removeHelper(curr->left, key);
-      return curr;
-    }
-    else {
-      curr->right = removeHelper(curr->right, key);
-      return curr;
-    }
-  }
-  K minKey(Node * curr) {
-    assert(curr != NULL);
-    Node * travesal = curr;
-    K temp = curr->key;
-    while (travesal != NULL) {
-      temp = travesal->key;
-      travesal = travesal->left;
-    }
-    return temp;
-  }
-  Node * findNode(Node * curr, const K & key) const {
-    Node * travesal = curr;
-    while (travesal != NULL) {
-      if (key == travesal->key) {
-        return travesal;
-      }
-      else if (key > travesal->key) {
-        travesal = travesal->right;
-      }
-      else {
-        travesal = travesal->left;
-      }
-    }
-    return travesal;
-  }
-  virtual ~BstMap<K, V>() {}
-};
-
-/*template<typename K, typename V>
-class BstMap : public Map<K, V> {
- private:
-  class Node {
-   public:
-    K key;
-    V value;
-    Node * left;
-    Node * right;
 
     Node(const K & key, const V & value) :
         key(key), value(value), left(NULL), right(NULL) {}
@@ -138,119 +24,94 @@ class BstMap : public Map<K, V> {
  public:
   BstMap() : root(NULL) {}
   virtual void add(const K & key, const V & value) {
-    if (root == NULL) {
-      root = new Node(key, value);
-    }
-    else {
-      Node * cur = root;
-      while (true) {
-        if (cur == NULL) {
-          cur = new Node(key, value);
-          break;
-        }
-        if (cur->key == key) {
-          cur->value = value;
-          break;
-        }
-        else if (cur->key > key) {
-          cur = cur->left;
-        }
-        else {
-          cur = cur->right;
-        }
-      }
-    }
+    this->root = addHelper(this->root, key, value);
   }
-   virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
-    Node * ans = findNode(root, key);
-    if (ans == NULL) {
-      throw std::invalid_argument("not find corresponding key");
-    }
-    return ans->value;
-    }
-  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
-    Node * target = findNode(this->root, key);
-    if (target == NULL) {
-      throw std::invalid_argument("key not found");
-    }
-    else {
-      return target->value;
-    }
-  }
-  virtual void remove(const K & key) { root = removeHelper(root, key); }
-  Node * removeHelper(Node * cur, const K & key) {
+  Node * addHelper(Node * cur, const K & key, const V & value) {
     if (cur == NULL) {
+      cur = new Node(key, value);
       return cur;
     }
-    if (cur->key == key) {
-      if (cur->left == NULL) {
-        Node * temp = cur->right;
-        delete cur;
-        return temp;
-      }
-      else if (cur->right == NULL) {
-        Node * temp = cur->left;
-        delete cur;
-        return temp;
-      }
-      else {
-        K kTarget = findMin(cur->right);
-        V vTarget = lookup(kTarget);
-        cur->right = removeHelper(cur->right, kTarget);
-        cur->key = kTarget;
-        cur->value = vTarget;
+    else {
+      if (cur->key == key) {
+        cur->value = value;
         return cur;
       }
-    }
-    else if (cur->key < key) {
-      cur->right = removeHelper(cur->right, key);
+      else if (key < cur->key) {
+        cur->left = addHelper(cur->left, key, value);
+      }
+      else {
+        cur->right = addHelper(cur->right, key, value);
+      }
       return cur;
+    }
+  }
+
+  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
+    Node * cur = root;
+    while (cur != NULL) {
+      if (cur->key == key) {
+        break;
+      }
+      else if (key < cur->key) {
+        cur = cur->left;
+      }
+      else {
+        cur = cur->right;
+      }
+    }
+    if (cur == NULL) {
+      throw std::invalid_argument("not find corresponding key");
+    }
+    return cur->value;
+  }
+  virtual void remove(const K & key) {
+    Node ** cur = &root;
+    while (*cur != NULL) {
+      if ((*cur)->key == key) {
+        break;
+      }
+      else if (key < (*cur)->key) {
+        cur = &(*cur)->left;
+      }
+      else {
+        cur = &(*cur)->right;
+      }
+    }
+    if (*cur == NULL) {
+      throw std::invalid_argument("not find corresponding key");
+    }
+    if ((*cur)->left == NULL) {
+      Node * temp = (*cur)->right;
+      delete *cur;
+      *cur = temp;
+    }
+    else if ((*cur)->right == NULL) {
+      Node * temp = (*cur)->left;
+      delete *cur;
+      *cur = temp;
     }
     else {
-      cur->left = removeHelper(cur->left, key);
-      return cur;
+      Node * closestLargestNode = (*cur)->right;
+      while (closestLargestNode->left != NULL) {
+        closestLargestNode = closestLargestNode->left;
+      }
+      K Ktemp = closestLargestNode->key;
+      V Vtemp = closestLargestNode->value;
+      remove(closestLargestNode->key);
+      (*cur)->key = Ktemp;
+      (*cur)->value = Vtemp;
     }
+  }
+  void destroy(Node * cur) {
+    if (cur == NULL) {
+      return;
+    }
+    destroy(cur->left);
+    destroy(cur->right);
+    delete cur;
   }
 
-   Node * findNode(Node * cur, const K & key) {
-    Node * ans = cur;
-    while (ans != NULL) {
-      if (ans->key == key) {
-        return ans;
-      }
-      else if (ans->key < key) {
-        ans = ans->right;
-      }
-      else {
-        ans = ans->left;
-      }
-    }
-    return ans;
-    }
-  Node * findNode(Node * curr, const K & key) const {
-    Node * travesal = curr;
-    while (travesal != NULL) {
-      if (key == travesal->key) {
-        return travesal;
-      }
-      else if (key > travesal->key) {
-        travesal = travesal->right;
-      }
-      else {
-        travesal = travesal->left;
-      }
-    }
-    return travesal;
-  }
-
-  K findMin(const Node * cur) {
-    assert(cur != NULL);
-    while (cur->left != NULL) {
-      cur = cur->left;
-    }
-    return cur->key;
-  }
-  virtual ~BstMap() {}
-};*/
+  virtual ~BstMap() { destroy(this->root); }
+};
 
 #endif
