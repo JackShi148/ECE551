@@ -1,446 +1,446 @@
-Grading at 11/17/2022:13:27:11.576068
-For commit ID cbd9dfb42d999b39542418e73d2b6a02a97cdb31
-Grading at Thu Nov 17 08:27:01 AM EST 2022
+Grading at 11/17/2022:13:29:02.256275
+For commit ID 0685f88df13026789102fdcca491f74b48ff0d46
+Grading at Thu Nov 17 08:28:51 AM EST 2022
 -----------------------------------------------
 testcase 1 : Testing with BstMap<int,int>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139641== Memcheck, a memory error detector
-==4139641== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139641== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139641== Command: ./test.1
-==4139641== Parent PID: 4139640
-==4139641== 
-==4139641== 
-==4139641== Process terminating with default action of signal 6 (SIGABRT)
-==4139641==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139641==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139641==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139641==    by 0x4AEF475: raise (raise.c:26)
-==4139641==    by 0x4AD57F2: abort (abort.c:79)
-==4139641==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139641==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139641==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139641==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139641==    by 0x10BD64: BstMap<int, int>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.1)
-==4139641==    by 0x10A951: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.1)
-==4139641== 
-==4139641== HEAP SUMMARY:
-==4139641==     in use at exit: 77,614 bytes in 31 blocks
-==4139641==   total heap usage: 81 allocs, 50 frees, 82,038 bytes allocated
-==4139641== 
-==4139641== 144 bytes in 1 blocks are possibly lost in loss record 25 of 27
-==4139641==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139641==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139641==    by 0x10BCF8: BstMap<int, int>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.1)
-==4139641==    by 0x10A951: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.1)
-==4139641== 
-==4139641== LEAK SUMMARY:
-==4139641==    definitely lost: 0 bytes in 0 blocks
-==4139641==    indirectly lost: 0 bytes in 0 blocks
-==4139641==      possibly lost: 144 bytes in 1 blocks
-==4139641==    still reachable: 77,470 bytes in 30 blocks
-==4139641==                       of which reachable via heuristic:
-==4139641==                         stdstring          : 38 bytes in 1 blocks
-==4139641==         suppressed: 0 bytes in 0 blocks
-==4139641== Reachable blocks (those to which a pointer was found) are not shown.
-==4139641== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139641== 
-==4139641== For lists of detected and suppressed errors, rerun with: -s
-==4139641== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139886== Memcheck, a memory error detector
+==4139886== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139886== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139886== Command: ./test.1
+==4139886== Parent PID: 4139885
+==4139886== 
+==4139886== 
+==4139886== Process terminating with default action of signal 6 (SIGABRT)
+==4139886==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139886==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139886==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139886==    by 0x4AEF475: raise (raise.c:26)
+==4139886==    by 0x4AD57F2: abort (abort.c:79)
+==4139886==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139886==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139886==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139886==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139886==    by 0x10BD64: BstMap<int, int>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.1)
+==4139886==    by 0x10A951: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.1)
+==4139886== 
+==4139886== HEAP SUMMARY:
+==4139886==     in use at exit: 77,614 bytes in 31 blocks
+==4139886==   total heap usage: 81 allocs, 50 frees, 82,038 bytes allocated
+==4139886== 
+==4139886== 144 bytes in 1 blocks are possibly lost in loss record 25 of 27
+==4139886==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139886==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139886==    by 0x10BCF8: BstMap<int, int>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.1)
+==4139886==    by 0x10A951: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.1)
+==4139886== 
+==4139886== LEAK SUMMARY:
+==4139886==    definitely lost: 0 bytes in 0 blocks
+==4139886==    indirectly lost: 0 bytes in 0 blocks
+==4139886==      possibly lost: 144 bytes in 1 blocks
+==4139886==    still reachable: 77,470 bytes in 30 blocks
+==4139886==                       of which reachable via heuristic:
+==4139886==                         stdstring          : 38 bytes in 1 blocks
+==4139886==         suppressed: 0 bytes in 0 blocks
+==4139886== Reachable blocks (those to which a pointer was found) are not shown.
+==4139886== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139886== 
+==4139886== For lists of detected and suppressed errors, rerun with: -s
+==4139886== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 2 : Testing with BstMap<int,std::string>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139651== Memcheck, a memory error detector
-==4139651== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139651== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139651== Command: ./test.2
-==4139651== Parent PID: 4139650
-==4139651== 
-==4139651== 
-==4139651== Process terminating with default action of signal 6 (SIGABRT)
-==4139651==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139651==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139651==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139651==    by 0x4AEF475: raise (raise.c:26)
-==4139651==    by 0x4AD57F2: abort (abort.c:79)
-==4139651==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139651==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139651==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139651==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139651==    by 0x10BFF4: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.2)
-==4139651==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.2)
-==4139651== 
-==4139651== HEAP SUMMARY:
-==4139651==     in use at exit: 78,791 bytes in 50 blocks
-==4139651==   total heap usage: 141 allocs, 91 frees, 84,070 bytes allocated
-==4139651== 
-==4139651== 144 bytes in 1 blocks are possibly lost in loss record 35 of 39
-==4139651==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139651==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139651==    by 0x10BF88: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.2)
-==4139651==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.2)
-==4139651== 
-==4139651== LEAK SUMMARY:
-==4139651==    definitely lost: 0 bytes in 0 blocks
-==4139651==    indirectly lost: 0 bytes in 0 blocks
-==4139651==      possibly lost: 144 bytes in 1 blocks
-==4139651==    still reachable: 78,647 bytes in 49 blocks
-==4139651==                       of which reachable via heuristic:
-==4139651==                         stdstring          : 38 bytes in 1 blocks
-==4139651==         suppressed: 0 bytes in 0 blocks
-==4139651== Reachable blocks (those to which a pointer was found) are not shown.
-==4139651== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139651== 
-==4139651== For lists of detected and suppressed errors, rerun with: -s
-==4139651== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139900== Memcheck, a memory error detector
+==4139900== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139900== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139900== Command: ./test.2
+==4139900== Parent PID: 4139899
+==4139900== 
+==4139900== 
+==4139900== Process terminating with default action of signal 6 (SIGABRT)
+==4139900==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139900==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139900==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139900==    by 0x4AEF475: raise (raise.c:26)
+==4139900==    by 0x4AD57F2: abort (abort.c:79)
+==4139900==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139900==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139900==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139900==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139900==    by 0x10BFF4: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.2)
+==4139900==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.2)
+==4139900== 
+==4139900== HEAP SUMMARY:
+==4139900==     in use at exit: 78,791 bytes in 50 blocks
+==4139900==   total heap usage: 141 allocs, 91 frees, 84,070 bytes allocated
+==4139900== 
+==4139900== 144 bytes in 1 blocks are possibly lost in loss record 35 of 39
+==4139900==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139900==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139900==    by 0x10BF88: BstMap<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.2)
+==4139900==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.2)
+==4139900== 
+==4139900== LEAK SUMMARY:
+==4139900==    definitely lost: 0 bytes in 0 blocks
+==4139900==    indirectly lost: 0 bytes in 0 blocks
+==4139900==      possibly lost: 144 bytes in 1 blocks
+==4139900==    still reachable: 78,647 bytes in 49 blocks
+==4139900==                       of which reachable via heuristic:
+==4139900==                         stdstring          : 38 bytes in 1 blocks
+==4139900==         suppressed: 0 bytes in 0 blocks
+==4139900== Reachable blocks (those to which a pointer was found) are not shown.
+==4139900== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139900== 
+==4139900== For lists of detected and suppressed errors, rerun with: -s
+==4139900== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139665== Memcheck, a memory error detector
-==4139665== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139665== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139665== Command: ./test.3
-==4139665== Parent PID: 4139664
-==4139665== 
-==4139665== 
-==4139665== Process terminating with default action of signal 6 (SIGABRT)
-==4139665==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139665==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139665==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139665==    by 0x4AEF475: raise (raise.c:26)
-==4139665==    by 0x4AD57F2: abort (abort.c:79)
-==4139665==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139665==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139665==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139665==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139665==    by 0x10C074: BstMap<int, Tester>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.3)
-==4139665==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.3)
-==4139665== 
-==4139665== HEAP SUMMARY:
-==4139665==     in use at exit: 78,991 bytes in 50 blocks
-==4139665==   total heap usage: 161 allocs, 111 frees, 84,678 bytes allocated
-==4139665== 
-==4139665== 144 bytes in 1 blocks are possibly lost in loss record 34 of 38
-==4139665==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139665==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139665==    by 0x10C008: BstMap<int, Tester>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.3)
-==4139665==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.3)
-==4139665== 
-==4139665== LEAK SUMMARY:
-==4139665==    definitely lost: 0 bytes in 0 blocks
-==4139665==    indirectly lost: 0 bytes in 0 blocks
-==4139665==      possibly lost: 144 bytes in 1 blocks
-==4139665==    still reachable: 78,847 bytes in 49 blocks
-==4139665==                       of which reachable via heuristic:
-==4139665==                         stdstring          : 38 bytes in 1 blocks
-==4139665==         suppressed: 0 bytes in 0 blocks
-==4139665== Reachable blocks (those to which a pointer was found) are not shown.
-==4139665== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139665== 
-==4139665== For lists of detected and suppressed errors, rerun with: -s
-==4139665== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139911== Memcheck, a memory error detector
+==4139911== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139911== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139911== Command: ./test.3
+==4139911== Parent PID: 4139910
+==4139911== 
+==4139911== 
+==4139911== Process terminating with default action of signal 6 (SIGABRT)
+==4139911==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139911==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139911==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139911==    by 0x4AEF475: raise (raise.c:26)
+==4139911==    by 0x4AD57F2: abort (abort.c:79)
+==4139911==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139911==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139911==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139911==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139911==    by 0x10C074: BstMap<int, Tester>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.3)
+==4139911==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.3)
+==4139911== 
+==4139911== HEAP SUMMARY:
+==4139911==     in use at exit: 78,991 bytes in 50 blocks
+==4139911==   total heap usage: 161 allocs, 111 frees, 84,678 bytes allocated
+==4139911== 
+==4139911== 144 bytes in 1 blocks are possibly lost in loss record 34 of 38
+==4139911==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139911==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139911==    by 0x10C008: BstMap<int, Tester>::remove(int const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.3)
+==4139911==    by 0x10A997: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.3)
+==4139911== 
+==4139911== LEAK SUMMARY:
+==4139911==    definitely lost: 0 bytes in 0 blocks
+==4139911==    indirectly lost: 0 bytes in 0 blocks
+==4139911==      possibly lost: 144 bytes in 1 blocks
+==4139911==    still reachable: 78,847 bytes in 49 blocks
+==4139911==                       of which reachable via heuristic:
+==4139911==                         stdstring          : 38 bytes in 1 blocks
+==4139911==         suppressed: 0 bytes in 0 blocks
+==4139911== Reachable blocks (those to which a pointer was found) are not shown.
+==4139911== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139911== 
+==4139911== For lists of detected and suppressed errors, rerun with: -s
+==4139911== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 4 : Testing with BstMap<std::string,int>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139675== Memcheck, a memory error detector
-==4139675== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139675== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139675== Command: ./test.4
-==4139675== Parent PID: 4139674
-==4139675== 
-==4139675== 
-==4139675== Process terminating with default action of signal 6 (SIGABRT)
-==4139675==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139675==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139675==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139675==    by 0x4AEF475: raise (raise.c:26)
-==4139675==    by 0x4AD57F2: abort (abort.c:79)
-==4139675==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139675==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139675==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139675==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139675==    by 0x10C05A: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.4)
-==4139675==    by 0x10AA05: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.4)
-==4139675== 
-==4139675== HEAP SUMMARY:
-==4139675==     in use at exit: 78,414 bytes in 31 blocks
-==4139675==   total heap usage: 81 allocs, 50 frees, 82,870 bytes allocated
-==4139675== 
-==4139675== 144 bytes in 1 blocks are possibly lost in loss record 29 of 31
-==4139675==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139675==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139675==    by 0x10BFEE: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.4)
-==4139675==    by 0x10AA05: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.4)
-==4139675== 
-==4139675== LEAK SUMMARY:
-==4139675==    definitely lost: 0 bytes in 0 blocks
-==4139675==    indirectly lost: 0 bytes in 0 blocks
-==4139675==      possibly lost: 144 bytes in 1 blocks
-==4139675==    still reachable: 78,270 bytes in 30 blocks
-==4139675==                       of which reachable via heuristic:
-==4139675==                         stdstring          : 38 bytes in 1 blocks
-==4139675==         suppressed: 0 bytes in 0 blocks
-==4139675== Reachable blocks (those to which a pointer was found) are not shown.
-==4139675== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139675== 
-==4139675== For lists of detected and suppressed errors, rerun with: -s
-==4139675== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139925== Memcheck, a memory error detector
+==4139925== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139925== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139925== Command: ./test.4
+==4139925== Parent PID: 4139924
+==4139925== 
+==4139925== 
+==4139925== Process terminating with default action of signal 6 (SIGABRT)
+==4139925==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139925==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139925==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139925==    by 0x4AEF475: raise (raise.c:26)
+==4139925==    by 0x4AD57F2: abort (abort.c:79)
+==4139925==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139925==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139925==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139925==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139925==    by 0x10C05A: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.4)
+==4139925==    by 0x10AA05: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.4)
+==4139925== 
+==4139925== HEAP SUMMARY:
+==4139925==     in use at exit: 78,414 bytes in 31 blocks
+==4139925==   total heap usage: 81 allocs, 50 frees, 82,870 bytes allocated
+==4139925== 
+==4139925== 144 bytes in 1 blocks are possibly lost in loss record 29 of 31
+==4139925==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139925==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139925==    by 0x10BFEE: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.4)
+==4139925==    by 0x10AA05: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.4)
+==4139925== 
+==4139925== LEAK SUMMARY:
+==4139925==    definitely lost: 0 bytes in 0 blocks
+==4139925==    indirectly lost: 0 bytes in 0 blocks
+==4139925==      possibly lost: 144 bytes in 1 blocks
+==4139925==    still reachable: 78,270 bytes in 30 blocks
+==4139925==                       of which reachable via heuristic:
+==4139925==                         stdstring          : 38 bytes in 1 blocks
+==4139925==         suppressed: 0 bytes in 0 blocks
+==4139925== Reachable blocks (those to which a pointer was found) are not shown.
+==4139925== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139925== 
+==4139925== For lists of detected and suppressed errors, rerun with: -s
+==4139925== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 5 : Testing with BstMap<std::string,std::string>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139689== Memcheck, a memory error detector
-==4139689== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139689== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139689== Command: ./test.5
-==4139689== Parent PID: 4139688
-==4139689== 
-==4139689== 
-==4139689== Process terminating with default action of signal 6 (SIGABRT)
-==4139689==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139689==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139689==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139689==    by 0x4AEF475: raise (raise.c:26)
-==4139689==    by 0x4AD57F2: abort (abort.c:79)
-==4139689==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139689==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139689==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139689==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139689==    by 0x10C28D: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.5)
-==4139689==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.5)
-==4139689== 
-==4139689== HEAP SUMMARY:
-==4139689==     in use at exit: 79,391 bytes in 50 blocks
-==4139689==   total heap usage: 141 allocs, 91 frees, 84,694 bytes allocated
-==4139689== 
-==4139689== 144 bytes in 1 blocks are possibly lost in loss record 48 of 50
-==4139689==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139689==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139689==    by 0x10C218: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.5)
-==4139689==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.5)
-==4139689== 
-==4139689== LEAK SUMMARY:
-==4139689==    definitely lost: 0 bytes in 0 blocks
-==4139689==    indirectly lost: 0 bytes in 0 blocks
-==4139689==      possibly lost: 144 bytes in 1 blocks
-==4139689==    still reachable: 79,247 bytes in 49 blocks
-==4139689==                       of which reachable via heuristic:
-==4139689==                         stdstring          : 38 bytes in 1 blocks
-==4139689==         suppressed: 0 bytes in 0 blocks
-==4139689== Reachable blocks (those to which a pointer was found) are not shown.
-==4139689== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139689== 
-==4139689== For lists of detected and suppressed errors, rerun with: -s
-==4139689== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139939== Memcheck, a memory error detector
+==4139939== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139939== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139939== Command: ./test.5
+==4139939== Parent PID: 4139938
+==4139939== 
+==4139939== 
+==4139939== Process terminating with default action of signal 6 (SIGABRT)
+==4139939==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139939==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139939==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139939==    by 0x4AEF475: raise (raise.c:26)
+==4139939==    by 0x4AD57F2: abort (abort.c:79)
+==4139939==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139939==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139939==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139939==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139939==    by 0x10C28D: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.5)
+==4139939==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.5)
+==4139939== 
+==4139939== HEAP SUMMARY:
+==4139939==     in use at exit: 79,391 bytes in 50 blocks
+==4139939==   total heap usage: 141 allocs, 91 frees, 84,694 bytes allocated
+==4139939== 
+==4139939== 144 bytes in 1 blocks are possibly lost in loss record 48 of 50
+==4139939==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139939==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139939==    by 0x10C218: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.5)
+==4139939==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.5)
+==4139939== 
+==4139939== LEAK SUMMARY:
+==4139939==    definitely lost: 0 bytes in 0 blocks
+==4139939==    indirectly lost: 0 bytes in 0 blocks
+==4139939==      possibly lost: 144 bytes in 1 blocks
+==4139939==    still reachable: 79,247 bytes in 49 blocks
+==4139939==                       of which reachable via heuristic:
+==4139939==                         stdstring          : 38 bytes in 1 blocks
+==4139939==         suppressed: 0 bytes in 0 blocks
+==4139939== Reachable blocks (those to which a pointer was found) are not shown.
+==4139939== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139939== 
+==4139939== For lists of detected and suppressed errors, rerun with: -s
+==4139939== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139699== Memcheck, a memory error detector
-==4139699== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139699== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139699== Command: ./test.6
-==4139699== Parent PID: 4139698
-==4139699== 
-==4139699== 
-==4139699== Process terminating with default action of signal 6 (SIGABRT)
-==4139699==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139699==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139699==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139699==    by 0x4AEF475: raise (raise.c:26)
-==4139699==    by 0x4AD57F2: abort (abort.c:79)
-==4139699==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139699==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139699==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139699==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139699==    by 0x10C30D: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.6)
-==4139699==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.6)
-==4139699== 
-==4139699== HEAP SUMMARY:
-==4139699==     in use at exit: 79,591 bytes in 50 blocks
-==4139699==   total heap usage: 161 allocs, 111 frees, 85,302 bytes allocated
-==4139699== 
-==4139699== 144 bytes in 1 blocks are possibly lost in loss record 48 of 50
-==4139699==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139699==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139699==    by 0x10C298: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.6)
-==4139699==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.6)
-==4139699== 
-==4139699== LEAK SUMMARY:
-==4139699==    definitely lost: 0 bytes in 0 blocks
-==4139699==    indirectly lost: 0 bytes in 0 blocks
-==4139699==      possibly lost: 144 bytes in 1 blocks
-==4139699==    still reachable: 79,447 bytes in 49 blocks
-==4139699==                       of which reachable via heuristic:
-==4139699==                         stdstring          : 38 bytes in 1 blocks
-==4139699==         suppressed: 0 bytes in 0 blocks
-==4139699== Reachable blocks (those to which a pointer was found) are not shown.
-==4139699== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139699== 
-==4139699== For lists of detected and suppressed errors, rerun with: -s
-==4139699== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139953== Memcheck, a memory error detector
+==4139953== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139953== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139953== Command: ./test.6
+==4139953== Parent PID: 4139952
+==4139953== 
+==4139953== 
+==4139953== Process terminating with default action of signal 6 (SIGABRT)
+==4139953==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139953==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139953==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139953==    by 0x4AEF475: raise (raise.c:26)
+==4139953==    by 0x4AD57F2: abort (abort.c:79)
+==4139953==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139953==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139953==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139953==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139953==    by 0x10C30D: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.6)
+==4139953==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.6)
+==4139953== 
+==4139953== HEAP SUMMARY:
+==4139953==     in use at exit: 79,591 bytes in 50 blocks
+==4139953==   total heap usage: 161 allocs, 111 frees, 85,302 bytes allocated
+==4139953== 
+==4139953== 144 bytes in 1 blocks are possibly lost in loss record 48 of 50
+==4139953==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139953==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139953==    by 0x10C298: BstMap<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Tester>::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.6)
+==4139953==    by 0x10AA2B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.6)
+==4139953== 
+==4139953== LEAK SUMMARY:
+==4139953==    definitely lost: 0 bytes in 0 blocks
+==4139953==    indirectly lost: 0 bytes in 0 blocks
+==4139953==      possibly lost: 144 bytes in 1 blocks
+==4139953==    still reachable: 79,447 bytes in 49 blocks
+==4139953==                       of which reachable via heuristic:
+==4139953==                         stdstring          : 38 bytes in 1 blocks
+==4139953==         suppressed: 0 bytes in 0 blocks
+==4139953== Reachable blocks (those to which a pointer was found) are not shown.
+==4139953== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139953== 
+==4139953== For lists of detected and suppressed errors, rerun with: -s
+==4139953== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 7 : Testing with BstMap<(a custom class we wrote),int>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139713== Memcheck, a memory error detector
-==4139713== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139713== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139713== Command: ./test.7
-==4139713== Parent PID: 4139712
-==4139713== 
-==4139713== 
-==4139713== Process terminating with default action of signal 6 (SIGABRT)
-==4139713==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139713==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139713==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139713==    by 0x4AEF475: raise (raise.c:26)
-==4139713==    by 0x4AD57F2: abort (abort.c:79)
-==4139713==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139713==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139713==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139713==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139713==    by 0x10C104: BstMap<Tester, int>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.7)
-==4139713==    by 0x10A9E5: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.7)
-==4139713== 
-==4139713== HEAP SUMMARY:
-==4139713==     in use at exit: 78,614 bytes in 31 blocks
-==4139713==   total heap usage: 81 allocs, 50 frees, 83,078 bytes allocated
-==4139713== 
-==4139713== 144 bytes in 1 blocks are possibly lost in loss record 24 of 27
-==4139713==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139713==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139713==    by 0x10C098: BstMap<Tester, int>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.7)
-==4139713==    by 0x10A9E5: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.7)
-==4139713== 
-==4139713== LEAK SUMMARY:
-==4139713==    definitely lost: 0 bytes in 0 blocks
-==4139713==    indirectly lost: 0 bytes in 0 blocks
-==4139713==      possibly lost: 144 bytes in 1 blocks
-==4139713==    still reachable: 78,470 bytes in 30 blocks
-==4139713==                       of which reachable via heuristic:
-==4139713==                         stdstring          : 38 bytes in 1 blocks
-==4139713==         suppressed: 0 bytes in 0 blocks
-==4139713== Reachable blocks (those to which a pointer was found) are not shown.
-==4139713== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139713== 
-==4139713== For lists of detected and suppressed errors, rerun with: -s
-==4139713== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139963== Memcheck, a memory error detector
+==4139963== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139963== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139963== Command: ./test.7
+==4139963== Parent PID: 4139962
+==4139963== 
+==4139963== 
+==4139963== Process terminating with default action of signal 6 (SIGABRT)
+==4139963==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139963==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139963==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139963==    by 0x4AEF475: raise (raise.c:26)
+==4139963==    by 0x4AD57F2: abort (abort.c:79)
+==4139963==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139963==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139963==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139963==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139963==    by 0x10C104: BstMap<Tester, int>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.7)
+==4139963==    by 0x10A9E5: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.7)
+==4139963== 
+==4139963== HEAP SUMMARY:
+==4139963==     in use at exit: 78,614 bytes in 31 blocks
+==4139963==   total heap usage: 81 allocs, 50 frees, 83,078 bytes allocated
+==4139963== 
+==4139963== 144 bytes in 1 blocks are possibly lost in loss record 24 of 27
+==4139963==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139963==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139963==    by 0x10C098: BstMap<Tester, int>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.7)
+==4139963==    by 0x10A9E5: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.7)
+==4139963== 
+==4139963== LEAK SUMMARY:
+==4139963==    definitely lost: 0 bytes in 0 blocks
+==4139963==    indirectly lost: 0 bytes in 0 blocks
+==4139963==      possibly lost: 144 bytes in 1 blocks
+==4139963==    still reachable: 78,470 bytes in 30 blocks
+==4139963==                       of which reachable via heuristic:
+==4139963==                         stdstring          : 38 bytes in 1 blocks
+==4139963==         suppressed: 0 bytes in 0 blocks
+==4139963== Reachable blocks (those to which a pointer was found) are not shown.
+==4139963== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139963== 
+==4139963== For lists of detected and suppressed errors, rerun with: -s
+==4139963== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139723== Memcheck, a memory error detector
-==4139723== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139723== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139723== Command: ./test.8
-==4139723== Parent PID: 4139722
-==4139723== 
-==4139723== 
-==4139723== Process terminating with default action of signal 6 (SIGABRT)
-==4139723==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139723==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139723==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139723==    by 0x4AEF475: raise (raise.c:26)
-==4139723==    by 0x4AD57F2: abort (abort.c:79)
-==4139723==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139723==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139723==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139723==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139723==    by 0x10C337: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.8)
-==4139723==    by 0x10AA0B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.8)
-==4139723== 
-==4139723== HEAP SUMMARY:
-==4139723==     in use at exit: 79,591 bytes in 50 blocks
-==4139723==   total heap usage: 141 allocs, 91 frees, 84,902 bytes allocated
-==4139723== 
-==4139723== 144 bytes in 1 blocks are possibly lost in loss record 35 of 39
-==4139723==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139723==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139723==    by 0x10C2C2: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.8)
-==4139723==    by 0x10AA0B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.8)
-==4139723== 
-==4139723== LEAK SUMMARY:
-==4139723==    definitely lost: 0 bytes in 0 blocks
-==4139723==    indirectly lost: 0 bytes in 0 blocks
-==4139723==      possibly lost: 144 bytes in 1 blocks
-==4139723==    still reachable: 79,447 bytes in 49 blocks
-==4139723==                       of which reachable via heuristic:
-==4139723==                         stdstring          : 38 bytes in 1 blocks
-==4139723==         suppressed: 0 bytes in 0 blocks
-==4139723== Reachable blocks (those to which a pointer was found) are not shown.
-==4139723== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139723== 
-==4139723== For lists of detected and suppressed errors, rerun with: -s
-==4139723== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139978== Memcheck, a memory error detector
+==4139978== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139978== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139978== Command: ./test.8
+==4139978== Parent PID: 4139977
+==4139978== 
+==4139978== 
+==4139978== Process terminating with default action of signal 6 (SIGABRT)
+==4139978==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139978==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139978==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139978==    by 0x4AEF475: raise (raise.c:26)
+==4139978==    by 0x4AD57F2: abort (abort.c:79)
+==4139978==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139978==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139978==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139978==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139978==    by 0x10C337: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.8)
+==4139978==    by 0x10AA0B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.8)
+==4139978== 
+==4139978== HEAP SUMMARY:
+==4139978==     in use at exit: 79,591 bytes in 50 blocks
+==4139978==   total heap usage: 141 allocs, 91 frees, 84,902 bytes allocated
+==4139978== 
+==4139978== 144 bytes in 1 blocks are possibly lost in loss record 35 of 39
+==4139978==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139978==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139978==    by 0x10C2C2: BstMap<Tester, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.8)
+==4139978==    by 0x10AA0B: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.8)
+==4139978== 
+==4139978== LEAK SUMMARY:
+==4139978==    definitely lost: 0 bytes in 0 blocks
+==4139978==    indirectly lost: 0 bytes in 0 blocks
+==4139978==      possibly lost: 144 bytes in 1 blocks
+==4139978==    still reachable: 79,447 bytes in 49 blocks
+==4139978==                       of which reachable via heuristic:
+==4139978==                         stdstring          : 38 bytes in 1 blocks
+==4139978==         suppressed: 0 bytes in 0 blocks
+==4139978== Reachable blocks (those to which a pointer was found) are not shown.
+==4139978== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139978== 
+==4139978== For lists of detected and suppressed errors, rerun with: -s
+==4139978== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 -----------------------------------------------
 testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==4139737== Memcheck, a memory error detector
-==4139737== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==4139737== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==4139737== Command: ./test.9
-==4139737== Parent PID: 4139736
-==4139737== 
-==4139737== 
-==4139737== Process terminating with default action of signal 6 (SIGABRT)
-==4139737==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
-==4139737==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
-==4139737==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
-==4139737==    by 0x4AEF475: raise (raise.c:26)
-==4139737==    by 0x4AD57F2: abort (abort.c:79)
-==4139737==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139737==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139737==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139737==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139737==    by 0x10C368: BstMap<Tester, Tester>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.9)
-==4139737==    by 0x10AA1D: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.9)
-==4139737== 
-==4139737== HEAP SUMMARY:
-==4139737==     in use at exit: 79,791 bytes in 50 blocks
-==4139737==   total heap usage: 161 allocs, 111 frees, 85,510 bytes allocated
-==4139737== 
-==4139737== 144 bytes in 1 blocks are possibly lost in loss record 34 of 38
-==4139737==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==4139737==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==4139737==    by 0x10C2F3: BstMap<Tester, Tester>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.9)
-==4139737==    by 0x10AA1D: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.j8ZukO/test.9)
-==4139737== 
-==4139737== LEAK SUMMARY:
-==4139737==    definitely lost: 0 bytes in 0 blocks
-==4139737==    indirectly lost: 0 bytes in 0 blocks
-==4139737==      possibly lost: 144 bytes in 1 blocks
-==4139737==    still reachable: 79,647 bytes in 49 blocks
-==4139737==                       of which reachable via heuristic:
-==4139737==                         stdstring          : 38 bytes in 1 blocks
-==4139737==         suppressed: 0 bytes in 0 blocks
-==4139737== Reachable blocks (those to which a pointer was found) are not shown.
-==4139737== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==4139737== 
-==4139737== For lists of detected and suppressed errors, rerun with: -s
-==4139737== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==4139992== Memcheck, a memory error detector
+==4139992== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4139992== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==4139992== Command: ./test.9
+==4139992== Parent PID: 4139991
+==4139992== 
+==4139992== 
+==4139992== Process terminating with default action of signal 6 (SIGABRT)
+==4139992==    at 0x4B43A7C: __pthread_kill_implementation (pthread_kill.c:44)
+==4139992==    by 0x4B43A7C: __pthread_kill_internal (pthread_kill.c:78)
+==4139992==    by 0x4B43A7C: pthread_kill@@GLIBC_2.34 (pthread_kill.c:89)
+==4139992==    by 0x4AEF475: raise (raise.c:26)
+==4139992==    by 0x4AD57F2: abort (abort.c:79)
+==4139992==    by 0x4905BBD: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139992==    by 0x491124B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139992==    by 0x49112B6: std::terminate() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139992==    by 0x4911517: __cxa_throw (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139992==    by 0x10C368: BstMap<Tester, Tester>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.9)
+==4139992==    by 0x10AA1D: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.9)
+==4139992== 
+==4139992== HEAP SUMMARY:
+==4139992==     in use at exit: 79,791 bytes in 50 blocks
+==4139992==   total heap usage: 161 allocs, 111 frees, 85,510 bytes allocated
+==4139992== 
+==4139992== 144 bytes in 1 blocks are possibly lost in loss record 34 of 38
+==4139992==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==4139992==    by 0x49100B3: __cxa_allocate_exception (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==4139992==    by 0x10C2F3: BstMap<Tester, Tester>::remove(Tester const&) (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.9)
+==4139992==    by 0x10AA1D: main (in /home/ece551db/graderbase/work/zs148.098_bst_map.8hAcHv/test.9)
+==4139992== 
+==4139992== LEAK SUMMARY:
+==4139992==    definitely lost: 0 bytes in 0 blocks
+==4139992==    indirectly lost: 0 bytes in 0 blocks
+==4139992==      possibly lost: 144 bytes in 1 blocks
+==4139992==    still reachable: 79,647 bytes in 49 blocks
+==4139992==                       of which reachable via heuristic:
+==4139992==                         stdstring          : 38 bytes in 1 blocks
+==4139992==         suppressed: 0 bytes in 0 blocks
+==4139992== Reachable blocks (those to which a pointer was found) are not shown.
+==4139992== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4139992== 
+==4139992== For lists of detected and suppressed errors, rerun with: -s
+==4139992== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 
 Overall Grade: F
