@@ -41,13 +41,13 @@ BstMap<K, V>::BstMap(const BstMap & rhs) {
   root = copyHelper(rhs.root);
 }
 template<typename K, typename V>
-typename BstMap<K, V>::Node * BstMap<K, V>::copyHelper(Node * current) {
-  if (current == NULL) {
+typename BstMap<K, V>::Node * BstMap<K, V>::copyHelper(Node * cur) {
+  if (cur == NULL) {
     return NULL;
   }
-  Node * mynode = new Node(current->key, current->value);
-  mynode->left = copyHelper(current->left);
-  mynode->right = copyHelper(current->right);
+  Node * mynode = new Node(cur->key, cur->value);
+  mynode->left = copyHelper(cur->left);
+  mynode->right = copyHelper(cur->right);
   return mynode;
 }
 template<typename K, typename V>
@@ -106,42 +106,42 @@ const V & BstMap<K, V>::lookup(const K & key) const throw(std::invalid_argument)
 }
 template<typename K, typename V>
 void BstMap<K, V>::remove(const K & key) {
-  Node ** current = &root;
-  while (*current != NULL) {
-    if (key == (*current)->key) {
+  Node ** cur = &root;
+  while (*cur != NULL) {
+    if (key == (*cur)->key) {
       break;
     }
-    else if (key < (*current)->key) {
-      current = &(*current)->left;
+    else if (key < (*cur)->key) {
+      cur = &(*cur)->left;
     }
     else {
-      current = &(*current)->right;
+      cur = &(*cur)->right;
     }
   }
-  if (*current == NULL) {
+  if (*cur == NULL) {
     throw std::invalid_argument("key not find\n");
   }
-  if ((*current)->left == NULL) {
-    Node * temp = (*current)->right;
-    delete (*current);
-    *current = temp;
+  if ((*cur)->left == NULL) {
+    Node * temp = (*cur)->right;
+    delete (*cur);
+    *cur = temp;
   }
-  else if ((*current)->right == NULL) {
-    Node * temp = (*current)->left;
-    delete (*current);
-    *current = temp;
+  else if ((*cur)->right == NULL) {
+    Node * temp = (*cur)->left;
+    delete (*cur);
+    *cur = temp;
   }
   else {
-    Node * findnode = (*current)->left;
-    while (findnode->right != NULL) {
-      findnode = findnode->right;
+    Node * closestLargest = (*cur)->left;
+    while (closestLargest->right != NULL) {
+      closestLargest = closestLargest->right;
     }
 
-    K tempkey = findnode->key;
-    V tempvalue = findnode->value;
-    remove(findnode->key);
-    (*current)->key = tempkey;
-    (*current)->value = tempvalue;
+    K tempkey = closestLargest->key;
+    V tempvalue = closestLargest->value;
+    remove(closestLargest->key);
+    (*cur)->key = tempkey;
+    (*cur)->value = tempvalue;
   }
 }
 template<typename K, typename V>
