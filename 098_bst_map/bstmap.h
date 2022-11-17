@@ -47,12 +47,21 @@ class BstMap : public Map<K, V> {
       }
     }
   }
-  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
+  /* virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
     Node * ans = findNode(root, key);
     if (ans == NULL) {
       throw std::invalid_argument("not find corresponding key");
     }
     return ans->value;
+    }*/
+  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
+    Node * target = findNode(this->root, key);
+    if (target == NULL) {
+      throw std::invalid_argument("key not found");
+    }
+    else {
+      return target->value;
+    }
   }
   virtual void remove(const K & key) { root = removeHelper(root, key); }
   Node * removeHelper(Node * cur, const K & key) {
@@ -89,7 +98,7 @@ class BstMap : public Map<K, V> {
     }
   }
 
-  Node * findNode(Node * cur, const K & key) {
+  /* Node * findNode(Node * cur, const K & key) {
     Node * ans = cur;
     while (ans != NULL) {
       if (ans->key == key) {
@@ -103,6 +112,21 @@ class BstMap : public Map<K, V> {
       }
     }
     return ans;
+    }*/
+  Node * findNode(Node * curr, const K & key) {
+    Node * travesal = curr;
+    while (travesal != NULL) {
+      if (key == travesal->key) {
+        return travesal;
+      }
+      else if (key > travesal->key) {
+        travesal = travesal->right;
+      }
+      else {
+        travesal = travesal->left;
+      }
+    }
+    return travesal;
   }
 
   K findMin(const Node * cur) {
