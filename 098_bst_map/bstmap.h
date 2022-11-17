@@ -27,14 +27,14 @@ class BstMap : public Map<K, V> {
  public:
   BstMap() : root(NULL) {}
   BstMap(const BstMap & rhs) { root = copyHelper(rhs.root); }
-  Node * copyHelper(Node * cur) {
-    if (cur == NULL) {
+  Node * copyHelper(Node * current) {
+    if (current == NULL) {
       return NULL;
     }
-    Node * ans = new Node(cur->key, cur->value);
-    ans->left = copyHelper(ans->left);
-    ans->right = copyHelper(ans->right);
-    return ans;
+    Node * mynode = new Node(current->key, current->value);
+    mynode->left = copy(current->left);
+    mynode->right = copy(current->right);
+    return mynode;
   }
   BstMap & operator=(const BstMap & rhs) {
     if (this != &rhs) {
