@@ -46,23 +46,23 @@ class BstMap : public Map<K, V> {
   virtual void add(const K & key, const V & value) {
     this->root = addHelper(this->root, key, value);
   }
-  Node * addHelper(Node * cur, const K & key, const V & value) {
-    if (cur == NULL) {
+  Node * addHelper(Node * current, const K & key, const V & value) {
+    if (current == NULL) {
       Node * ans = new Node(key, value);
       return ans;
     }
     else {
-      if (cur->key == key) {
-        cur->value = value;
-        return cur;
+      if (key == current->key) {
+        current->value = value;
+        return current;
       }
-      else if (key < cur->key) {
-        cur->left = addHelper(cur->left, key, value);
+      else if (key < current->key) {
+        current->left = addnode(current->left, key, value);
       }
       else {
-        cur->right = addHelper(cur->right, key, value);
+        current->right = addnode(current->right, key, value);
       }
-      return cur;
+      return current;
     }
   }
 
