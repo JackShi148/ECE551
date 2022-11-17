@@ -15,14 +15,31 @@ class BstMap : public Map<K, V> {
     V value;
     Node * left;
     Node * right;
-
+    Node() : left(NULL), right(NULL) {}
     Node(const K & key, const V & value) :
         key(key), value(value), left(NULL), right(NULL) {}
   };
   Node * root;
 
  public:
-  /*BstMap() : root(NULL) {}
+  BstMap() : root(NULL) {}
+  BstMap(const BstMap & rhs) { root = copyHelper(rhs.root); }
+  Node * copyHelper(Node * cur) {
+    if (cur == NULL) {
+      return NULL;
+    }
+    Node * ans = new Node(cur->key, cur->value);
+    ans->left = copyHelper(ans->left);
+    ans->right = copyHelper(ans->right);
+    return ans;
+  }
+  BstMap & operator=(const BstMap & rhs) {
+    if (this != &rhs) {
+      BstMap<K, V> temp(rhs);
+      std::swap(root, temp.root);
+    }
+    return *this;
+  }
   virtual void add(const K & key, const V & value) {
     this->root = addHelper(this->root, key, value);
   }
@@ -111,105 +128,7 @@ class BstMap : public Map<K, V> {
     delete cur;
   }
 
-  virtual ~BstMap() { destroy(this->root); }*/
-  BstMap() : root(NULL) {}
-  ~BstMap() { destroy(root); }
-  //destroy helper function
-  void destroy(Node * current) {
-    if (current == NULL) {
-      return;
-    }
-    destroy(current->left);
-    destroy(current->right);
-    delete current;
-  }
-
-  //add
-  void add(const K & key, const V & value) { root = addnode(root, key, value); }
-  //add helper function
-  Node * addnode(Node * current, const K & key, const V & value) {
-    if (current == NULL) {
-      Node * ans = new Node(key, value);
-      return ans;
-    }
-    else {
-      if (key == current->key) {
-        current->value = value;
-        return current;
-      }
-      else if (key < current->key) {
-        current->left = addnode(current->left, key, value);
-      }
-      else {
-        current->right = addnode(current->right, key, value);
-      }
-      return current;
-    }
-  }
-
-  //lookup
-  const V & lookup(const K & key) const throw(std::invalid_argument) {
-    Node * current = root;
-    while (current != NULL) {
-      if (key == current->key) {
-        break;
-        //return current->value;
-      }
-      else if (key < current->key) {
-        current = current->left;
-      }
-      else {
-        current = current->right;
-      }
-    }
-
-    if (current == NULL) {
-      throw std::invalid_argument("key not find\n");
-    }
-    return current->value;
-  }
-
-  //remove
-  void remove(const K & key) {
-    Node ** current = &root;
-    while (*current != NULL) {
-      if (key == (*current)->key) {
-        break;
-      }
-      else if (key < (*current)->key) {
-        current = &(*current)->left;
-      }
-      else {
-        current = &(*current)->right;
-      }
-    }
-    if (*current == NULL) {
-      //return;
-      throw std::invalid_argument("key not find\n");
-    }
-    if ((*current)->left == NULL) {
-      Node * temp = (*current)->right;
-      delete (*current);
-      *current = temp;
-    }
-    else if ((*current)->right == NULL) {
-      Node * temp = (*current)->left;
-      delete (*current);
-      *current = temp;
-    }
-    else {
-      Node * findnode = (*current)->left;
-      while (findnode->right != NULL) {
-        findnode = findnode->right;
-      }
-      //Node * similarnode = similar((*current)->left);
-      K tempkey = findnode->key;
-      V tempvalue = findnode->value;
-      remove(findnode->key);
-      (*current)->key = tempkey;
-      (*current)->value = tempvalue;
-    }
-  }
+  virtual ~BstMap() { destroy(this->root); }
 };
 
 #endif
