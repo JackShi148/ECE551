@@ -113,7 +113,7 @@ class BstMap : public Map<K, V> {
     }
     return ans;
     }*/
-  Node * findNode(Node * curr, const K & key) {
+  Node * findNode(Node * curr, const K & key) const {
     Node * travesal = curr;
     while (travesal != NULL) {
       if (key == travesal->key) {
