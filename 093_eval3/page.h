@@ -88,7 +88,7 @@ void Page::printContentandChoice() const {
     ss << "Sorry, you have lost. Better luck next time!\n";
   }
   else if (type == 'N') {
-    ss << "Waht would you like to do?\n\n";
+    ss << "What would you like to do?\n\n";
     std::vector<std::string>::const_iterator it_chs = choice->choices.begin();
     int i = 1;
     while (it_chs != choice->choices.end()) {
