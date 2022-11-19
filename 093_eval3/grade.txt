@@ -1,12 +1,21 @@
-Grading at 11/19/2022:16:37:07.069529
-For commit ID 9899ccd8e9dbe2700a056e204f4daad39ffe0506
-Grading at Sat Nov 19 11:37:06 AM EST 2022
+Grading at 11/19/2022:16:38:17.821695
+For commit ID 574fd90353a4cc01c5d9796d0416d1a37f656a07
+Grading at Sat Nov 19 11:38:17 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
-rm -f *~ cyoa-step1 page.h Makefile testcases.txt
-g++     cyoa-step1.cpp   -o cyoa-step1
+rm -f *~ cyoa-step1.cpp page.h Makefile testcases.txt
+make: Nothing to be done for 'cyoa-step1'.
+The code compiled (good)
+Executable cyoa-step1 exists (good)
+------------------------------------
+Now running YOUR tests for step 1
+------------------------------------
+No request to check for intermediate deadline completion on step 1
+
+Step 2
+Checking that cyoa-step2 compiles
 The code did not compile!
 
 Overall Grade: NO GRADE YET
