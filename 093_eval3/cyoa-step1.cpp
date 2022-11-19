@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "page.h"
+#include "page.hpp"
 
 int main(int argc, char ** argv) {
   if (argc != 2) {

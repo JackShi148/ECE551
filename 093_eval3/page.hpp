@@ -1,5 +1,5 @@
-#ifndef __PAGE_H__
-#define __PAGE_H__
+#ifndef __PAGE_HPP__
+#define __PAGE_HPP__
 #include <cstdlib>
 #include <exception>
 #include <fstream>
