@@ -1,0 +1,22 @@
+Grading at 11/19/2022:15:18:58.455902
+For commit ID ebb98cc5a91bef546f5eb26f11a705d1920098d1
+Grading at Sat Nov 19 10:18:57 AM EST 2022
+Doing some basic checking for your submission
+
+Step 1
+Checking that cyoa-step1 compiles
+rm -f *~
+make: 'cyoa-step1' is up to date.
+The code compiled (good)
+Executable cyoa-step1 exists (good)
+------------------------------------
+Now running YOUR tests for step 1
+------------------------------------
+No request to check for intermediate deadline completion on step 1
+
+Step 2
+Checking that cyoa-step2 compiles
+rm -f *~
+The code did not compile!
+
+Overall Grade: NO GRADE YET
