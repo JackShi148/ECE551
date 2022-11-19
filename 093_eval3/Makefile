@@ -3,4 +3,4 @@ cyoa-step1:cyoa-step1.cpp page.h
 
 .PHONY: clean
 clean:
-	rm -f *~
+	rm -f *~ cyoa-step1 page.h Makefile testcases.txt
