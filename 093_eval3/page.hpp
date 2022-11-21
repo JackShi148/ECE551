@@ -48,6 +48,7 @@ class Page {
   void printContentandChoice() const;
   size_t getPageNum() { return page_num; }
   char getType() { return type; }
+  size_t getChoiceSize() { return choice->choices.size(); }
   size_t getSrcNum() { return choice->src_pageNum; }
   std::vector<size_t> getDesNums() { return choice->des_pageNums; }
   ~Page();
@@ -85,8 +86,6 @@ Page & Page::operator=(const Page & rhs) {
 //print the content and choices of every page
 void Page::printContentandChoice() const {
   std::stringstream ss;
-  //ss << "Page " << page_num << '\n';
-  //ss << "==========\n";
   std::vector<std::string>::const_iterator it_cnt = content.begin();
   while (it_cnt != content.end()) {
     ss << *it_cnt << '\n';
@@ -186,10 +185,12 @@ bool verifyReference(std::vector<Page *> & pages) {
        ++it_pages) {
     std::vector<size_t>::iterator it_des = (*it_pages)->choice->des_pageNums.begin();
     while (it_des != (*it_pages)->choice->des_pageNums.end()) {
-      if (pages[*it_des]->referenced == false) {
-        pages[*it_des]->referenced = true;
+      if (*it_des != (*it_pages)->choice->src_pageNum) {
+        if (pages[*it_des]->referenced == false) {
+          pages[*it_des]->referenced = true;
+        }
+        ++it_des;
       }
-      ++it_des;
     }
   }
   for (size_t i = 1; i < pages.size(); i++) {
