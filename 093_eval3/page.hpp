@@ -31,17 +31,27 @@ class Page {
   Choice * choice;
   size_t page_num;
   char type;
+  bool referenced;
   std::string page_name;
   std::vector<std::string> content;
 
  public:
-  Page() : choice(NULL), page_num(0), type('N') {}
-  Page(size_t page_num, char type, std::string page_name) :
-      choice(NULL), page_num(page_num), type(type), page_name(page_name) {}
+  Page() : choice(NULL), page_num(0), type('N'), referenced(false) {}
+  Page(size_t page_num, char type, bool referenced, std::string page_name) :
+      choice(NULL),
+      page_num(page_num),
+      type(type),
+      referenced(referenced),
+      page_name(page_name) {}
   Page(const Page & rhs);
   Page & operator=(const Page & rhs);
   void printContentandChoice() const;
+  size_t getPageNum() { return page_num; }
+  char getType() { return type; }
+  size_t getSrcNum() { return choice->src_pageNum; }
+  std::vector<size_t> getDesNums() { return choice->des_pageNums; }
   ~Page();
+  friend bool verifyReference(std::vector<Page *> & pages);
   friend std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName);
 };
 
@@ -50,6 +60,7 @@ Page::Page(const Page & rhs) :
     choice(NULL),
     page_num(rhs.page_num),
     type(rhs.type),
+    referenced(rhs.referenced),
     page_name(rhs.page_name),
     content(rhs.content) {
   choice =
@@ -65,6 +76,7 @@ Page & Page::operator=(const Page & rhs) {
     content = rhs.content;
     page_num = rhs.page_num;
     type = rhs.type;
+    referenced = rhs.referenced;
     page_name = rhs.page_name;
   }
   return *this;
@@ -115,7 +127,7 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
         char type = line[at_pos + 1];
         size_t colon = line.find(':');
         std::string page_name = line.substr(colon + 1);
-        Page * new_page = new Page(page_num, type, page_name);
+        Page * new_page = new Page(page_num, type, false, page_name);
         pages.push_back(new_page);
         std::string page_addr = dirName + '/' + page_name;
         std::ifstream page_ifs(page_addr.c_str(), std::ifstream::in);
@@ -152,4 +164,64 @@ void freePages(std::vector<Page *> & pages) {
   }
 }
 
+bool verifyValidation(std::vector<Page *> & pages) {
+  size_t len = pages.size();
+  for (std::vector<Page *>::const_iterator it_pages = pages.begin();
+       it_pages != pages.end();
+       ++it_pages) {
+    std::vector<size_t> des_pageNums = (*it_pages)->getDesNums();
+    std::vector<size_t>::const_iterator it_des = des_pageNums.begin();
+    while (it_des != des_pageNums.end()) {
+      if (*it_des >= len || pages[*it_des]->getPageNum() != *it_des) {
+        return false;
+      }
+      ++it_des;
+    }
+  }
+  return true;
+}
+
+bool verifyReference(std::vector<Page *> & pages) {
+  for (std::vector<Page *>::iterator it_pages = pages.begin(); it_pages != pages.end();
+       ++it_pages) {
+    std::vector<size_t>::iterator it_des = (*it_pages)->choice->des_pageNums.begin();
+    while (it_des != (*it_pages)->choice->des_pageNums.end()) {
+      if (pages[*it_des]->referenced == false) {
+        pages[*it_des]->referenced = true;
+      }
+      ++it_des;
+    }
+  }
+  for (size_t i = 1; i < pages.size(); i++) {
+    if (pages[i]->referenced == false) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool verifyWinandLose(std::vector<Page *> & pages) {
+  bool foundWin = false;
+  bool foundLose = false;
+  for (std::vector<Page *>::const_iterator it_pages = pages.begin();
+       it_pages != pages.end();
+       ++it_pages) {
+    if ((*it_pages)->getType() == 'W') {
+      foundWin = true;
+      if (foundLose) {
+        break;
+      }
+    }
+    else if ((*it_pages)->getType() == 'L') {
+      foundLose = true;
+      if (foundWin) {
+        break;
+      }
+    }
+  }
+  if (foundWin && foundLose) {
+    return true;
+  }
+  return false;
+}
 #endif
