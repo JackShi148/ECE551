@@ -2,4 +2,4 @@ cyoa-step1 /usr/local/ece551/cyoa/story1
 cyoa-step1 /usr/local/ece551/cyoa/story2
 cyoa-step1 story1
 cyoa-step1 story2
-
+ec:step2

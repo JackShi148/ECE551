@@ -48,11 +48,12 @@ class Page {
   void printContentandChoice() const;
   size_t getPageNum() { return page_num; }
   char getType() { return type; }
+  bool getReference() { return referenced; }
   size_t getChoiceSize() { return choice->choices.size(); }
   size_t getSrcNum() { return choice->src_pageNum; }
   std::vector<size_t> getDesNums() { return choice->des_pageNums; }
   ~Page();
-  friend bool verifyReference(std::vector<Page *> & pages);
+  friend void setReference(std::vector<Page *> & pages);
   friend std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName);
 };
 
@@ -162,25 +163,7 @@ void freePages(std::vector<Page *> & pages) {
     delete pages[i];
   }
 }
-
-bool verifyValidation(std::vector<Page *> & pages) {
-  size_t len = pages.size();
-  for (std::vector<Page *>::const_iterator it_pages = pages.begin();
-       it_pages != pages.end();
-       ++it_pages) {
-    std::vector<size_t> des_pageNums = (*it_pages)->getDesNums();
-    std::vector<size_t>::const_iterator it_des = des_pageNums.begin();
-    while (it_des != des_pageNums.end()) {
-      if (*it_des >= len || pages[*it_des]->getPageNum() != *it_des) {
-        return false;
-      }
-      ++it_des;
-    }
-  }
-  return true;
-}
-
-bool verifyReference(std::vector<Page *> & pages) {
+void setReference(std::vector<Page *> & pages) {
   for (std::vector<Page *>::iterator it_pages = pages.begin(); it_pages != pages.end();
        ++it_pages) {
     std::vector<size_t>::iterator it_des = (*it_pages)->choice->des_pageNums.begin();
@@ -193,36 +176,59 @@ bool verifyReference(std::vector<Page *> & pages) {
       }
     }
   }
+}
+bool verifyValidation(const std::vector<Page *> & pages) {
+  size_t len = pages.size();
+  for (size_t i = 0; i < pages.size(); ++i) {
+    std::vector<size_t> des_pageNums = pages[i]->getDesNums();
+    for (size_t j = 0; j < des_pageNums.size(); ++j) {
+      if (des_pageNums[j] >= len ||
+          pages[des_pageNums[j]]->getPageNum() != des_pageNums[j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+bool verifyReference(const std::vector<Page *> & pages) {
   for (size_t i = 1; i < pages.size(); i++) {
-    if (pages[i]->referenced == false) {
+    if (pages[i]->getReference() == false) {
       return false;
     }
   }
   return true;
 }
 
-bool verifyWinandLose(std::vector<Page *> & pages) {
+bool verifyWinandLose(const std::vector<Page *> & pages) {
   bool foundWin = false;
   bool foundLose = false;
-  for (std::vector<Page *>::const_iterator it_pages = pages.begin();
-       it_pages != pages.end();
-       ++it_pages) {
-    if ((*it_pages)->getType() == 'W') {
+  for (size_t i = 0; i < pages.size(); ++i) {
+    if (pages[i]->getType() == 'W') {
       foundWin = true;
       if (foundLose) {
         break;
       }
     }
-    else if ((*it_pages)->getType() == 'L') {
+    else if (pages[i]->getType() == 'L') {
       foundLose = true;
       if (foundWin) {
         break;
       }
     }
   }
-  if (foundWin && foundLose) {
-    return true;
+  return foundWin & foundLose;
+}
+
+bool check(std::vector<Page *> & pages) {
+  //setReference(pages);
+  if (verifyValidation(pages)) {
+    if (verifyReference(pages)) {
+      if (verifyWinandLose(pages)) {
+        return true;
+      }
+    }
   }
-  return false;
+  return true;
 }
 #endif

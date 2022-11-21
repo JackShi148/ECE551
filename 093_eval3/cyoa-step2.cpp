@@ -1,14 +1,14 @@
 #include <cstdlib>
-#include <exception>
 #include <fstream>
 #include <iostream>
 #include <vector>
 
 #include "page.hpp"
+#include "story.hpp"
 
 int main(int argc, char ** argv) {
   if (argc != 2) {
-    std::cerr << "the number of arguments is wrong!\n";
+    std::cerr << "the number of arguments is wrong\n" << std::endl;
     return EXIT_FAILURE;
   }
   std::string dirName(argv[1]);
@@ -19,13 +19,9 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   std::vector<Page *> pages = parseText(ifs, dirName);
-  std::vector<Page *>::const_iterator it = pages.begin();
-  while (it != pages.end()) {
-    std::cout << "Page " << (*it)->getPageNum() << std::endl;
-    std::cout << "==========" << std::endl;
-    (*it)->printContentandChoice();
-    ++it;
-  }
+
+  chooseStory(pages);
+
   freePages(pages);
   ifs.close();
   return EXIT_SUCCESS;

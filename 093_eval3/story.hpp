@@ -1,3 +1,5 @@
+#ifndef __STORY_HPP__
+#define __STORY_HPP__
 #include <ctype.h>
 #include <errno.h>
 
@@ -39,3 +41,4 @@ void chooseStory(std::vector<Page *> & pages) {
     }
   }
 }
+#endif
