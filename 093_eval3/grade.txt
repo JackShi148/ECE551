@@ -1,6 +1,6 @@
-Grading at 11/21/2022:02:42:27.652551
-For commit ID 72791df7e70617b4bc63ac3811757057f2b9b9bd
-Grading at Sun Nov 20 09:42:21 PM EST 2022
+Grading at 11/21/2022:04:35:51.797840
+For commit ID cd775f582e1988f2aacdb7d5ee0a7d2116d03e67
+Grading at Sun Nov 20 11:35:46 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -39,24 +39,7 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean
-------------------------------------
-You have requested that we check for intermediate deadline completion on step 1
-------------------------------------
-
-Step 1 EC intermediate deadline test 1
-===========================================================
-./cyoa-step1 /usr/local/ece551/cyoa/story1
-  - Valgrind was clean (no errors, no memory leaks)
-Valgrind was clean for this testcase
-You have passed this test case
-
-Step 1 EC intermediate deadline test 2
-===========================================================
-./cyoa-step1 /usr/local/ece551/cyoa/story2
-  - Valgrind was clean (no errors, no memory leaks)
-Valgrind was clean for this testcase
-You have passed this test case
-Intermediate deadline requirements for Step 1 passed at Sun Nov 20 09:42:27 PM EST 2022
+No request to check for intermediate deadline completion on step 1
 
 Step 2
 Checking that cyoa-step2 compiles
