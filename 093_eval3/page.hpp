@@ -85,8 +85,8 @@ Page & Page::operator=(const Page & rhs) {
 //print the content and choices of every page
 void Page::printContentandChoice() const {
   std::stringstream ss;
-  ss << "Page " << page_num << '\n';
-  ss << "==========\n";
+  //ss << "Page " << page_num << '\n';
+  //ss << "==========\n";
   std::vector<std::string>::const_iterator it_cnt = content.begin();
   while (it_cnt != content.end()) {
     ss << *it_cnt << '\n';

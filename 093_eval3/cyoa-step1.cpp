@@ -20,6 +20,8 @@ int main(int argc, char ** argv) {
   std::vector<Page *> pages = parseText(ifs, dirName);
   std::vector<Page *>::const_iterator it = pages.begin();
   while (it != pages.end()) {
+    std::cout << "Page " << (*it)->getPageNum() << std::endl;
+    std::cout << "==========" << std::endl;
     (*it)->printContentandChoice();
     ++it;
   }
