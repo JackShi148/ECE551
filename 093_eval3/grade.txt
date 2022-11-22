@@ -1,6 +1,6 @@
-Grading at 11/22/2022:03:15:17.841515
-For commit ID 02cc703f5bc3375d0ed35674f490496aa3ba40fd
-Grading at Mon Nov 21 10:15:15 PM EST 2022
+Grading at 11/22/2022:03:18:41.947601
+For commit ID a8b898c67fcba7b9467427aa18daaff2b21d2ba3
+Grading at Mon Nov 21 10:18:38 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -29,12 +29,19 @@ No request to check for intermediate deadline completion on step 1
 
 Step 2
 Checking that cyoa-step2 compiles
-make: 'cyoa-step2' is up to date.
+g++ -o cyoa-step2 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step2.cpp
 The code compiled (good)
 Executable cyoa-step2 exists (good)
 ------------------------------------
 Now running YOUR tests for step 2
 ------------------------------------
+
+
+2.1: Current test is ./cyoa-step2 story1  <  ./story1/inputs/input0.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+  - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
 No request to check for intermediate deadline completion on step 2
 
 Step 3
