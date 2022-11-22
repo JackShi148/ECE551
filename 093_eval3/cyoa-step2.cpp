@@ -19,7 +19,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   std::vector<Page *> pages = parseText(ifs, dirName);
-
+  verifyValidation(pages);
   chooseStory(pages);
 
   freePages(pages);

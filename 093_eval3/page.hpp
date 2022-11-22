@@ -7,6 +7,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+
 class Page {
  private:
   class Choice {
@@ -51,8 +52,12 @@ class Page {
   bool getReference() { return referenced; }
   size_t getChoiceSize() { return choice->choices.size(); }
   size_t getSrcNum() { return choice->src_pageNum; }
+  /*Choice * cloneChoice() {
+    return new Choice(choice->src_pageNum, choice->des_pageNums, choice->choices);
+  }*/
   std::vector<size_t> getDesNums() { return choice->des_pageNums; }
-  ~Page();
+  ~Page() {}
+  friend void freePages(std::vector<Page *> & pages);
   friend void setReference(std::vector<Page *> & pages);
   friend std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName);
 };
@@ -92,7 +97,6 @@ void Page::printContentandChoice() const {
     ss << *it_cnt << '\n';
     ++it_cnt;
   }
-  //ss << '\n';
   if (type == 'W') {
     ss << "Congratulations! You have won. Hooray!\n";
   }
@@ -111,9 +115,9 @@ void Page::printContentandChoice() const {
   }
   std::cout << ss.str();
 }
-Page::~Page() {
+/*Page::~Page() {
   delete choice;
-}
+  }*/
 std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
   std::vector<Page *> pages;
   std::string line;
@@ -154,15 +158,10 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
       }
     }
   }
+
   return pages;
 }
 
-void freePages(std::vector<Page *> & pages) {
-  int len = pages.size();
-  for (int i = 0; i < len; i++) {
-    delete pages[i];
-  }
-}
 void setReference(std::vector<Page *> & pages) {
   for (std::vector<Page *>::iterator it_pages = pages.begin(); it_pages != pages.end();
        ++it_pages) {
@@ -177,8 +176,22 @@ void setReference(std::vector<Page *> & pages) {
     }
   }
 }
+
+void freePages(std::vector<Page *> & pages) {
+  int len = pages.size();
+  for (int i = 0; i < len; i++) {
+    if (pages[i]->choice != NULL) {
+      delete pages[i]->choice;
+    }
+    if (pages[i] != NULL) {
+      delete pages[i];
+    }
+  }
+}
+
 bool verifyValidation(const std::vector<Page *> & pages) {
   size_t len = pages.size();
+
   for (size_t i = 0; i < pages.size(); ++i) {
     std::vector<size_t> des_pageNums = pages[i]->getDesNums();
     for (size_t j = 0; j < des_pageNums.size(); ++j) {
@@ -221,7 +234,7 @@ bool verifyWinandLose(const std::vector<Page *> & pages) {
 }
 
 bool check(std::vector<Page *> & pages) {
-  //setReference(pages);
+  setReference(pages);
   if (verifyValidation(pages)) {
     if (verifyReference(pages)) {
       if (verifyWinandLose(pages)) {
