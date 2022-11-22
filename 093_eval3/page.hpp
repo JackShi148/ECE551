@@ -52,6 +52,7 @@ class Page {
   bool getReference() { return referenced; }
   size_t getChoiceSize() { return choice->choices.size(); }
   size_t getSrcNum() { return choice->src_pageNum; }
+  Choice * getChoice() { return choice; }
   /*Choice * cloneChoice() {
     return new Choice(choice->src_pageNum, choice->des_pageNums, choice->choices);
   }*/
@@ -165,13 +166,18 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
 void setReference(std::vector<Page *> & pages) {
   for (std::vector<Page *>::iterator it_pages = pages.begin(); it_pages != pages.end();
        ++it_pages) {
-    std::vector<size_t>::iterator it_des = (*it_pages)->choice->des_pageNums.begin();
-    while (it_des != (*it_pages)->choice->des_pageNums.end()) {
-      if (*it_des != (*it_pages)->choice->src_pageNum) {
-        if (pages[*it_des]->referenced == false) {
-          pages[*it_des]->referenced = true;
+    if ((*it_pages)->choice == NULL) {
+      continue;
+    }
+    else {
+      std::vector<size_t>::iterator it_des = (*it_pages)->choice->des_pageNums.begin();
+      while (it_des != (*it_pages)->choice->des_pageNums.end()) {
+        if (*it_des != (*it_pages)->choice->src_pageNum) {
+          if (pages[*it_des]->referenced == false) {
+            pages[*it_des]->referenced = true;
+          }
+          ++it_des;
         }
-        ++it_des;
       }
     }
   }
@@ -193,11 +199,16 @@ bool verifyValidation(const std::vector<Page *> & pages) {
   size_t len = pages.size();
 
   for (size_t i = 0; i < pages.size(); ++i) {
-    std::vector<size_t> des_pageNums = pages[i]->getDesNums();
-    for (size_t j = 0; j < des_pageNums.size(); ++j) {
-      if (des_pageNums[j] >= len ||
-          pages[des_pageNums[j]]->getPageNum() != des_pageNums[j]) {
-        return false;
+    if (pages[i]->getChoice() == NULL) {
+      continue;
+    }
+    else {
+      std::vector<size_t> des_pageNums = pages[i]->getDesNums();
+      for (size_t j = 0; j < des_pageNums.size(); ++j) {
+        if (des_pageNums[j] >= len ||
+            pages[des_pageNums[j]]->getPageNum() != des_pageNums[j]) {
+          return false;
+        }
       }
     }
   }
