@@ -197,7 +197,6 @@ void freePages(std::vector<Page *> & pages) {
 
 bool verifyValidation(const std::vector<Page *> & pages) {
   size_t len = pages.size();
-
   for (size_t i = 0; i < pages.size(); ++i) {
     if (pages[i]->getChoice() == NULL) {
       continue;
@@ -244,15 +243,19 @@ bool verifyWinandLose(const std::vector<Page *> & pages) {
   return foundWin & foundLose;
 }
 
-bool check(std::vector<Page *> & pages) {
+void check(std::vector<Page *> & pages) {
   setReference(pages);
-  if (verifyValidation(pages)) {
-    if (verifyReference(pages)) {
-      if (verifyWinandLose(pages)) {
-        return true;
-      }
-    }
+  if (!verifyValidation(pages)) {
+    std::cerr << "some page(s) is not valid" << std::endl;
+    exit(EXIT_FAILURE);
   }
-  return true;
+  else if (!verifyReference(pages)) {
+    std::cerr << "some page(s) is not referenced by other pages" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  else if (!verifyWinandLose(pages)) {
+    std::cerr << "Win and(or) Lose pages do not exist" << std::endl;
+    exit(EXIT_FAILURE);
+  }
 }
 #endif

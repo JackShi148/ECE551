@@ -19,9 +19,8 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   std::vector<Page *> pages = parseText(ifs, dirName);
-  if (check(pages)) {
-    chooseStory(pages);
-  }
+  check(pages);
+  chooseStory(pages);
   freePages(pages);
   ifs.close();
   return EXIT_SUCCESS;
