@@ -97,18 +97,6 @@ void dfsFindPath(std::vector<Page *> & pages,
           temp = currentChoices;
           temp.push_back(i + 1);
           stack_choices.push(temp);
-          /* std::stringstream ss;
-          ss << des_pageNums[i];
-          std::string temp1(currentPath);
-          std::string temp2 = ss.str();
-          temp1 += temp2;
-          stack_paths.push(temp1);
-          ss.str("");
-          ss << i + 1;
-          temp1 = currentChoices;
-          temp2 = ss.str();
-          temp1 += temp2;
-          stack_choices.push(temp1);*/
         }
       }
     }
