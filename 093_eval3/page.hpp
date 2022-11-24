@@ -57,7 +57,11 @@ class Page {
     return new Choice(choice->src_pageNum, choice->des_pageNums, choice->choices);
   }*/
   std::vector<size_t> getDesNums() { return choice->des_pageNums; }
-  ~Page() {}
+  ~Page() {
+    if (choice != NULL) {
+      delete choice;
+    }
+  }
   friend void freePages(std::vector<Page *> & pages);
   friend void setReference(std::vector<Page *> & pages);
   friend std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName);
@@ -186,9 +190,6 @@ void setReference(std::vector<Page *> & pages) {
 void freePages(std::vector<Page *> & pages) {
   int len = pages.size();
   for (int i = 0; i < len; i++) {
-    if (pages[i]->choice != NULL) {
-      delete pages[i]->choice;
-    }
     if (pages[i] != NULL) {
       delete pages[i];
     }
