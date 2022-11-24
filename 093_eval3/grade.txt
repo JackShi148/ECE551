@@ -1,6 +1,6 @@
-Grading at 11/24/2022:14:15:14.095824
-For commit ID 93ba13494396c8df3c03aa6fd196a884bc95fe87
-Grading at Thu Nov 24 09:15:06 AM EST 2022
+Grading at 11/24/2022:14:16:41.247693
+For commit ID b963cc8c4bfc64ff3bf622bf2a462e134f1b035c
+Grading at Thu Nov 24 09:16:34 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -60,7 +60,7 @@ No request to check for intermediate deadline completion on step 2
 
 Step 3
 Checking that cyoa-step3 compiles
-g++ -o cyoa-step3 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step3.cpp
+make: 'cyoa-step3' is up to date.
 The code compiled (good)
 Executable cyoa-step3 exists (good)
 ------------------------------------
@@ -83,7 +83,7 @@ Step 3 EC intermediate deadline test 2
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean for this testcase
 You have passed this test case
-Intermediate deadline requirements for Step 3 passed at Thu Nov 24 09:15:14 AM EST 2022
+Intermediate deadline requirements for Step 3 passed at Thu Nov 24 09:16:41 AM EST 2022
 
 Step 4
 Checking that cyoa-step4 compiles
