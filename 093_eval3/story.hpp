@@ -43,7 +43,7 @@ void chooseStory(std::vector<Page *> & pages) {
   }
 }
 
-bool inVisited(std::vector<char> & visited, char target) {
+bool inVisited(std::vector<size_t> & visited, size_t target) {
   int len = visited.size();
   for (int i = 0; i < len; i++) {
     if (visited[i] == target) {
@@ -54,29 +54,34 @@ bool inVisited(std::vector<char> & visited, char target) {
 }
 
 void dfsFindPath(std::vector<Page *> & pages,
-                 std::vector<std::string> & paths,
-                 std::vector<std::string> & choices) {
-  std::stack<std::string> stack_paths;
-  std::stack<std::string> stack_choices;
-  std::vector<char> visited;
-  stack_paths.push("0");
+                 std::vector<std::vector<size_t> > & paths,
+                 std::vector<std::vector<size_t> > & choices) {
+  std::stack<std::vector<size_t> > stack_paths;
+  std::stack<std::vector<size_t> > stack_choices;
+  std::vector<size_t> visited;
+  std::vector<size_t> start;
+  start.push_back(0);
+  stack_paths.push(start);
   while (!stack_paths.empty()) {
-    std::string currentPath = stack_paths.top();
+    std::vector<size_t> currentPath = stack_paths.top();
     stack_paths.pop();
-    std::string currentChoices = stack_choices.top();
-    stack_choices.pop();
+    std::vector<size_t> currentChoices;
+    if (!stack_choices.empty()) {
+      currentChoices = stack_choices.top();
+      stack_choices.pop();
+    }
     int curPath_len = currentPath.size();
     // get the current page number
-    int cur_pageNum = currentPath[curPath_len - 1] - '0';
+    size_t cur_pageNum = currentPath[curPath_len - 1];
     if (pages[cur_pageNum]->getType() == 'W') {
       paths.push_back(currentPath);
       choices.push_back(currentChoices);
       continue;
     }
     if (curPath_len > 1) {
-      char second_char = currentPath[curPath_len - 2];
+      size_t last_visited = currentPath[curPath_len - 2];
       int visited_len = visited.size();
-      while (visited[visited_len - 1] != second_char) {
+      while (visited[visited_len - 1] != last_visited) {
         visited.pop_back();
         visited_len = visited.size();
       }
@@ -86,16 +91,24 @@ void dfsFindPath(std::vector<Page *> & pages,
         visited.push_back(currentPath[curPath_len - 1]);
         std::vector<size_t> des_pageNums = pages[cur_pageNum]->getDesNums();
         for (size_t i = 0; i < des_pageNums.size(); i++) {
-          std::stringstream ss;
+          std::vector<size_t> temp(currentPath);
+          temp.push_back(des_pageNums[i]);
+          stack_paths.push(temp);
+          temp = currentChoices;
+          temp.push_back(i + 1);
+          stack_choices.push(temp);
+          /* std::stringstream ss;
           ss << des_pageNums[i];
-          std::string temp = ss.str();
-          currentPath += temp;
-          stack_paths.push(currentPath);
+          std::string temp1(currentPath);
+          std::string temp2 = ss.str();
+          temp1 += temp2;
+          stack_paths.push(temp1);
           ss.str("");
           ss << i + 1;
-          temp = ss.str();
-          currentChoices += temp;
-          stack_choices.push(currentChoices);
+          temp1 = currentChoices;
+          temp2 = ss.str();
+          temp1 += temp2;
+          stack_choices.push(temp1);*/
         }
       }
     }
@@ -103,8 +116,8 @@ void dfsFindPath(std::vector<Page *> & pages,
 }
 
 void printPathsandChoices(std::vector<Page *> & pages) {
-  std::vector<std::string> paths;
-  std::vector<std::string> choices;
+  std::vector<std::vector<size_t> > paths;
+  std::vector<std::vector<size_t> > choices;
   dfsFindPath(pages, paths, choices);
   if (paths.empty()) {
     std::cout << "This story is unwinnable!" << std::endl;
@@ -112,8 +125,8 @@ void printPathsandChoices(std::vector<Page *> & pages) {
   }
   std::stringstream ss;
   for (size_t i = 0; i < paths.size(); i++) {
-    std::string curPath = paths[i];
-    std::string curChoice = choices[i];
+    std::vector<size_t> curPath = paths[i];
+    std::vector<size_t> curChoice = choices[i];
     for (size_t j = 0; j < curChoice.size(); j++) {
       ss << curPath[j] << "(" << curChoice[j] << ")"
          << ",";

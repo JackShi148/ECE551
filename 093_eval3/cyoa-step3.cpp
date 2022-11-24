@@ -8,7 +8,7 @@
 
 int main(int argc, char ** argv) {
   if (argc != 2) {
-    std::cerr << "the number of arguments is wrong" << std::endl;
+    std::cerr << "the number of arguments if wrong" << std::endl;
     return EXIT_FAILURE;
   }
   std::string dirName(argv[1]);
@@ -20,7 +20,7 @@ int main(int argc, char ** argv) {
   }
   std::vector<Page *> pages = parseText(ifs, dirName);
   check(pages);
-  chooseStory(pages);
+  printPathsandChoices(pages);
   freePages(pages);
   ifs.close();
   return EXIT_SUCCESS;
