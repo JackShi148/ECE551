@@ -124,4 +124,49 @@ void printPathsandChoices(std::vector<Page *> & pages) {
   std::cout << ss.str();
 }
 
+void chooseStorywthCon(std::vector<Page *> & pages) {
+  size_t cur_page = 0;
+  while (true) {
+    std::vector<size_t> unavl_chcNums = pages[cur_page]->printContentandChoicewithCon();
+    if (pages[cur_page]->getType() == 'W' || pages[cur_page]->getType() == 'L') {
+      break;
+    }
+    std::vector<size_t> des_pageNums = pages[cur_page]->getDesNums();
+    size_t choices_len = pages[cur_page]->getChoicewithConSize();
+    bool validChoice = false;
+    while (!validChoice) {
+      std::string input;
+      std::getline(std::cin, input);
+      char * end = NULL;
+      size_t choice_num = strtoull(input.c_str(), &end, 10);
+      if (errno == ERANGE) {
+        std::cout << "That is not a valid choice, please try again" << std::endl;
+        continue;
+      }
+      if (*end != '\0') {
+        std::cout << "That is not a valid choice, please try again" << std::endl;
+        continue;
+      }
+      if (choice_num == 0 || choice_num > choices_len) {
+        std::cout << "That is not a valid choice, please try again" << std::endl;
+        continue;
+      }
+      int found = 0;
+      for (size_t i = 0; i < unavl_chcNums.size(); i++) {
+        if (choice_num == unavl_chcNums[i]) {
+          std::cout << "That choice is not available at this time, please try again"
+                    << std::endl;
+          found = 1;
+          break;
+        }
+      }
+      if (found == 1) {
+        continue;
+      }
+      cur_page = des_pageNums[choice_num - 1];
+      validChoice = true;
+    }
+  }
+}
+
 #endif

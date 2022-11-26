@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 class Page {
@@ -15,16 +16,37 @@ class Page {
     size_t src_pageNum;
     std::vector<size_t> des_pageNums;
     std::vector<std::string> choices;
+    std::vector<std::pair<std::pair<std::string, long int>, std::string> > choices_con;
     void addChoice(const size_t & des_pageNum, const std::string & choice) {
       des_pageNums.push_back(des_pageNum);
       choices.push_back(choice);
     }
-    Choice(size_t src_pageNum, const size_t & des_pageNum, const std::string & choice) :
+    void addChoicewithCon(const size_t & des_pageNum,
+                          const std::string & condition_name,
+                          const long int & condition_val,
+                          const std::string & choice) {
+      des_pageNums.push_back(des_pageNum);
+      choices_con.push_back(
+          std::make_pair(std::make_pair(condition_name, condition_val), choice));
+    }
+    Choice(const size_t & src_pageNum,
+           const size_t & des_pageNum,
+           const std::string & choice) :
         src_pageNum(src_pageNum) {
       des_pageNums.push_back(des_pageNum);
       choices.push_back(choice);
     }
-    Choice(size_t src_pageNum,
+    Choice(const size_t & src_pageNum,
+           const size_t & des_pageNum,
+           const std::string & condition_name,
+           const long int & condition_val,
+           const std::string & choice) :
+        src_pageNum(src_pageNum) {
+      des_pageNums.push_back(des_pageNum);
+      choices_con.push_back(
+          std::make_pair(std::make_pair(condition_name, condition_val), choice));
+    }
+    Choice(const size_t & src_pageNum,
            const std::vector<size_t> & des_pageNums,
            const std::vector<std::string> & choices) :
         src_pageNum(src_pageNum), des_pageNums(des_pageNums), choices(choices) {}
@@ -35,6 +57,7 @@ class Page {
   bool referenced;
   std::string page_name;
   std::vector<std::string> content;
+  std::vector<std::pair<std::string, long int> > conditions;
 
  public:
   Page() : choice(NULL), page_num(0), type('N'), referenced(false) {}
@@ -47,15 +70,19 @@ class Page {
   Page(const Page & rhs);
   Page & operator=(const Page & rhs);
   void printContentandChoice() const;
+  std::vector<size_t> printContentandChoicewithCon() const;
   size_t getPageNum() { return page_num; }
   char getType() { return type; }
   bool getReference() { return referenced; }
   size_t getChoiceSize() { return choice->choices.size(); }
+  size_t getChoicewithConSize() { return choice->choices_con.size(); }
   size_t getSrcNum() { return choice->src_pageNum; }
   Choice * getChoice() { return choice; }
-  /*Choice * cloneChoice() {
-    return new Choice(choice->src_pageNum, choice->des_pageNums, choice->choices);
-  }*/
+  long int getConditionVal(const std::string & condition_name) const;
+  std::vector<std::pair<std::pair<std::string, long int>, std::string> >
+  getConditionChoices() {
+    return choice->choices_con;
+  }
   std::vector<size_t> getDesNums() { return choice->des_pageNums; }
   ~Page() {
     if (choice != NULL) {
@@ -65,6 +92,7 @@ class Page {
   friend void freePages(std::vector<Page *> & pages);
   friend void setReference(std::vector<Page *> & pages);
   friend std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName);
+  friend std::vector<Page *> parseTextwithCons(std::ifstream & ifs, std::string dirName);
 };
 
 //copy constructor
@@ -110,6 +138,10 @@ void Page::printContentandChoice() const {
   }
   else if (type == 'N') {
     ss << "What would you like to do?\n\n";
+    if (choice == NULL) {
+      std::cerr << "a normal page has to have choice(s)" << std::endl;
+      exit(EXIT_FAILURE);
+    }
     std::vector<std::string>::const_iterator it_chs = choice->choices.begin();
     int i = 1;
     while (it_chs != choice->choices.end()) {
@@ -120,9 +152,64 @@ void Page::printContentandChoice() const {
   }
   std::cout << ss.str();
 }
-/*Page::~Page() {
-  delete choice;
-  }*/
+
+std::vector<size_t> Page::printContentandChoicewithCon() const {
+  std::vector<size_t> ans;
+  std::stringstream ss;
+  std::vector<std::string>::const_iterator it_cnt = content.begin();
+  while (it_cnt != content.end()) {
+    ss << *it_cnt << '\n';
+    ++it_cnt;
+  }
+  if (type == 'W') {
+    ss << "Congratulations! You have won. Hooray!\n";
+  }
+  else if (type == 'L') {
+    ss << "Sorry, you have lost. Better luck next time!\n";
+  }
+  else if (type == 'N') {
+    ss << "What would you like to do?\n\n";
+    if (choice == NULL) {
+      std::cerr << "a normal page has to have choice(s)" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+    std::vector<std::pair<std::pair<std::string, long int>, std::string> >::const_iterator
+        it_chs = choice->choices_con.begin();
+    int i = 1;
+    while (it_chs != choice->choices_con.end()) {
+      if (it_chs->first.first == "noCondition") {
+        ss << ' ' << i << ". " << it_chs->second << '\n';
+      }
+      else {
+        long int condition_val = getConditionVal(it_chs->first.first);
+        if (condition_val == it_chs->first.second) {
+          ss << ' ' << i << ". " << it_chs->second << '\n';
+        }
+        else {
+          ss << ' ' << i << ". "
+             << "<UNAVAILABLE>\n";
+          ans.push_back(i);
+        }
+      }
+      ++i;
+      ++it_chs;
+    }
+  }
+  std::cout << ss.str();
+  return ans;
+}
+
+long int Page::getConditionVal(const std::string & condition_name) const {
+  std::vector<std::pair<std::string, long int> >::const_iterator it = conditions.begin();
+  while (it != conditions.end()) {
+    if (it->first == condition_name) {
+      return it->second;
+    }
+    ++it;
+  }
+  return 0;
+}
+
 std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
   std::vector<Page *> pages;
   std::string line;
@@ -258,5 +345,112 @@ void check(std::vector<Page *> & pages) {
     std::cerr << "Win and(or) Lose pages do not exist" << std::endl;
     exit(EXIT_FAILURE);
   }
+}
+
+std::vector<Page *> parseTextwithCons(std::ifstream & ifs, std::string dirName) {
+  std::vector<Page *> pages;
+  std::string line;
+  while (!ifs.eof()) {
+    std::getline(ifs, line);
+    if (!line.empty()) {
+      // page declaration
+      if (line.find('@') != std::string::npos) {
+        size_t at_pos = line.find('@');
+        size_t page_num = strtoull(line.c_str(), NULL, 10);
+        char type = line[at_pos + 1];
+        size_t colon = line.find(':');
+        std::string page_name = line.substr(colon + 1);
+        Page * new_page = new Page(page_num, type, false, page_name);
+        pages.push_back(new_page);
+        std::string page_addr = dirName + '/' + page_name;
+        std::ifstream page_ifs(page_addr.c_str(), std::ifstream::in);
+        std::string content_line;
+        while (!page_ifs.eof()) {
+          std::getline(page_ifs, content_line);
+          new_page->content.push_back(content_line);
+        }
+      }
+      // set choice condition
+      else if (line.find('$') != std::string::npos) {
+        size_t dollar_sign = line.find('$');
+        size_t equal = line.find('=');
+        size_t page_num = strtoull(line.c_str(), NULL, 10);
+        if (errno == ERANGE) {
+          std::cerr << "the page number is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        std::string condition_name =
+            line.substr(dollar_sign + 1, equal - dollar_sign - 1);
+        std::string temp = line.substr(equal + 1);
+        char * end = NULL;
+        long int condition_val = strtol(temp.c_str(), &end, 10);
+        if (errno == ERANGE) {
+          std::cerr << "the condition value is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        if (*end != '\0') {
+          std::cerr << "the condition value is invalid" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        pages[page_num]->conditions.push_back(
+            std::make_pair(condition_name, condition_val));
+      }
+      // choices declaration
+      else {
+        size_t first_colon = line.find(':');
+        size_t second_colon = line.find(':', first_colon + 1);
+        std::string des = line.substr(first_colon + 1, second_colon - first_colon - 1);
+        size_t src_pageNum = strtoull(line.c_str(), NULL, 10);
+        if (errno == ERANGE) {
+          std::cerr << "the source page number is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        size_t des_pageNum = strtoull(des.c_str(), NULL, 10);
+        if (errno == ERANGE) {
+          std::cerr << "the destination page number is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        std::string choice = line.substr(second_colon + 1);
+        std::string condition_name;
+        long int condition_val;
+        size_t first_brace = line.find('[');
+        if (first_brace == std::string::npos) {
+          condition_name = "noCondition";
+          condition_val = -1;
+        }
+        else {
+          size_t second_brace = line.find(']');
+          std::string con = line.substr(first_brace + 1, second_brace - first_brace - 1);
+          size_t equal = con.find('=');
+          if (equal == std::string::npos) {
+            std::cerr << "the format of condition choice is wrong" << std::endl;
+            exit(EXIT_FAILURE);
+          }
+          condition_name = con.substr(0, equal);
+          std::string temp = con.substr(equal + 1);
+          char * end = NULL;
+          condition_val = strtol(temp.c_str(), &end, 10);
+          if (errno == ERANGE) {
+            std::cerr << "the condition value is too large" << std::endl;
+            exit(EXIT_FAILURE);
+          }
+          if (*end != '\0') {
+            std::cerr << "the condition value is invalid" << std::endl;
+            exit(EXIT_FAILURE);
+          }
+        }
+        if (pages[src_pageNum]->choice == NULL) {
+          pages[src_pageNum]->choice = new Page::Choice(
+              src_pageNum, des_pageNum, condition_name, condition_val, choice);
+        }
+        else {
+          pages[src_pageNum]->choice->addChoicewithCon(
+              des_pageNum, condition_name, condition_val, choice);
+        }
+      }
+    }
+  }
+
+  return pages;
 }
 #endif
