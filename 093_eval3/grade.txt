@@ -1,6 +1,6 @@
-Grading at 11/24/2022:14:16:41.247693
-For commit ID b963cc8c4bfc64ff3bf622bf2a462e134f1b035c
-Grading at Thu Nov 24 09:16:34 AM EST 2022
+Grading at 11/26/2022:15:40:55.388928
+For commit ID a69226adfa31cdb2076a98ad6cd9f9e77d06c0ad
+Grading at Sat Nov 26 10:40:48 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -83,10 +83,20 @@ Step 3 EC intermediate deadline test 2
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean for this testcase
 You have passed this test case
-Intermediate deadline requirements for Step 3 passed at Thu Nov 24 09:16:41 AM EST 2022
+Intermediate deadline requirements for Step 3 passed at Sat Nov 26 10:40:55 AM EST 2022
 
 Step 4
 Checking that cyoa-step4 compiles
-The code did not compile!
+make: 'cyoa-step4' is up to date.
+The code compiled (good)
+Executable cyoa-step4 exists (good)
+------------------------------------
+Now running YOUR tests for step 4
+------------------------------------
+No request to check for intermediate deadline completion on step 4
+
+You have passed the test cases YOU provided
+If your tests are good, this is great. 
+If your tests are insufficient, you should do much more testing
 
 Overall Grade: NO GRADE YET
