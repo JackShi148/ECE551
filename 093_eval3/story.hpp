@@ -124,9 +124,19 @@ void printPathsandChoices(std::vector<Page *> & pages) {
   std::cout << ss.str();
 }
 
-void chooseStorywthCon(std::vector<Page *> & pages) {
+void chooseStorywthCon(
+    std::vector<Page *> & pages,
+    std::vector<std::pair<size_t, std::pair<std::string, long int> > > & condition_info) {
   size_t cur_page = 0;
   while (true) {
+    std::vector<std::pair<size_t, std::pair<std::string, long int> > >::const_iterator
+        it_con = condition_info.begin();
+    while (it_con != condition_info.end()) {
+      if (cur_page == it_con->first) {
+        setConditionForPages(pages, it_con->second.first, it_con->second.second);
+      }
+      ++it_con;
+    }
     std::vector<size_t> unavl_chcNums = pages[cur_page]->printContentandChoicewithCon();
     if (pages[cur_page]->getType() == 'W' || pages[cur_page]->getType() == 'L') {
       break;

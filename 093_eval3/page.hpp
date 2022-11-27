@@ -79,6 +79,7 @@ class Page {
   size_t getSrcNum() { return choice->src_pageNum; }
   Choice * getChoice() { return choice; }
   long int getConditionVal(const std::string & condition_name) const;
+  void setCondition(const std::string & condition_name, long int condition_val);
   std::vector<std::pair<std::pair<std::string, long int>, std::string> >
   getConditionChoices() {
     return choice->choices_con;
@@ -92,7 +93,11 @@ class Page {
   friend void freePages(std::vector<Page *> & pages);
   friend void setReference(std::vector<Page *> & pages);
   friend std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName);
-  friend std::vector<Page *> parseTextwithCons(std::ifstream & ifs, std::string dirName);
+  friend std::vector<Page *> parseTextwithCons(
+      std::ifstream & ifs,
+      std::string dirName,
+      std::vector<std::pair<size_t, std::pair<std::string, long int> > > &
+          condition_info);
 };
 
 //copy constructor
@@ -208,6 +213,27 @@ long int Page::getConditionVal(const std::string & condition_name) const {
     ++it;
   }
   return 0;
+}
+
+void Page::setCondition(const std::string & condition_name, long int condition_val) {
+  if (conditions.empty()) {
+    conditions.push_back(std::make_pair(condition_name, condition_val));
+  }
+  else {
+    std::vector<std::pair<std::string, long int> >::iterator it = conditions.begin();
+    int found = 0;
+    while (it != conditions.end()) {
+      if (it->first == condition_name) {
+        it->second = condition_val;
+        found = 1;
+        break;
+      }
+      ++it;
+    }
+    if (found == 0) {
+      conditions.push_back(std::make_pair(condition_name, condition_val));
+    }
+  }
 }
 
 std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
@@ -347,7 +373,20 @@ void check(std::vector<Page *> & pages) {
   }
 }
 
-std::vector<Page *> parseTextwithCons(std::ifstream & ifs, std::string dirName) {
+void setConditionForPages(std::vector<Page *> & pages,
+                          const std::string & condition_name,
+                          long int condition_val) {
+  std::vector<Page *>::iterator it = pages.begin();
+  while (it != pages.end()) {
+    (*it)->setCondition(condition_name, condition_val);
+    ++it;
+  }
+}
+
+std::vector<Page *> parseTextwithCons(
+    std::ifstream & ifs,
+    std::string dirName,
+    std::vector<std::pair<size_t, std::pair<std::string, long int> > > & condition_info) {
   std::vector<Page *> pages;
   std::string line;
   while (!ifs.eof()) {
@@ -392,6 +431,8 @@ std::vector<Page *> parseTextwithCons(std::ifstream & ifs, std::string dirName) 
           std::cerr << "the condition value is invalid" << std::endl;
           exit(EXIT_FAILURE);
         }
+        condition_info.push_back(
+            std::make_pair(page_num, std::make_pair(condition_name, condition_val)));
         pages[page_num]->conditions.push_back(
             std::make_pair(condition_name, condition_val));
       }
