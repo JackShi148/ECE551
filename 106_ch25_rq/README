@@ -89,7 +89,7 @@ C. Resources Allocation
 D. Social networks
 E. All of the above
 
-11. All of the following statements about adjacency list and
+* 11. All of the following statements about adjacency list and
     adjacency matrix are accurate except ... ?
 
 A. Adjacency lists are more space-efficient and are preferred
@@ -107,7 +107,7 @@ B. It can be used in the applications like network routing protocols.
 C. It can support the scenario where some edge weights are negative integers.
 D. A priority queue is often used in the implementation of Dijkstra’s algorithm.
 
-13. Which of the following properties determine whether a graph is a tree?
+* 13. Which of the following properties determine whether a graph is a tree?
 
 A. It must be an undirected connected graph.
 B. There is no cycle in the graph.
