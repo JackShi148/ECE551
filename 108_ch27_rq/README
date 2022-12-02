@@ -61,7 +61,7 @@ A. A single rotation at 68.
 B. A single rotation at 73.
 C. A single rotation at 77.
 D. A double rotation at 68.
-E. A double rotation at 73.
+≈E. A double rotation at 73.
 F. A double rotation at 77.
 G. No rotation is required.
 H. Some other rotation (not listed here) is required.
@@ -78,7 +78,7 @@ F. 1 or 2  [i.e., some colorings have 1, others have 2]
 G. 2 or 3
 H. 1, 2, or 3
 
-6. Which of the following nodes must be colored RED to correctly 
+* 6. Which of the following nodes must be colored RED to correctly 
    red/black color this tree?
 
 A. 16
