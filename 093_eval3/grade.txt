@@ -1,6 +1,6 @@
-Grading at 12/05/2022:20:05:52.091978
-For commit ID f200c69ef4e7c435cde5a1c2053fca441e4c6f6a
-Grading at Mon Dec  5 03:05:35 PM EST 2022
+Grading at 12/05/2022:20:10:29.258599
+For commit ID 5c0ec48116e35272029ca8e5e89f2d0ef88bff4d
+Grading at Mon Dec  5 03:10:12 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -51,7 +51,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the type of 2@NE:page2.txt is invalid!
+the format of 2d@N:page2.txt is wrong!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
