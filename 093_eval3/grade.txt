@@ -1,6 +1,6 @@
-Grading at 12/05/2022:20:10:29.258599
-For commit ID 5c0ec48116e35272029ca8e5e89f2d0ef88bff4d
-Grading at Mon Dec  5 03:10:12 PM EST 2022
+Grading at 12/05/2022:21:25:54.076370
+For commit ID 35d67191527a8a047c58c4495cc09ca377cd590a
+Grading at Mon Dec  5 04:25:34 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -41,7 +41,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the format of 1:3Choose the magic shoes. is wrong!
+the format of (0:1I am ready for this story!) is wrong!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
@@ -51,7 +51,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the format of 2d@N:page2.txt is wrong!
+the format of (2N:page2.txt) is wrong!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
@@ -61,7 +61,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-page 6 has not been created but choice declaration has used it!
+the destination number in (5:14a:Silent Night, accompanied by raven calls) is invalid!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
@@ -77,7 +77,37 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.8: Current test is ./cyoa-step1 largePageNum < /dev/null
+1.8: Current test is ./cyoa-step1 invalidDesNum < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+the destination number in (1:df:Choose the magic whistle.) is invalid!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.9: Current test is ./cyoa-step1 noDesNum < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+1::Choose the magic whistle.does not have destination page number!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.10: Current test is ./cyoa-step1 noSrcNum < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+@N:page0.txt have not declared a page number!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.11: Current test is ./cyoa-step1 largePageNum < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -87,7 +117,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.9: Current test is ./cyoa-step1 unExistFile < /dev/null
+1.12: Current test is ./cyoa-step1 unExistFile < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
