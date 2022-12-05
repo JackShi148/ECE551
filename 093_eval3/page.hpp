@@ -246,25 +246,47 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
       // page declaration
       if (line.find('@') != std::string::npos) {
         size_t at_pos = line.find('@');
-        size_t page_num = strtoull(line.c_str(), NULL, 10);
+        char * end = NULL;
+        size_t page_num = strtoull(line.c_str(), &end, 10);
         // if page number is out of range
         if (errno == ERANGE) {
-          std::cerr << "the page number is too large" << std::endl;
+          std::cerr << "one page number is too large!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        if (*end != '@') {
+          std::cerr << "the format of " << line << " is wrong!" << std::endl;
           exit(EXIT_FAILURE);
         }
         // if page number is not sequential
         if (page_num != next_pageNum) {
-          std::cerr << "the page number has to be sequential" << std::endl;
+          std::cerr << "page numbers have to be sequential!" << std::endl;
           exit(EXIT_FAILURE);
         }
         char type = line[at_pos + 1];
+        if (type != 'N' && type != 'W' && type != 'L') {
+          std::cerr << "valid types for pages only contain N, W and L!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         size_t colon = line.find(':');
+        if (colon == std::string::npos) {
+          std::cerr << "the format of " << line << " is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        if (colon - at_pos != 2) {
+          std::cerr << "the type of " << line << " is invalid!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string page_name = line.substr(colon + 1);
         Page * new_page = new Page(page_num, type, false, page_name);
         pages.push_back(new_page);
         // get name of specific page and load its content
         std::string page_addr = dirName + '/' + page_name;
         std::ifstream page_ifs(page_addr.c_str(), std::ifstream::in);
+        if (!page_ifs) {
+          std::cerr << "fail to open file " << page_addr << " or no such file exists"
+                    << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string content_line;
         while (!page_ifs.eof()) {
           std::getline(page_ifs, content_line);
@@ -275,10 +297,32 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
       // choices declaration, load choices into specific pages
       else {
         size_t first_colon = line.find(':');
+        if (first_colon == std::string::npos) {
+          std::cerr << "the format of " << line << " is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         size_t second_colon = line.find(':', first_colon + 1);
+        if (second_colon == std::string::npos) {
+          std::cerr << "the format of " << line << " is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string des = line.substr(first_colon + 1, second_colon - first_colon - 1);
-        size_t src_pageNum = strtoul(line.c_str(), NULL, 10);
-        size_t des_pageNum = strtoul(des.c_str(), NULL, 10);
+        size_t src_pageNum = strtoull(line.c_str(), NULL, 10);
+        if (errno == ERANGE) {
+          std::cerr << "one source page number is too large!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        if (src_pageNum >= pages.size()) {
+          std::cerr << "page " << src_pageNum
+                    << " has not been created but choice declaration has used it!"
+                    << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        size_t des_pageNum = strtoull(des.c_str(), NULL, 10);
+        if (errno == ERANGE) {
+          std::cerr << "one destination page number is too large!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string choice = line.substr(second_colon + 1);
         // if this particular page has no choices yet, new one choice
         if (pages[src_pageNum]->choice == NULL) {

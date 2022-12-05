@@ -1,5 +1,12 @@
 cyoa-step1 /usr/local/ece551/cyoa/story1
 cyoa-step1 /usr/local/ece551/cyoa/story2
+cyoa-step1 unSequentialPage
+cyoa-step1 invalidFormat
+cyoa-step1 invalidPageDeclaration
+cyoa-step1 invalidSrcNum
+cyoa-step1 invalidType
+cyoa-step1 largePageNum
+cyoa-step1 unExistFile
 cyoa-step2 story1 < story1/inputs/input0.txt
 cyoa-step2 story1 < story1/inputs/input1.txt
 cyoa-step2 story1 < story1/inputs/input2.txt
