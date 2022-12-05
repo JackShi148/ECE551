@@ -1,6 +1,6 @@
-Grading at 12/05/2022:18:45:46.961685
-For commit ID f5c5e37bfb0291882ce3f3e6374935f0626ac2d5
-Grading at Mon Dec  5 01:45:36 PM EST 2022
+Grading at 12/05/2022:20:05:52.091978
+For commit ID f200c69ef4e7c435cde5a1c2053fca441e4c6f6a
+Grading at Mon Dec  5 03:05:35 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -24,6 +24,76 @@ Valgrind was clean
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+
+1.3: Current test is ./cyoa-step1 unSequentialPage < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+page numbers have to be sequential!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.4: Current test is ./cyoa-step1 invalidFormat < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+the format of 1:3Choose the magic shoes. is wrong!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.5: Current test is ./cyoa-step1 invalidPageDeclaration < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+the type of 2@NE:page2.txt is invalid!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.6: Current test is ./cyoa-step1 invalidSrcNum < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+page 6 has not been created but choice declaration has used it!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.7: Current test is ./cyoa-step1 invalidType < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+valid types for pages only contain N, W and L!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.8: Current test is ./cyoa-step1 largePageNum < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+one source page number is too large!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.9: Current test is ./cyoa-step1 unExistFile < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+fail to open file unExistFile/page10000.txt or no such file exists
+-----------------------------------------
+Lets check if it valgrinds:
 Valgrind was clean
 No request to check for intermediate deadline completion on step 1
 
