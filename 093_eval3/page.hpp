@@ -235,22 +235,34 @@ void Page::setCondition(const std::string & condition_name, long int condition_v
     }
   }
 }
-
+// parse information in story.txt to create pages and related elements
 std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
   std::vector<Page *> pages;
   std::string line;
+  size_t next_pageNum = 0;
   while (!ifs.eof()) {
     std::getline(ifs, line);
     if (!line.empty()) {
       // page declaration
       if (line.find('@') != std::string::npos) {
         size_t at_pos = line.find('@');
-        size_t page_num = strtoul(line.c_str(), NULL, 10);
+        size_t page_num = strtoull(line.c_str(), NULL, 10);
+        // if page number is out of range
+        if (errno == ERANGE) {
+          std::cerr << "the page number is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        // if page number is not sequential
+        if (page_num != next_pageNum) {
+          std::cerr << "the page number has to be sequential" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         char type = line[at_pos + 1];
         size_t colon = line.find(':');
         std::string page_name = line.substr(colon + 1);
         Page * new_page = new Page(page_num, type, false, page_name);
         pages.push_back(new_page);
+        // get name of specific page and load its content
         std::string page_addr = dirName + '/' + page_name;
         std::ifstream page_ifs(page_addr.c_str(), std::ifstream::in);
         std::string content_line;
@@ -258,8 +270,9 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
           std::getline(page_ifs, content_line);
           new_page->content.push_back(content_line);
         }
+        next_pageNum++;
       }
-      // choices declaration
+      // choices declaration, load choices into specific pages
       else {
         size_t first_colon = line.find(':');
         size_t second_colon = line.find(':', first_colon + 1);
@@ -267,9 +280,11 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
         size_t src_pageNum = strtoul(line.c_str(), NULL, 10);
         size_t des_pageNum = strtoul(des.c_str(), NULL, 10);
         std::string choice = line.substr(second_colon + 1);
+        // if this particular page has no choices yet, new one choice
         if (pages[src_pageNum]->choice == NULL) {
           pages[src_pageNum]->choice = new Page::Choice(src_pageNum, des_pageNum, choice);
         }
+        // else add a new choice into existed choices
         else {
           pages[src_pageNum]->choice->addChoice(des_pageNum, choice);
         }

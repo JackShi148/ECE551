@@ -5,4 +5,6 @@ cyoa-step2 story1 < story1/inputs/input1.txt
 cyoa-step2 story1 < story1/inputs/input2.txt
 cyoa-step3 story1
 cyoa-step3 story2
-ec:step4
+cyoa-step4 story1 < story3/inputs/input0.txt
+cyoa-step4 story1 < story3/inputs/input1.txt
+cyoa-step4 story1 < story3/inputs/input2.txt
