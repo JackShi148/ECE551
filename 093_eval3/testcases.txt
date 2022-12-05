@@ -5,6 +5,9 @@ cyoa-step1 invalidFormat
 cyoa-step1 invalidPageDeclaration
 cyoa-step1 invalidSrcNum
 cyoa-step1 invalidType
+cyoa-step1 invalidDesNum
+cyoa-step1 noDesNum
+cyoa-step1 noSrcNum
 cyoa-step1 largePageNum
 cyoa-step1 unExistFile
 cyoa-step2 story1 < story1/inputs/input0.txt
