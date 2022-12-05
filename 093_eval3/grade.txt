@@ -1,6 +1,6 @@
-Grading at 12/05/2022:21:33:14.730919
-For commit ID 597bc537f62d8f6da4cec049c7fdd64efd055d11
-Grading at Mon Dec  5 04:32:54 PM EST 2022
+Grading at 12/05/2022:21:35:25.417207
+For commit ID 6304698a6aa77f12c3936f885955efce83ed77c9
+Grading at Mon Dec  5 04:35:06 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -101,7 +101,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-@N:page0.txt have not declared a page number!
+:1:I am ready for this story!does not have source page number!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
