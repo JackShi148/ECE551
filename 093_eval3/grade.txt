@@ -1,6 +1,6 @@
-Grading at 12/05/2022:21:25:54.076370
-For commit ID 35d67191527a8a047c58c4495cc09ca377cd590a
-Grading at Mon Dec  5 04:25:34 PM EST 2022
+Grading at 12/05/2022:21:33:14.730919
+For commit ID 597bc537f62d8f6da4cec049c7fdd64efd055d11
+Grading at Mon Dec  5 04:32:54 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -51,7 +51,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the format of (2N:page2.txt) is wrong!
+valid types for pages only contain N, W and L!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
@@ -61,7 +61,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the destination number in (5:14a:Silent Night, accompanied by raven calls) is invalid!
+the source number in (5e:14:Silent Night, accompanied by raven calls) is invalid!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
