@@ -1,6 +1,6 @@
-Grading at 12/06/2022:17:01:36.790299
-For commit ID 67d1a367f2b0b68c88ece131c6f220dddd8e8477
-Grading at Tue Dec  6 12:01:13 PM EST 2022
+Grading at 12/06/2022:17:06:41.298921
+For commit ID 32d24a69186161d17222075ea2cd213d2f0a686e
+Grading at Tue Dec  6 12:06:17 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -226,6 +226,13 @@ Valgrind was clean
 
 
 3.2: Current test is ./cyoa-step3 story2 < /dev/null
+-----------------------------
+Your output looks good. Lets check valgrind
+  - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+
+3.3: Current test is ./cyoa-step3 noWinPath < /dev/null
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
