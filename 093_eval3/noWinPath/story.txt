@@ -21,7 +21,7 @@
 5:13:Angels We Have Heard on High, accompanied by roosters crowing
 5:10:Bohemian Rhapsody, accompanied by the magestic call of a bald eagle
 6@L:page6.txt
-7@L:page7.txt
+7@W:page7.txt
 8@L:page8.txt
 9@L:page9.txt
 10@L:page10.txt

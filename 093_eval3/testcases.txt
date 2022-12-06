@@ -20,6 +20,7 @@ cyoa-step2 noWinorLose < story1/inputs/input2.txt
 cyoa-step2 fakeFile < story1/inputs/input2.txt
 cyoa-step3 story1
 cyoa-step3 story2
+cyoa-step3 noWinPath
 cyoa-step4 story1 < story3/inputs/input0.txt
 cyoa-step4 story1 < story3/inputs/input1.txt
 cyoa-step4 story1 < story3/inputs/input2.txt
