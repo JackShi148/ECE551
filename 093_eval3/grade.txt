@@ -1,11 +1,11 @@
-Grading at 12/05/2022:21:35:25.417207
-For commit ID 6304698a6aa77f12c3936f885955efce83ed77c9
-Grading at Mon Dec  5 04:35:06 PM EST 2022
+Grading at 12/06/2022:16:20:56.649811
+For commit ID 590bc3ff12267c87fb417f42120094e56f588d51
+Grading at Tue Dec  6 11:20:34 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
-g++ -o cyoa-step1 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step1.cpp
+make: 'cyoa-step1' is up to date.
 The code compiled (good)
 Executable cyoa-step1 exists (good)
 ------------------------------------
@@ -155,6 +155,36 @@ Valgrind was clean
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+
+2.4: Current test is ./cyoa-step2 invalidPage  <  story1/inputs/input2.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+some page(s) is not valid!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+2.5: Current test is ./cyoa-step2 noRerencedPage  <  story1/inputs/input2.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+some page(s) is not referenced by other pages!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+2.6: Current test is ./cyoa-step2 noWinorLose  <  story1/inputs/input2.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Win and(or) Lose pages do not exist!
+-----------------------------------------
+Lets check if it valgrinds:
 Valgrind was clean
 No request to check for intermediate deadline completion on step 2
 
