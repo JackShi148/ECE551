@@ -19,7 +19,6 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   std::vector<Page *> pages = parseText(ifs, dirName);
-  check(pages);
   std::vector<Page *>::iterator it = pages.begin();
   while (it != pages.end()) {
     std::cout << "Page " << (*it)->getPageNum() << std::endl;
