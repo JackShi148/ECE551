@@ -1,6 +1,6 @@
-Grading at 12/06/2022:16:54:03.083013
-For commit ID e3bc327f122580b54b694955d9a6f8525da470be
-Grading at Tue Dec  6 11:53:41 AM EST 2022
+Grading at 12/06/2022:17:01:36.790299
+For commit ID 67d1a367f2b0b68c88ece131c6f220dddd8e8477
+Grading at Tue Dec  6 12:01:13 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -27,7 +27,17 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-1.3: Current test is ./cyoa-step1 unSequentialPage < /dev/null
+1.3: Current test is ./cyoa-step1 fakeFile < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+fail to open file fakeFile/story.txt
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.4: Current test is ./cyoa-step1 unSequentialPage < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -37,7 +47,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.4: Current test is ./cyoa-step1 invalidFormat < /dev/null
+1.5: Current test is ./cyoa-step1 invalidFormat < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -47,7 +57,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.5: Current test is ./cyoa-step1 invalidPageDeclaration < /dev/null
+1.6: Current test is ./cyoa-step1 invalidPageDeclaration < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -57,17 +67,17 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.6: Current test is ./cyoa-step1 invalidSrcNum < /dev/null
+1.7: Current test is ./cyoa-step1 invalidSrcNum < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the source number in (5e:14:Silent Night, accompanied by raven calls) is invalid!
+page 6 has not been created but choice declaration has used it!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.7: Current test is ./cyoa-step1 invalidType < /dev/null
+1.8: Current test is ./cyoa-step1 invalidType < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -77,7 +87,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.8: Current test is ./cyoa-step1 invalidDesNum < /dev/null
+1.9: Current test is ./cyoa-step1 invalidDesNum < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -87,7 +97,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.9: Current test is ./cyoa-step1 noDesNum < /dev/null
+1.10: Current test is ./cyoa-step1 noDesNum < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -97,7 +107,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.10: Current test is ./cyoa-step1 noSrcNum < /dev/null
+1.11: Current test is ./cyoa-step1 noSrcNum < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -107,7 +117,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.11: Current test is ./cyoa-step1 largePageNum < /dev/null
+1.12: Current test is ./cyoa-step1 largePageNum < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -117,7 +127,7 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-1.12: Current test is ./cyoa-step1 unExistFile < /dev/null
+1.13: Current test is ./cyoa-step1 unExistFile < /dev/null
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
@@ -183,6 +193,16 @@ Valgrind was clean
 Great: we both considered this an error
 ----here is what you printed on stderr---
 Win and(or) Lose pages do not exist!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+2.7: Current test is ./cyoa-step2 fakeFile  <  story1/inputs/input2.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+fail to open file fakeFile/story.txt
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
