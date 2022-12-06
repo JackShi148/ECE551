@@ -1,6 +1,6 @@
-Grading at 12/06/2022:16:20:56.649811
-For commit ID 590bc3ff12267c87fb417f42120094e56f588d51
-Grading at Tue Dec  6 11:20:34 AM EST 2022
+Grading at 12/06/2022:16:35:18.675166
+For commit ID 3cb7d4a11a2834b604afa04a588e1ac2c70ca04b
+Grading at Tue Dec  6 11:34:57 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -41,7 +41,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-the format of (0:1I am ready for this story!) is wrong!
+0::1:I am ready for this story!does not have destination page number!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
