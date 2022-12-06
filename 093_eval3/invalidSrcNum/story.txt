@@ -17,7 +17,7 @@
 4:12:Go to Grew for help.
 4:7:Go alone.
 5@N:page5.txt
-5e:14:Silent Night, accompanied by raven calls
+6:14:Silent Night, accompanied by raven calls
 5:13:Angels We Have Heard on High, accompanied by roosters crowing
 5:10:Bohemian Rhapsody, accompanied by the magestic call of a bald eagle
 6@L:page6.txt
