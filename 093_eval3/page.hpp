@@ -452,17 +452,17 @@ bool verifyWinandLose(const std::vector<Page *> & pages) {
 }
 
 void check(std::vector<Page *> & pages) {
-  setReference(pages);
   if (!verifyValidation(pages)) {
-    std::cerr << "some page(s) is not valid" << std::endl;
+    std::cerr << "some page(s) is not valid!" << std::endl;
     exit(EXIT_FAILURE);
   }
-  else if (!verifyReference(pages)) {
-    std::cerr << "some page(s) is not referenced by other pages" << std::endl;
+  setReference(pages);
+  if (!verifyReference(pages)) {
+    std::cerr << "some page(s) is not referenced by other pages!" << std::endl;
     exit(EXIT_FAILURE);
   }
-  else if (!verifyWinandLose(pages)) {
-    std::cerr << "Win and(or) Lose pages do not exist" << std::endl;
+  if (!verifyWinandLose(pages)) {
+    std::cerr << "Win and(or) Lose pages do not exist!" << std::endl;
     exit(EXIT_FAILURE);
   }
 }
