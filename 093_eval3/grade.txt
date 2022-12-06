@@ -1,6 +1,6 @@
-Grading at 12/06/2022:16:35:18.675166
-For commit ID 3cb7d4a11a2834b604afa04a588e1ac2c70ca04b
-Grading at Tue Dec  6 11:34:57 AM EST 2022
+Grading at 12/06/2022:16:52:31.031344
+For commit ID b8c1784c2563f3996131054d419bbe7382cab2f8
+Grading at Tue Dec  6 11:52:09 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -125,6 +125,27 @@ fail to open file unExistFile/page10000.txt or no such file exists
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
+
+
+1.13: Current test is ./cyoa-step1 invalidPage < /dev/null
+-----------------------------
+You considered this a failure case:
+some page(s) is not valid!
+But we did not.
+
+
+1.14: Current test is ./cyoa-step1 noRerencedPage < /dev/null
+-----------------------------
+You considered this a failure case:
+some page(s) is not referenced by other pages!
+But we did not.
+
+
+1.15: Current test is ./cyoa-step1 noWinorLose < /dev/null
+-----------------------------
+You considered this a failure case:
+Win and(or) Lose pages do not exist!
+But we did not.
 No request to check for intermediate deadline completion on step 1
 
 Step 2
@@ -243,8 +264,8 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 No request to check for intermediate deadline completion on step 4
 
-You have passed the test cases YOU provided
-If your tests are good, this is great. 
-If your tests are insufficient, you should do much more testing
+You have NOT passed your test cases!
+You should go and figure out/understand where thing went wrong
+And fix the problem(s) before the deadline
 
 Overall Grade: NO GRADE YET
