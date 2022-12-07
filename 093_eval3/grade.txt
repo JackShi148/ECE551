@@ -1,6 +1,6 @@
-Grading at 12/07/2022:04:23:30.894073
-For commit ID b9343000321330a29726f569c92c2541cb02c6e8
-Grading at Tue Dec  6 11:23:06 PM EST 2022
+Grading at 12/07/2022:16:53:10.050278
+For commit ID 8d935a319d02d6826f16062c920818ec79cf3a84
+Grading at Wed Dec  7 11:52:43 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -241,7 +241,7 @@ No request to check for intermediate deadline completion on step 3
 
 Step 4
 Checking that cyoa-step4 compiles
-make: 'cyoa-step4' is up to date.
+g++ -o cyoa-step4 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step4.cpp
 The code compiled (good)
 Executable cyoa-step4 exists (good)
 ------------------------------------
@@ -264,6 +264,13 @@ Valgrind was clean
 
 
 4.3: Current test is ./cyoa-step4 story1  <  story3/inputs/input2.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+  - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+
+4.4: Current test is ./cyoa-step4 multiCon  <  story3/inputs/input0.txt
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
