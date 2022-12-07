@@ -483,45 +483,102 @@ std::vector<Page *> parseTextwithCons(
     std::vector<std::pair<size_t, std::pair<std::string, long int> > > & condition_info) {
   std::vector<Page *> pages;
   std::string line;
+  size_t next_pageNum = 0;
   while (!ifs.eof()) {
     std::getline(ifs, line);
     if (!line.empty()) {
+      char * end = NULL;
+      size_t page_num = strtoull(line.c_str(), &end, 10);
+      // check if page number is out of range
+      if (errno == ERANGE) {
+        std::cerr << "the page number in (" << line << ") is out of range!" << std::endl;
+        exit(EXIT_FAILURE);
+      }
+      // check the format of this line
+      if (*end != '@' && *end != '$' && *end != ':' && *end != '[') {
+        std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
+        exit(EXIT_FAILURE);
+      }
       // page declaration
-      if (line.find('@') != std::string::npos) {
+      if (line.find('@') != std::string::npos && *end == '@') {
+        // check if page number is sequential
+        if (page_num != next_pageNum) {
+          std::cerr << "page numbers have to be sequential!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         size_t at_pos = line.find('@');
-        size_t page_num = strtoull(line.c_str(), NULL, 10);
+        // check if page number exists
+        if (at_pos == 0) {
+          std::cerr << "page number in (" << line << ") does not exist!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        //size_t page_num = strtoull(line.c_str(), NULL, 10);
         char type = line[at_pos + 1];
+        // check if type is valid
+        if (type != 'N' && type != 'W' && type != 'L') {
+          std::cerr << "valid types for pages only contain N, W and L!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         size_t colon = line.find(':');
+        // check if colon exists
+        if (colon == std::string::npos) {
+          std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        // check if type is valid, ensure that type is just N, W or L
+        if (colon - at_pos != 2) {
+          std::cerr << "the type of (" << line << ") is invalid!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string page_name = line.substr(colon + 1);
         Page * new_page = new Page(page_num, type, false, page_name);
         pages.push_back(new_page);
         std::string page_addr = dirName + '/' + page_name;
         std::ifstream page_ifs(page_addr.c_str(), std::ifstream::in);
+        // check if the file exists and can be open
+        if (!page_ifs) {
+          std::cerr << "fail to open " << page_addr << " or the file does not exist!"
+                    << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string content_line;
         while (!page_ifs.eof()) {
           std::getline(page_ifs, content_line);
           new_page->content.push_back(content_line);
         }
+        next_pageNum++;
       }
       // set choice condition
-      else if (line.find('$') != std::string::npos) {
+      else if (line.find('$') != std::string::npos && *end == '$') {
         size_t dollar_sign = line.find('$');
-        size_t equal = line.find('=');
-        size_t page_num = strtoull(line.c_str(), NULL, 10);
-        if (errno == ERANGE) {
-          std::cerr << "the page number is too large" << std::endl;
+        // check if page number exist
+        if (dollar_sign == 0) {
+          std::cerr << "the page number in (" << line << ") does not exist!" << std::endl;
           exit(EXIT_FAILURE);
         }
+        size_t equal = line.find('=');
+        // check if equal exists
+        if (equal == std::string::npos) {
+          std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        //size_t page_num = strtoull(line.c_str(), NULL, 10);
+        /*if (errno == ERANGE) {
+          std::cerr << "the page number is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }*/
         std::string condition_name =
             line.substr(dollar_sign + 1, equal - dollar_sign - 1);
         std::string temp = line.substr(equal + 1);
-        char * end = NULL;
-        long int condition_val = strtol(temp.c_str(), &end, 10);
+        char * newEnd = NULL;
+        long int condition_val = strtol(temp.c_str(), &newEnd, 10);
+        // check if the condition value is out of range
         if (errno == ERANGE) {
           std::cerr << "the condition value is too large" << std::endl;
           exit(EXIT_FAILURE);
         }
-        if (*end != '\0') {
+        // check if the condition value is valid
+        if (*newEnd != '\0') {
           std::cerr << "the condition value is invalid" << std::endl;
           exit(EXIT_FAILURE);
         }
@@ -533,44 +590,96 @@ std::vector<Page *> parseTextwithCons(
       // choices declaration
       else {
         size_t first_colon = line.find(':');
+        // check if the first colon exists
+        if (first_colon == std::string::npos) {
+          std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        // check if source page number exists
+        if (first_colon == 0) {
+          std::cerr << line << "does not have source page number!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         size_t second_colon = line.find(':', first_colon + 1);
+        // check if the second colon exists
+        if (second_colon == std::string::npos) {
+          std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         std::string des = line.substr(first_colon + 1, second_colon - first_colon - 1);
-        size_t src_pageNum = strtoull(line.c_str(), NULL, 10);
+        // check if a destination page number exists
+        if (des.empty()) {
+          std::cerr << line << "does not have destination page number!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        char * newEnd = NULL;
+        size_t src_pageNum = strtoull(line.c_str(), &newEnd, 10);
+        // check if the source page number is out of range
         if (errno == ERANGE) {
           std::cerr << "the source page number is too large" << std::endl;
           exit(EXIT_FAILURE);
         }
-        size_t des_pageNum = strtoull(des.c_str(), NULL, 10);
+        // check if the source page number is valid number
+        if (*newEnd != ':' && *newEnd != '[') {
+          std::cerr << "the source number in (" << line << ") is invalid!" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        // check if the specific page has been created before choice declaration
+        if (src_pageNum >= pages.size()) {
+          std::cerr << "page " << src_pageNum
+                    << " has not been created but choice declaration has used it!"
+                    << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        newEnd = NULL;
+        size_t des_pageNum = strtoull(des.c_str(), &newEnd, 10);
         if (errno == ERANGE) {
           std::cerr << "the destination page number is too large" << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        // check if destination page number is valid number
+        if (*newEnd != '\0') {
+          std::cerr << "the destination number in (" << line << ") is invalid!"
+                    << std::endl;
           exit(EXIT_FAILURE);
         }
         std::string choice = line.substr(second_colon + 1);
         std::string condition_name;
         long int condition_val;
         size_t first_brace = line.find('[');
+        // if this line is a common choice, no condition in this line
         if (first_brace == std::string::npos) {
           condition_name = "noCondition";
           condition_val = -1;
         }
         else {
           size_t second_brace = line.find(']');
+          // check if the second brace exists
+          if (second_brace == std::string::npos) {
+            std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
+            exit(EXIT_FAILURE);
+          }
           std::string con = line.substr(first_brace + 1, second_brace - first_brace - 1);
           size_t equal = con.find('=');
           if (equal == std::string::npos) {
-            std::cerr << "the format of condition choice is wrong" << std::endl;
+            std::cerr << "the format of condition choice in (" << line << ") is wrong!"
+                      << std::endl;
             exit(EXIT_FAILURE);
           }
           condition_name = con.substr(0, equal);
           std::string temp = con.substr(equal + 1);
-          char * end = NULL;
-          condition_val = strtol(temp.c_str(), &end, 10);
+          char * newEnd = NULL;
+          condition_val = strtol(temp.c_str(), &newEnd, 10);
+          // check if the condition value is out of range
           if (errno == ERANGE) {
-            std::cerr << "the condition value is too large" << std::endl;
+            std::cerr << "the condition value in (" << line << ") is too large!"
+                      << std::endl;
             exit(EXIT_FAILURE);
           }
-          if (*end != '\0') {
-            std::cerr << "the condition value is invalid" << std::endl;
+          // check if the condition value is valid
+          if (*newEnd != '\0') {
+            std::cerr << "the condition value in (" << line << ") is invalid!"
+                      << std::endl;
             exit(EXIT_FAILURE);
           }
         }

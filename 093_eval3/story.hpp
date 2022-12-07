@@ -170,6 +170,7 @@ void chooseStorywthCon(
           break;
         }
       }
+      // if input is unavailable choice, go to the start and get next input
       if (found == 1) {
         continue;
       }
