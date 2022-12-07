@@ -570,6 +570,11 @@ std::vector<Page *> parseTextwithCons(
         std::string condition_name =
             line.substr(dollar_sign + 1, equal - dollar_sign - 1);
         std::string temp = line.substr(equal + 1);
+        if (temp.empty()) {
+          std::cerr << "the condition value in (" << line << ") does not exist!"
+                    << std::endl;
+          exit(EXIT_FAILURE);
+        }
         char * newEnd = NULL;
         long int condition_val = strtol(temp.c_str(), &newEnd, 10);
         // check if the condition value is out of range
@@ -668,6 +673,11 @@ std::vector<Page *> parseTextwithCons(
           }
           condition_name = con.substr(0, equal);
           std::string temp = con.substr(equal + 1);
+          if (temp.empty()) {
+            std::cerr << "the condition value in (" << line << ") does not exist!"
+                      << std::endl;
+            exit(EXIT_FAILURE);
+          }
           char * newEnd = NULL;
           condition_val = strtol(temp.c_str(), &newEnd, 10);
           // check if the condition value is out of range

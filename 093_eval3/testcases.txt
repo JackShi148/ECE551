@@ -1,27 +1,26 @@
 cyoa-step1 /usr/local/ece551/cyoa/story1
 cyoa-step1 /usr/local/ece551/cyoa/story2
-cyoa-step1 fakeFile
-cyoa-step1 unSequentialPage
-cyoa-step1 invalidFormat
-cyoa-step1 invalidPageDeclaration
-cyoa-step1 invalidSrcNum
-cyoa-step1 invalidType
-cyoa-step1 invalidDesNum
-cyoa-step1 noDesNum
-cyoa-step1 noSrcNum
-cyoa-step1 largePageNum
-cyoa-step1 unExistFile
 cyoa-step2 story1 < story1/inputs/input0.txt
 cyoa-step2 story1 < story1/inputs/input1.txt
 cyoa-step2 story1 < story1/inputs/input2.txt
-cyoa-step2 invalidPage < story1/inputs/input2.txt
-cyoa-step2 noRerencedPage < story1/inputs/input2.txt
-cyoa-step2 noWinorLose < story1/inputs/input2.txt
-cyoa-step2 fakeFile < story1/inputs/input2.txt
 cyoa-step3 story1
 cyoa-step3 story2
-cyoa-step3 noWinPath
 cyoa-step4 story1 < story3/inputs/input0.txt
 cyoa-step4 story1 < story3/inputs/input1.txt
 cyoa-step4 story1 < story3/inputs/input2.txt
 cyoa-step4 multiCon < story3/inputs/input0.txt
+cyoa-step4 dollarandAt < story3/inputs/input0.txt
+cyoa-step4 noConditionName < story3/inputs/input0.txt
+cyoa-step4 noDesCon < story3/inputs/input0.txt
+cyoa-step4 noSrcCon < story3/inputs/input0.txt
+cyoa-step4 noEqual < story3/inputs/input0.txt
+cyoa-step4 noBrace < story3/inputs/input0.txt
+cyoa-step4 noConValue < story3/inputs/input0.txt
+cyoa-step4 noCreatedPageCon < story3/inputs/input0.txt
+cyoa-step4 noChoice < story3/inputs/input0.txt
+cyoa-step4 unExistFile < story3/inputs/input0.txt
+cyoa-step4 fakeValue < story3/inputs/input0.txt
+cyoa-step4 invalidType < story3/inputs/input0.txt
+cyoa-step4 largePageNum < story3/inputs/input0.txt
+cyoa-step4 unSequentialPage < story3/inputs/input0.txt
+cyoa-step4 noRerencedPage < story3/inputs/input0.txt
