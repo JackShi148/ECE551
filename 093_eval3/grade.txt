@@ -1,6 +1,6 @@
-Grading at 12/07/2022:17:30:46.329850
-For commit ID b19e849ac5a97bb11edb13ac7a4cffaffce61bbd
-Grading at Wed Dec  7 12:30:20 PM EST 2022
+Grading at 12/08/2022:15:53:20.664414
+For commit ID 25ef65b6fc127c4f3b3e9c73d4cb0bb3fe03f3a1
+Grading at Thu Dec  8 10:52:53 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -24,6 +24,16 @@ Valgrind was clean
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+
+1.3: Current test is ./cyoa-step1 invalidType < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+the format of (1  @N:page1.txt) is wrong!
+-----------------------------------------
+Lets check if it valgrinds:
 Valgrind was clean
 No request to check for intermediate deadline completion on step 1
 
@@ -56,6 +66,16 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean
+
+
+2.4: Current test is ./cyoa-step2 invalidType  <  story1/inputs/input2.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+the format of (1  @N:page1.txt) is wrong!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
 No request to check for intermediate deadline completion on step 2
 
 Step 3
@@ -80,6 +100,12 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean
+
+
+3.3: Current test is ./cyoa-step3 invalidType < /dev/null
+-----------------------------
+We considered this a failure case.
+But you did not (exit status was EXIT_SUCCESS).
 No request to check for intermediate deadline completion on step 3
 
 Step 4
@@ -225,7 +251,7 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-valid types for pages only contain N, W and L!
+the format of (1  @N:page1.txt) is wrong!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
@@ -259,10 +285,17 @@ some page(s) is not referenced by other pages!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
+
+
+4.20: Current test is ./cyoa-step4 whiteSpace  <  story3/inputs/input0.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+  - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
 No request to check for intermediate deadline completion on step 4
 
-You have passed the test cases YOU provided
-If your tests are good, this is great. 
-If your tests are insufficient, you should do much more testing
+You have NOT passed your test cases!
+You should go and figure out/understand where thing went wrong
+And fix the problem(s) before the deadline
 
 Overall Grade: NO GRADE YET
