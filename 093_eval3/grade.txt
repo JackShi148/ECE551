@@ -1,6 +1,6 @@
-Grading at 12/08/2022:15:53:20.664414
-For commit ID 25ef65b6fc127c4f3b3e9c73d4cb0bb3fe03f3a1
-Grading at Thu Dec  8 10:52:53 AM EST 2022
+Grading at 12/08/2022:15:59:28.979629
+For commit ID 608aec02fac42952eaa4feb7d389df909d7d990c
+Grading at Thu Dec  8 10:59:01 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -104,13 +104,17 @@ Valgrind was clean
 
 3.3: Current test is ./cyoa-step3 invalidType < /dev/null
 -----------------------------
-We considered this a failure case.
-But you did not (exit status was EXIT_SUCCESS).
+Great: we both considered this an error
+----here is what you printed on stderr---
+the format of (1  @N:page1.txt) is wrong!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
 No request to check for intermediate deadline completion on step 3
 
 Step 4
 Checking that cyoa-step4 compiles
-g++ -o cyoa-step4 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step4.cpp
+g++     cyoa-step4.cpp   -o cyoa-step4
 The code compiled (good)
 Executable cyoa-step4 exists (good)
 ------------------------------------
@@ -294,8 +298,8 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 No request to check for intermediate deadline completion on step 4
 
-You have NOT passed your test cases!
-You should go and figure out/understand where thing went wrong
-And fix the problem(s) before the deadline
+You have passed the test cases YOU provided
+If your tests are good, this is great. 
+If your tests are insufficient, you should do much more testing
 
 Overall Grade: NO GRADE YET
