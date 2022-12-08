@@ -5,8 +5,8 @@
 1@N:croissant.txt
 2@N:eclair.txt
 3@N:muffin.txt
-1$pastry=1
-2$pastry=2
+	1$pastry=1
+2$pastry=	2
 3$pastry=3
 1:4:Leave the store
 2:4:Leave the store
@@ -17,15 +17,15 @@
 5@N:outoftown.txt
 6@N:intown.txt
 5:8:Jump off the road and hide behind a large rock
-5:9:Keep walking
+  5:9:Keep walking
 6:7:Buy the sword
 6:5:Decline and head out of town
 7@N:sword.txt
 7$sword=1
 7$broke=1
-7:5:Now that you have a sword, head out of town
+7:  5:Now that you have a sword, head out of town
 8@N:dragon.txt
-8[broke=0]:10:Offer the dragon your last coins.
+8[broke=  0]:10:Offer the dragon your last coins.
 8[sword=1]:11:Charge the dragon with your sword.
 8[pastry=1]:12:Offer the dragon the chocolate croissant.
 8[pastry=2]:13:Squirt the eclair filling in the dragon's eye.
