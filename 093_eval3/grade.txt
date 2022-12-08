@@ -1,6 +1,6 @@
-Grading at 12/08/2022:16:06:23.909333
-For commit ID 026635802500c6c392b6c0a295639dd2547ec10c
-Grading at Thu Dec  8 11:05:53 AM EST 2022
+Grading at 12/08/2022:16:56:23.283759
+For commit ID 3001dddcd97103a2bab2616bf40dfa5bfb05dd02
+Grading at Thu Dec  8 11:55:52 AM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -135,7 +135,7 @@ No request to check for intermediate deadline completion on step 3
 
 Step 4
 Checking that cyoa-step4 compiles
-g++     cyoa-step4.cpp   -o cyoa-step4
+g++ -o cyoa-step4 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step4.cpp
 The code compiled (good)
 Executable cyoa-step4 exists (good)
 ------------------------------------
