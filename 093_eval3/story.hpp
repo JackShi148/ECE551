@@ -10,10 +10,12 @@
 
 #include "page.hpp"
 
+// choose the story without conditions according to the input stream
 void chooseStory(std::vector<Page *> & pages) {
   size_t cur_page = 0;
   while (true) {
     pages[cur_page]->printContentandChoice();
+    // if the page is a WIN page or a LOSE page then end printing and choosing
     if (pages[cur_page]->getType() == 'W' || pages[cur_page]->getType() == 'L') {
       break;
     }
@@ -25,14 +27,17 @@ void chooseStory(std::vector<Page *> & pages) {
       std::getline(std::cin, input);
       char * end = NULL;
       size_t choice_num = strtoull(input.c_str(), &end, 10);
+      // check if the input is out of range
       if (errno == ERANGE) {
         std::cout << "That is not a valid choice, please try again" << std::endl;
         continue;
       }
+      // check if the input is a valid number
       if (*end != '\0') {
         std::cout << "That is not a valid choice, please try again" << std::endl;
         continue;
       }
+      // check if the input is a valid choice number
       if (choice_num == 0 || choice_num > choices_len) {
         std::cout << "That is not a valid choice, please try again" << std::endl;
         continue;
@@ -42,7 +47,7 @@ void chooseStory(std::vector<Page *> & pages) {
     }
   }
 }
-
+// check if the targe is already in visited
 bool inVisited(std::vector<size_t> & visited, size_t target) {
   int len = visited.size();
   for (int i = 0; i < len; i++) {
@@ -52,13 +57,18 @@ bool inVisited(std::vector<size_t> & visited, size_t target) {
   }
   return false;
 }
-
+// this function uses dfs to find all cycle-free paths to a WIN page
+// and would print unwinnbale if there is no way to win
 void dfsFindPath(std::vector<Page *> & pages,
                  std::vector<std::vector<size_t> > & paths,
                  std::vector<std::vector<size_t> > & choices) {
+  // this stack saves paths
   std::stack<std::vector<size_t> > stack_paths;
+  // this stack saves the choices in a particular path
   std::stack<std::vector<size_t> > stack_choices;
   std::vector<size_t> visited;
+  // set a start path whose initial element is 0
+  // because all paths begin from page 0
   std::vector<size_t> start;
   start.push_back(0);
   stack_paths.push(start);
@@ -73,6 +83,8 @@ void dfsFindPath(std::vector<Page *> & pages,
     int curPath_len = currentPath.size();
     // get the current page number
     size_t cur_pageNum = currentPath[curPath_len - 1];
+    // if current page is a WIN page, save the paths and corresponding choices into
+    // paths and choices, which are for keeping win paths and choices
     if (pages[cur_pageNum]->getType() == 'W') {
       paths.push_back(currentPath);
       choices.push_back(currentChoices);
@@ -81,6 +93,10 @@ void dfsFindPath(std::vector<Page *> & pages,
     if (curPath_len > 1) {
       size_t last_visited = currentPath[curPath_len - 2];
       int visited_len = visited.size();
+      // check if the second last page is the last visited page
+      // if not, pop out from visited until the second last page is
+      // the last visited page
+      // this operation eliminate the impact of previous paths to current path
       while (visited[visited_len - 1] != last_visited) {
         visited.pop_back();
         visited_len = visited.size();
@@ -102,7 +118,8 @@ void dfsFindPath(std::vector<Page *> & pages,
     }
   }
 }
-
+// print the paths and choices to a WIN page
+// and print unwinnable if there is no path to win
 void printPathsandChoices(std::vector<Page *> & pages) {
   std::vector<std::vector<size_t> > paths;
   std::vector<std::vector<size_t> > choices;
@@ -123,7 +140,8 @@ void printPathsandChoices(std::vector<Page *> & pages) {
   }
   std::cout << ss.str();
 }
-
+// choose the story with conditions and print them out
+// the parameter condition_info contains the pages that change conditions and the conditions
 void chooseStorywthCon(
     std::vector<Page *> & pages,
     std::vector<std::pair<size_t, std::pair<std::string, long int> > > & condition_info) {
@@ -132,11 +150,14 @@ void chooseStorywthCon(
     std::vector<std::pair<size_t, std::pair<std::string, long int> > >::const_iterator
         it_con = condition_info.begin();
     while (it_con != condition_info.end()) {
+      // if current page is one of the pages that change conditions
+      // set correct condition value all of pages
       if (cur_page == it_con->first) {
         setConditionForPages(pages, it_con->second.first, it_con->second.second);
       }
       ++it_con;
     }
+    // get unavailable choice numbers so that checking if a choice is available would be easier
     std::vector<size_t> unavl_chcNums = pages[cur_page]->printContentandChoicewithCon();
     if (pages[cur_page]->getType() == 'W' || pages[cur_page]->getType() == 'L') {
       break;
@@ -163,6 +184,8 @@ void chooseStorywthCon(
       }
       int found = 0;
       for (size_t i = 0; i < unavl_chcNums.size(); i++) {
+        // if the input is equal to one of unavailable choice number
+        // this input is invalid
         if (choice_num == unavl_chcNums[i]) {
           std::cout << "That choice is not available at this time, please try again"
                     << std::endl;

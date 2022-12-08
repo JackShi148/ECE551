@@ -157,7 +157,7 @@ void Page::printContentandChoice() const {
   }
   std::cout << ss.str();
 }
-
+// print the content and choices with condition of every page
 std::vector<size_t> Page::printContentandChoicewithCon() const {
   std::vector<size_t> ans;
   std::stringstream ss;
@@ -182,9 +182,12 @@ std::vector<size_t> Page::printContentandChoicewithCon() const {
         it_chs = choice->choices_con.begin();
     int i = 1;
     while (it_chs != choice->choices_con.end()) {
+      // check if this choice has no condition
       if (it_chs->first.first == "noCondition") {
         ss << ' ' << i << ". " << it_chs->second << '\n';
       }
+      // if this choice has condition
+      // compare the choice condition to the page condition which was set when parsing the story.txt
       else {
         long int condition_val = getConditionVal(it_chs->first.first);
         if (condition_val == it_chs->first.second) {
@@ -193,6 +196,8 @@ std::vector<size_t> Page::printContentandChoicewithCon() const {
         else {
           ss << ' ' << i << ". "
              << "<UNAVAILABLE>\n";
+          // remember the choice numbers that are unavailable
+          // make it easier to check if the choice chosen is available afterwards
           ans.push_back(i);
         }
       }
@@ -203,7 +208,7 @@ std::vector<size_t> Page::printContentandChoicewithCon() const {
   std::cout << ss.str();
   return ans;
 }
-
+// get the condition value based on a condition name in this particular page
 long int Page::getConditionVal(const std::string & condition_name) const {
   std::vector<std::pair<std::string, long int> >::const_iterator it = conditions.begin();
   while (it != conditions.end()) {
@@ -214,7 +219,8 @@ long int Page::getConditionVal(const std::string & condition_name) const {
   }
   return 0;
 }
-
+// set a particular pair of condition name and condition value to all pages
+// means that after a speical page, a specific condition has been set to all pages
 void Page::setCondition(const std::string & condition_name, long int condition_val) {
   if (conditions.empty()) {
     conditions.push_back(std::make_pair(condition_name, condition_val));
@@ -222,6 +228,7 @@ void Page::setCondition(const std::string & condition_name, long int condition_v
   else {
     std::vector<std::pair<std::string, long int> >::iterator it = conditions.begin();
     int found = 0;
+    // if this condition is in this page's conditions, change its value to new value
     while (it != conditions.end()) {
       if (it->first == condition_name) {
         it->second = condition_val;
@@ -230,6 +237,8 @@ void Page::setCondition(const std::string & condition_name, long int condition_v
       }
       ++it;
     }
+    // else if this condition is not in this page's conditions
+    // push this new pair of condition name and condition value into the page's conditions
     if (found == 0) {
       conditions.push_back(std::make_pair(condition_name, condition_val));
     }
@@ -298,6 +307,7 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
           exit(EXIT_FAILURE);
         }
         std::string content_line;
+        // load the content of this page file into content
         while (!page_ifs.eof()) {
           std::getline(page_ifs, content_line);
           new_page->content.push_back(content_line);
@@ -373,7 +383,9 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
 
   return pages;
 }
-
+// set reference for every pages
+// means that if one page is referenced by other page(s)
+// set its referenced to true
 void setReference(std::vector<Page *> & pages) {
   for (std::vector<Page *>::iterator it_pages = pages.begin(); it_pages != pages.end();
        ++it_pages) {
@@ -402,7 +414,7 @@ void freePages(std::vector<Page *> & pages) {
     }
   }
 }
-
+// check if the page referenced by destination number is valid
 bool verifyValidation(const std::vector<Page *> & pages) {
   size_t len = pages.size();
   for (size_t i = 0; i < pages.size(); ++i) {
@@ -412,6 +424,9 @@ bool verifyValidation(const std::vector<Page *> & pages) {
     else {
       std::vector<size_t> des_pageNums = pages[i]->getDesNums();
       for (size_t j = 0; j < des_pageNums.size(); ++j) {
+        // if the page is not created yet or
+        // if the page number is not equal to destination number
+        // the page is invalid
         if (des_pageNums[j] >= len ||
             pages[des_pageNums[j]]->getPageNum() != des_pageNums[j]) {
           return false;
@@ -421,7 +436,7 @@ bool verifyValidation(const std::vector<Page *> & pages) {
   }
   return true;
 }
-
+// check if every page is referenced by at least one other page
 bool verifyReference(const std::vector<Page *> & pages) {
   for (size_t i = 1; i < pages.size(); i++) {
     if (pages[i]->getReference() == false) {
@@ -430,7 +445,7 @@ bool verifyReference(const std::vector<Page *> & pages) {
   }
   return true;
 }
-
+// check if there is at least one WIN page and at least one LOSE page in all of pages
 bool verifyWinandLose(const std::vector<Page *> & pages) {
   bool foundWin = false;
   bool foundLose = false;
@@ -450,7 +465,9 @@ bool verifyWinandLose(const std::vector<Page *> & pages) {
   }
   return foundWin & foundLose;
 }
-
+// check if all of the requirements for pages are met
+// means that check if all of the pages are referenced and valid
+// and at least one WIN page and LOSE page exist
 void check(std::vector<Page *> & pages) {
   if (!verifyValidation(pages)) {
     std::cerr << "some page(s) is not valid!" << std::endl;
@@ -466,17 +483,20 @@ void check(std::vector<Page *> & pages) {
     exit(EXIT_FAILURE);
   }
 }
-
+// set correct condition name and condition value for every pages
 void setConditionForPages(std::vector<Page *> & pages,
                           const std::string & condition_name,
                           long int condition_val) {
   std::vector<Page *>::iterator it = pages.begin();
   while (it != pages.end()) {
+    // iteratively use setCondition to set condition for all pages
     (*it)->setCondition(condition_name, condition_val);
     ++it;
   }
 }
-
+// parse the content of story.txt with conditions
+// besids recognize the old types of line, this function can recognize new types of line
+// and save corresponding elements into pages
 std::vector<Page *> parseTextwithCons(
     std::ifstream & ifs,
     std::string dirName,
@@ -542,6 +562,7 @@ std::vector<Page *> parseTextwithCons(
           exit(EXIT_FAILURE);
         }
         std::string content_line;
+        // load the content of each page file into coresponding content
         while (!page_ifs.eof()) {
           std::getline(page_ifs, content_line);
           new_page->content.push_back(content_line);
@@ -562,14 +583,10 @@ std::vector<Page *> parseTextwithCons(
           std::cerr << "the format of (" << line << ") is wrong!" << std::endl;
           exit(EXIT_FAILURE);
         }
-        //size_t page_num = strtoull(line.c_str(), NULL, 10);
-        /*if (errno == ERANGE) {
-          std::cerr << "the page number is too large" << std::endl;
-          exit(EXIT_FAILURE);
-        }*/
         std::string condition_name =
             line.substr(dollar_sign + 1, equal - dollar_sign - 1);
         std::string temp = line.substr(equal + 1);
+        // check if the condition value exists
         if (temp.empty()) {
           std::cerr << "the condition value in (" << line << ") does not exist!"
                     << std::endl;
@@ -666,6 +683,7 @@ std::vector<Page *> parseTextwithCons(
           }
           std::string con = line.substr(first_brace + 1, second_brace - first_brace - 1);
           size_t equal = con.find('=');
+          // check if the equal exists
           if (equal == std::string::npos) {
             std::cerr << "the format of condition choice in (" << line << ") is wrong!"
                       << std::endl;
@@ -673,6 +691,7 @@ std::vector<Page *> parseTextwithCons(
           }
           condition_name = con.substr(0, equal);
           std::string temp = con.substr(equal + 1);
+          // check if the condition value exists
           if (temp.empty()) {
             std::cerr << "the condition value in (" << line << ") does not exist!"
                       << std::endl;
