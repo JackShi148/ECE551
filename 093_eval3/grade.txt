@@ -1,6 +1,6 @@
-Grading at 12/08/2022:16:56:23.283759
-For commit ID 3001dddcd97103a2bab2616bf40dfa5bfb05dd02
-Grading at Thu Dec  8 11:55:52 AM EST 2022
+Grading at 12/09/2022:19:54:52.487714
+For commit ID 857b354b4975e81de5ed8bb195f31f4dfc428718
+Grading at Fri Dec  9 02:53:49 PM EST 2022
 Doing some basic checking for your submission
 
 Step 1
@@ -41,6 +41,16 @@ Valgrind was clean
 -----------------------------
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
+Valgrind was clean
+
+
+1.5: Current test is ./cyoa-step1 WinLoseCon < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+WIN and LOSE page should not have choices
+-----------------------------------------
+Lets check if it valgrinds:
 Valgrind was clean
 No request to check for intermediate deadline completion on step 1
 
@@ -90,6 +100,26 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
   - Valgrind was clean (no errors, no memory leaks)
 Valgrind was clean
+
+
+2.6: Current test is ./cyoa-step2 WinLoseCon  <  story1/inputs/input2.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+WIN and LOSE page should not have choices
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+2.7: Current test is ./cyoa-step2 WinLoseCon < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+WIN and LOSE page should not have choices
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
 No request to check for intermediate deadline completion on step 2
 
 Step 3
@@ -135,7 +165,7 @@ No request to check for intermediate deadline completion on step 3
 
 Step 4
 Checking that cyoa-step4 compiles
-g++ -o cyoa-step4 -ggdb3 -std=gnu++98 -Wall -Werror -pedantic cyoa-step4.cpp
+make: 'cyoa-step4' is up to date.
 The code compiled (good)
 Executable cyoa-step4 exists (good)
 ------------------------------------
@@ -317,6 +347,16 @@ Valgrind was clean
 Great: we both considered this an error
 ----here is what you printed on stderr---
 the format of (1  $pastry=1) is wrong!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+4.21: Current test is ./cyoa-step4 WinLoseChoiceCon  <  story3/inputs/input0.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+WIN and LOSE page should not have choices
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
