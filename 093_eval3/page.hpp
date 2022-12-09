@@ -356,6 +356,11 @@ std::vector<Page *> parseText(std::ifstream & ifs, std::string dirName) {
                     << std::endl;
           exit(EXIT_FAILURE);
         }
+        // make sure only noraml pages have choices
+        if (pages[src_pageNum]->type != 'N') {
+          std::cerr << "WIN and LOSE page should not have choices" << std::endl;
+          exit(EXIT_FAILURE);
+        }
         end = NULL;
         size_t des_pageNum = strtoull(des.c_str(), &end, 10);
         if (errno == ERANGE) {
@@ -651,6 +656,11 @@ std::vector<Page *> parseTextwithCons(
           std::cerr << "page " << src_pageNum
                     << " has not been created but choice declaration has used it!"
                     << std::endl;
+          exit(EXIT_FAILURE);
+        }
+        // make sure only noraml pages have choices
+        if (pages[src_pageNum]->type != 'N') {
+          std::cerr << "WIN and LOSE page should not have choices" << std::endl;
           exit(EXIT_FAILURE);
         }
         newEnd = NULL;

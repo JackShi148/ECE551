@@ -2,15 +2,18 @@ cyoa-step1 /usr/local/ece551/cyoa/story1
 cyoa-step1 /usr/local/ece551/cyoa/story2
 cyoa-step1 invalidType
 cyoa-step1 whiteSpaceNoCon
+cyoa-step1 WinLoseCon
 cyoa-step2 story1 < story1/inputs/input0.txt
 cyoa-step2 story1 < story1/inputs/input1.txt
 cyoa-step2 story1 < story1/inputs/input2.txt
 cyoa-step2 invalidType < story1/inputs/input2.txt
 cyoa-step2 whiteSpaceNoCon < story1/inputs/input2.txt
+cyoa-step2 WinLoseCon < story1/inputs/input2.txt
 cyoa-step3 story1
 cyoa-step3 story2
 cyoa-step3 invalidType
 cyoa-step3 whiteSpaceNoCon
+cyoa-step2 WinLoseCon
 cyoa-step4 story1 < story3/inputs/input0.txt
 cyoa-step4 story1 < story3/inputs/input1.txt
 cyoa-step4 story1 < story3/inputs/input2.txt
@@ -31,3 +34,4 @@ cyoa-step4 largePageNum < story3/inputs/input0.txt
 cyoa-step4 unSequentialPage < story3/inputs/input0.txt
 cyoa-step4 noRerencedPage < story3/inputs/input0.txt
 cyoa-step4 whiteSpace < story3/inputs/input0.txt
+cyoa-step4 WinLoseChoiceCon < story3/inputs/input0.txt
